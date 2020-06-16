@@ -1,0 +1,76 @@
+<div *ngIf="type === 'DELETE'" class="confirmation-dialog">
+
+        <div mat-dialog-content style="background-color: rgba(255, 0, 0, 0.653); display: flex; 
+        justify-content: space-around; padding: 4px;">
+            <span>
+                <h5 style="padding: 10px; margin-top: 5px;">Confirmation Box</h5>
+            </span>
+            <button mat-stroked-button style="float: right; 
+            background-color: white; color: red; width: 5%; height: 50%; margin-top: 3%;" (click)="closeDialog()">
+                <mat-icon matSuffix style="cursor: pointer; color: red; ">close</mat-icon>
+            </button>
+        </div>
+        <br>
+        <div style="padding: 10px;">
+            <p style="font-size: large">{{defaultMessage}}</p>
+        </div>
+       <div style="width: 100%; display: flex; flex-direction: row;">
+                <button mat-stroked-button style="width: 48%; margin: 3px; background-color: red;" (click)="deleteClicked()">Yes, Delete</button>
+                <button mat-stroked-button style="width: 48%; margin: 3px; border-color: red;" (click) = "closeDialog()">Don't Delete</button>
+        </div>
+
+</div>
+<div *ngIf="type === 'SUBMIT'">
+
+        <div  mat-dialog-content style="background-color: rgba(11, 165, 11, 0.633); display: flex; 
+        justify-content: space-around; padding: 4px;">
+            <span>
+                <h5 style="padding: 10px;margin-top: 5px;">Confirmation Box</h5>
+            </span>
+            <button mat-stroked-button style="float: right; 
+            background-color: white; color: red; width: 5%; height: 50%; margin-top: 3%;" (click)="closeDialog()">
+                <mat-icon matSuffix style="cursor: pointer; color: red; ">close</mat-icon>
+            </button>
+        </div>
+        <br>
+        <div style="padding: 10px;">
+            <p style="font-size: large">{{defaultMessage}}</p>
+        </div>
+        <div>
+            <span>
+        
+                <button mat-stroked-button style="width: 48%;margin: 3px; background-color: rgb(11, 165, 11);" (click)="submitClicked()">Submit</button>
+                <button mat-stroked-button style="width: 48%; margin: 3px; border-color: rgb(11, 165, 11);" (click) = "closeDialog()">Cancel</button>  
+            </span>
+        
+        </div>
+
+</div>
+
+<div *ngIf="type === 'INFO'">
+
+        <div  mat-dialog-content style="background-color: rgb(14, 169, 230); display: flex; 
+        justify-content: space-around; padding: 4px;">
+            <span>
+                <h5 style="padding: 10px;margin-top: 5px;">Confirmation Box</h5>
+            </span>
+            <button mat-stroked-button style="float: right; 
+            background-color: white; color: red; width: 5%; height: 50%; margin-top: 3%;" (click)="closeDialog()">
+                <mat-icon matSuffix style="cursor: pointer; color: red; ">close</mat-icon>
+            </button>
+        </div>
+        <br>
+        <div style="padding: 10px;">
+            <p style="font-size: large">{{defaultMessage}}</p>
+        </div>
+        <div>
+            <span>
+        
+                <button mat-stroked-button style="width: 48%;margin: 3px; background-color: rgba(0, 0, 255, 0.714); color: white;" (click)="submitClicked()">Ok</button>
+                <button mat-stroked-button style="width: 48%; margin: 3px; border-color: blue;" (click) = "closeDialog()">Cancel</button>  
+            </span>
+        
+        </div>
+
+</div>
+

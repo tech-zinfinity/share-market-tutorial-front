@@ -1,0 +1,21 @@
+<mat-toolbar style="display: flex; justify-content: flex-end; position: relative;" color="primary">
+    <mat-icon style="cursor: pointer;" (click)="dialogRef.close()">close</mat-icon>
+</mat-toolbar>
+<div style="display: flex;
+justify-content: center; flex-direction: row;">
+        <form [formGroup] = "addSubscriptionForm" style="display: flex; flex-direction: column;
+        justify-content: center; width: 90%; margin-top: 2%;">
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label >Amount</mat-label>
+                <input matInput placeholder="amount" formControlName="amount">
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <input matInput [matDatepicker]="myDatepicker"formControlName="expiry" >
+                <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #myDatepicker></mat-datepicker>
+            </mat-form-field>
+            <button mat-raised-button color="primary" [disabled]="addSubscriptionForm.invalid"
+            (click)="addSubscription(addSubscriptionForm.value)"> submit </button>
+        </form>
+</div> 
+

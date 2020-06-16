@@ -1,0 +1,33 @@
+<mat-toolbar style="display: flex; justify-content: flex-end;" color="primary">
+    <mat-icon style="cursor: pointer;" (click)="dialogRef.close()">close</mat-icon>
+</mat-toolbar>
+<div style="display: flex;
+justify-content: center; flex-direction: row;">
+
+    <mat-card>
+        <img src="../assets/Logo.JPG" style="height: 130px; width: 300px;">
+    </mat-card>
+    <mat-card>
+        <form [formGroup] = "loginForm" style="display: flex; flex-direction: column;
+        justify-content: center;">
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label >Username</mat-label>
+                <input matInput placeholder="email" formControlName="username">
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label >Password</mat-label>
+                <input matInput type="password" placeholder="password" formControlName="password">
+            </mat-form-field>
+            <button mat-raised-button color="primary" 
+            [disabled]="loginForm.invalid" (click)="login(loginForm.value)">
+                Login
+            </button>
+            <button mat-raised-button color="warn" 
+             (click)="signup()" style="margin-top: 10px;">
+                Signup
+            </button>
+        </form>
+    </mat-card>
+
+</div> 
+

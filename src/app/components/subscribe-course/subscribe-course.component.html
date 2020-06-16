@@ -1,0 +1,31 @@
+<!-- <div>
+{{(courseObs | async).id}}
+{{(courseObs | async).title}}
+ {{(courseObs | async).subscription.amount}}
+{{(courseObs | async).subscription.expiry}}
+</div> -->
+<br><br><br>
+<div style="width: 100%; height: 100%; display: flex; justify-content: space-around; 
+flex-direction: row;">
+    <mat-card style="display: flex; 
+    justify-content: center;">       
+       <img src="../../../assets/qr.jpg" style="width: 500px; height: 500px;" >
+    </mat-card>
+    <mat-card>
+        <br><br><br>
+        <h2>Course - {{(courseObs | async).title}} </h2>   
+        <h2 *ngIf="(courseObs | async).subscription != undefined">Price - {{(courseObs | async).subscription.amount}} </h2>   
+
+        <h3>Please pay by UPI and update the Transaction Number in below field </h3>
+        
+        <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label >Transaction Number</mat-label>
+            <input matInput placeholder="Transaction Number" 
+            [formControl]="transactioIdControl">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary"
+        [disabled]="!transactioIdControl.valid" 
+        (click)="addRequestForSubscription(transactioIdControl.value)">submit</button>
+    </mat-card>
+</div>

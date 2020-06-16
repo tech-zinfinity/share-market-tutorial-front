@@ -1,0 +1,71 @@
+<div>
+    <br>
+    <div *ngIf="(this.auth.currentUser | async) != null">
+        <mat-toolbar *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')"
+        style="display: flex; flex-direction: row; justify-content: flex-end;
+        background-color: white;">
+        <!-- <div *ngIf="(currentCourse | async).subscription != undefined">
+            Cost: {{((currentCourse | async).subscription).amount}}
+        </div> -->
+        <div>
+            <button mat-raised-button color="primary" style="margin: 5px;"
+            (click)="openAddTopic()"> Add Topic</button>
+            <button mat-stroked-button color="primary" style="margin: 5px;"
+            (click)="openAddSubscription()"> Set Cost</button>
+            <button mat-stroked-button *ngIf="(currentCourse | async).active === null 
+            || (currentCourse | async).active === false"
+            style="margin: 5px;background-color: rgb(6, 150, 47); color: white;"
+            (click)="publishCourse(true)"> Publish</button>
+            
+            <button mat-stroked-button *ngIf="(currentCourse | async).active === true"
+            style="margin: 5px;background-color: rgb(206, 11, 11); color: white;"
+            (click)="publishCourse(false)"> Deactivate </button>
+
+
+        </div> 
+ 
+        </mat-toolbar> 
+    </div>
+    <div *ngIf="(this.auth.currentUser | async) == undefined">
+        <mat-toolbar
+            style="display: flex; flex-direction: row; justify-content: flex-end;
+            background-color: white;">
+        <!-- <button mat-stroked-button style="margin: 5px; 
+        background-color: rgb(6, 150, 47); color: white;"> Subscribe</button>-->
+
+        </mat-toolbar>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+        <mat-card style="width: 60%;">
+            <span style="color: black; font-size: 40px;background-color:rgb(184, 219, 250);">{{(currentCourse | async).title}}</span>
+        </mat-card>
+        <mat-card style="width: 20%; margin-right: 20px; display: flex; flex-direction: column;
+        justify-content: center; align-self: center;" [class.mat-elevation-z8]="true" 
+        *ngIf="(currentCourse | async).subscription != undefined">
+               <span style="font-size: 25px;"
+               >Cost: {{((currentCourse | async).subscription).amount}}</span> 
+               
+               <button mat-stroked-button style="margin: 5px; margin-top: 20px; 
+               background-color: rgb(6, 150, 47); color: white;"
+               (click)="navigateToSubscription()"> Subscribe</button>
+
+                <button mat-stroked-button style="margin: 5px; margin-top: 20px; 
+                background-color: plum; color: white;"
+                *ngIf="courseSubscrible"
+                (click)="navigateToSubscription()" [disabled]="true">Alredy Subscribed</button>
+
+        </mat-card>
+
+    </div>
+    <br><br><br><br>
+    <mat-card style="background-color: aliceblue;">
+        <p style="white-space: pre; word-break: break-all; font-size: 18px;">
+            {{(currentCourse | async).dscp}}
+        </p>
+    </mat-card>
+    <br><br><br><br>
+    <span style="font-size: 30px;">Topics</span>
+    <mat-list role="list" *ngFor="let topic of (currentCourse | async).topics">
+        <mat-list-item role="listitem">{{topic.title}}</mat-list-item>
+    </mat-list>
+</div>

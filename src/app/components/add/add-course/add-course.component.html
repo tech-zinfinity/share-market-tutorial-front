@@ -1,0 +1,28 @@
+<mat-toolbar style="display: flex; justify-content: flex-end;" color="primary">
+    <mat-icon style="cursor: pointer;" (click)="dialogRef.close()">close</mat-icon>
+</mat-toolbar>
+<div style="display: flex;
+justify-content: center; flex-direction: row;">
+        <form [formGroup] = "addCourseForm" style="display: flex; flex-direction: column;
+        justify-content: center; width: 90%; margin-top: 2%;">
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label >Title</mat-label>
+                <input matInput placeholder="title" formControlName="title">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter the Description</mat-label>
+                  <textarea #myText matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                   cdkAutosizeMinRows="26" cdkAutosizeMaxRows="15"
+                   formControlName="dscp" (input)="onPaste(myText.value)"></textarea>
+            </mat-form-field>
+            <!-- <mat-checkbox formControlName="active" value="Active">Active</mat-checkbox> -->
+
+            <button mat-raised-button color="primary" 
+            [disabled]="addCourseForm.invalid" (click)="addCourse(addCourseForm.value)"
+            style="width: 50%; float: right; margin-top: 5px;">
+                Add
+            </button>
+
+        </form>
+</div> 
+

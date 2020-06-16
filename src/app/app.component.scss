@@ -1,0 +1,17 @@
+::ng-deep .mat-snack-bar-container {
+    background-color: black;
+    padding: 0%;
+    padding-left: 0px;
+    color: white;
+    max-height: 100px;
+    max-width: 200px;
+}
+::ng-deep .mat-simple-snackbar{
+    color: white;
+    font-size: 20px;
+}
+::ng-deep .mat-simple-snackbar-action button{
+    background-color: white;
+    color: red;
+    height: 90%;
+}

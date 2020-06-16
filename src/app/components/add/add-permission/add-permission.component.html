@@ -1,0 +1,21 @@
+<mat-toolbar style="display: flex; justify-content: flex-end;" color="primary">
+    <mat-icon style="cursor: pointer;" (click)="dialogRef.close()">close</mat-icon>
+</mat-toolbar>
+<div style="display: flex;
+justify-content: center; flex-direction: row;">
+        <form [formGroup] = "permissionForm" style="display: flex; flex-direction: column;
+        justify-content: center; width: 90%; margin-top: 2%;">
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label >Permission Value</mat-label>
+                <input matInput placeholder="permission" formControlName="permission">
+            </mat-form-field>
+            <mat-checkbox formControlName="subscription">Subription for Course ?</mat-checkbox>
+            <button mat-raised-button color="primary" 
+            [disabled]="permissionForm.invalid" (click)="addPermission(permissionForm.value)"
+            style="width: 50%; float: right; margin-top: 5px;">
+                Add
+            </button>
+
+        </form>
+</div> 
+

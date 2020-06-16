@@ -1,0 +1,7 @@
+export enum PaymentRequestStatus {
+    REQUESTED='REQUESTED', PENDING='PENDING' ,APPROVED='APPROVED', FAILED='FAILED'
+}
+
+export enum SubscriptionStatus {
+    REQUESTED='REQUESTED', PENDING='PENDING' ,APPROVED='APPROVED', FAILED='FAILED'
+}
