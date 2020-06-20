@@ -1,23 +1,18 @@
-<div style="display: flex; justify-content: center;">
-    <mat-card style="border-radius: 15px; margin-top: 2%;" >
-      <img src="../assets/banner.png" style="height: 400px; width: 1250px;
-      border-radius: 15px;">
-    </mat-card>
+<div class="div-bnr">
+    <div>
+      <img src="../assets/banner.png" class="graphic-img">
+    </div>
 </div>
   <div style="display: flex; justify-content: center; flex-direction: column; margin-top: 50px;">
     <div style="display: flex; justify-content: start; margin-left: 3%;">
-      <span style="font-size: 40px;">Courses</span>
+      <span class="cour-head" >Courses</span>
     </div>
     <br><br>
     <div class="cardplacement" style="margin-left: 2%; margin-right: 2%;">
       <div *ngFor="let element of courses"> 
         <mat-card style="margin: 20px; border-left: 1.5px groove #000" [class.mat-elevation-z8]="true" class="ccrd">
-            <!-- <div style="display: flex; justify-content: start; background-color: white;
-            border-radius: 15px; padding: 10px; color: black;">
-              <h1>{{element.title}}</h1>
-            </div> -->
             <mat-card-content>
-                <img src="../assets/course1.png" style="height: 250px; width: 350px;">
+                <img src="../assets/course1.png" class="card-img">
             </mat-card-content>
             <mat-card-actions style="display: flex; justify-content: space-between;">
                 <button mat-stroked-button color="primary" (click)="goToCourseDetail(element.id)">View Details</button>

@@ -1,30 +1,94 @@
-@media (min-width: 480px) {
-    .cardplacement{
-        //background-color: rgba(220, 220, 220, 0.531);
-        border-radius: 15px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+.main{
+    padding-top: 90px;
+}
+.sec-1{
+    background-color: white;
+     margin-left: 2%;
+      display: flex;
+       justify-content: space-between;
+        flex-direction: row;
+        padding-top: 30px;
+       
+}
+.srch-btn{
+    font-size: 15px; 
+    width: 40%;
+}
+@media (max-width: 600px){
+    .sec-1{
+        flex-direction: column;
+    }
+    .srch-btn{
+        font-size: 15px; 
+        width: 100%;
+        padding: 10px;
+    }
+}
+.cardplacement{
+    flex-direction: row;
+    display: flex;
+    overflow-x: scroll;
+   -webkit-overflow-scrolling: touch;
+   -ms-overflow-style: -ms-autohiding-scrollbar;
+   position: relative;
+   padding-top: 20px;
+
+}
+.card{
+    flex: 0 0 auto;
+    margin-right:20px ;
+    width:350px;
+}
+
+
+.btn-main{
+    display: flex; 
+    justify-content: center;
+    
+}
+.course-card{
+    margin: 10px; 
+    width: 300px; 
+    border-left: 1.5px groove #000;
+    
+}
+
+@media (max-width: 450px) {
+    .btn-main{
+        display: flex; 
+        justify-content: center;
+         flex-direction: column;
+    }
+    .btn{
+        width: 90%;  
+    }  
+    .card{
+        
+        width:270px;
+    }
+    .course-card{
         margin: 10px; 
-        justify-content: start; cursor: pointer;
+        width: 250px; 
+        border-left: 1.5px groove #000 !important;
     }
     
 }
-@media (min-width: 320px) and (max-width: 480px) {
-    .cardplacement{
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        margin: 10px;
-        justify-content: start; cursor: pointer;
-    }
-}
-@media (min-width: 481px) and (max-width: 767px) {
-    .cardplacement{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        margin: 10px; 
-        justify-content: start; cursor: pointer;
-    }
-}
+// @media (min-width: 320px) and (max-width: 480px) {
+//     .cardplacement{
+//         display: grid;
+//         grid-template-columns: repeat(1, 1fr);
+//         margin: 10px;
+//         justify-content: start; cursor: pointer;
+//     }
+// }
+// @media (min-width: 481px) and (max-width: 767px) {
+//     .cardplacement{
+//         display: grid;
+//         grid-template-columns: repeat(2, 1fr);
+//         margin: 10px; 
+//         justify-content: start; cursor: pointer;
+//     }
+// }
 
 ::ng-deep .mat-dialog-container{
     padding: 0 !important;
