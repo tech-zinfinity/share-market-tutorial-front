@@ -1,11 +1,10 @@
 <mat-toolbar style="display: flex; justify-content: flex-end;" color="primary">
     <mat-icon style="cursor: pointer;" (click)="dialogRef.close()">close</mat-icon>
 </mat-toolbar>
-<div style="display: flex;
-justify-content: center; flex-direction: row;">
+<div class="login-div">
 
     <mat-card>
-        <img src="../assets/Logo.JPG" style="height: 130px; width: 300px;">
+        <img src="../assets/Logo.JPG" class="logo-img">
     </mat-card>
     <mat-card>
         <form [formGroup] = "loginForm" style="display: flex; flex-direction: column;
