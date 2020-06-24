@@ -1,18 +1,18 @@
 <div style="height: 100%; width: 100%;">
-  <mat-toolbar style="background-color: whitesmoke; display: flex; flex-direction: row;
-    justify-content: space-between; position: fixed; z-index: 10; height: auto; " >
-      <div  style=" cursor: pointer;" (click)="navigateToHome()">
-        <img src="../assets/Logo.JPG" class="logo-img">
+  <mat-toolbar style="background-color: white; display: flex; flex-direction: row;
+    justify-content: space-between; position: sticky; z-index: 10;" >
+      <div style="margin-left: 7%; cursor: pointer;" (click)="navigateToHome()">
+        <img src="../assets/Logo.JPG" alt="" style="height: 70px; width: 180px;">
       </div>
-      <div class="div-btn" *ngIf="(auth.currentUser | async) === null">
+      <div style="float: right; margin-right: 7%;" *ngIf="(auth.currentUser | async) === null">
         <button mat-raised-button color="primary" (click) = "openLoginDialog()">Login</button>&nbsp;&nbsp;
         <button mat-stroked-button color="warn" (click) = "openSignupDialog()">Sign Up</button>
       </div>
-      <div *ngIf="(auth.currentUser | async) != null" class="div-name" >
-        <button mat-button [matMenuTriggerFor]="menu" color="primary" class="name-btn" >
+      <div *ngIf="(auth.currentUser | async) != null" style="float: right; margin-right: 6%;">
+        <button mat-button [matMenuTriggerFor]="menu" color="primary" style="font-size: 17px;">
           {{(auth.currentUser | async)?.name}}
         </button>
-        <mat-menu #menu="matMenu" class="mat-menu-btn">
+        <mat-menu #menu="matMenu">
           <button mat-menu-item [routerLink]="['admin']" *ngIf="(auth.currentUser | async)?.roles.includes('ADMIN')">
             <mat-icon style="color: black;">https</mat-icon>Admin</button>
           <!-- <button mat-menu-item> -->

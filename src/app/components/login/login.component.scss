@@ -1,29 +1,3 @@
 ::ng-deep .mat-dialog-container{
     padding: 0 !important;
 }
-.login-div{
-display: flex;
-justify-content: center;
- flex-direction: row;
-}
-
-.logo-img{
-    height: auto;
-     width: 300px;
-}
-
-@media  (max-width: 700px) {
-    .login-div{
-        display: flex;
-        justify-content: center;
-         flex-direction: column;
-        }
-
-}
-
-@media  (max-width: 400px) {
-    .logo-img{
-        height: auto;
-         width: 200px;
-    }   
-}
