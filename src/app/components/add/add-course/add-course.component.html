@@ -5,13 +5,13 @@
 justify-content: center; flex-direction: row; padding-top: 10px;">
         <form [formGroup] = "addCourseForm" style="display: flex; flex-direction: column;
         justify-content: center; width: 90%; margin-top: 2%;">
-            <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-form-field appearance="outline" style="width: 100%; font-family: 'Nunito', sans-serif !important;">
                 <mat-label >Title</mat-label>
                 <input matInput placeholder="title" formControlName="title">
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <mat-form-field style=" font-family: 'Nunito', sans-serif !important;" appearance="outline">
                 <mat-label>Enter the Description</mat-label>
-                  <textarea #myText matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                  <textarea style=" font-family: 'Nunito', sans-serif !important;" #myText matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
                    cdkAutosizeMinRows="26" cdkAutosizeMaxRows="15"
                    formControlName="dscp" (input)="onPaste(myText.value)"></textarea>
             </mat-form-field>

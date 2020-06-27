@@ -1,17 +1,17 @@
 <mat-tab-group animationDuration="20ms" class="main">
-  <mat-tab label="Users"> 
-    <mat-toolbar style="background-color: white;">
+  <mat-tab class="tab" label="Users"> 
+    <!-- <mat-toolbar style="background-color: white; margin-left: 2%;"> -->
       <mat-toolbar class="sec-1">
-        <button mat-raised-button color="primary"><mat-icon>add</mat-icon></button>
+        <button  mat-raised-button color="primary"><mat-icon>add</mat-icon></button>
         <mat-form-field class="srch-btn"  appearance="outline">
           <mat-label>Search By Name</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="type name of user">
         </mat-form-field>      
       </mat-toolbar>    
-    </mat-toolbar>
+    <!-- </mat-toolbar> -->
     <div class="cardplacement" >
       <div *ngFor="let element of usersObs | async" class="card" > 
-        <mat-card style="margin-top: 80px; border-left: 1.5px groove #000" 
+        <mat-card style=" border-left: 1.5px groove #000" 
         [class.mat-elevation-z8]="true" class="ccrd">
         <button mat-icon-button style="color: rgb(247, 11, 11);"
         *ngIf="!element.loggedIn"><mat-icon>circle</mat-icon></button>
@@ -27,7 +27,7 @@
               <mat-list role="list" *ngFor="let per of element.permissions" style="width: 90%;">
                 <mat-list-item role="listitem"
                 style="display: flex; width: 100%; flex-direction: row; justify-content: space-between;">
-                  <div>{{per}}</div>
+                  <div style=" font-family: 'Nunito', sans-serif !important;">{{per}}</div>
                   <button mat-icon-button style="margin-left: 20px;"(click)="deletePermission(element.id, per)">
                     <mat-icon style="font-size: 18px; color: red;"
                     >delete</mat-icon>
@@ -40,7 +40,7 @@
 
             </div>
             <mat-card-actions class="btn-main">
-                <button style="margin-left: 9px;" class="btn" mat-stroked-button color="primary" (click)="addPermission(element.id)">Add Permission</button>
+                <button  class="btn" mat-stroked-button color="primary" (click)="addPermission(element.id)">Add Permission</button>
                 <br>
                 <button class="btn" mat-stroked-button color="accent" (click)="logOutAcc(element)">LogOut</button>
                 <br>
@@ -51,20 +51,36 @@
 
   </div>  
   </mat-tab>
-  <mat-tab label="Courses"> 
+  <mat-tab class="tab" label="Courses"> 
     <mat-toolbar style="background-color: white; margin-left: 2%;">
       <button mat-raised-button color="primary" (click)="addCourse()"><mat-icon>add</mat-icon></button>
     </mat-toolbar>
     <div class="cardplacement" >
-        <div *ngFor="let element of courses" style="width: 90%;"> 
+        <div *ngFor="let element of courses" class="main_card"> 
           <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card">
               <div style="display: flex; justify-content: start; background-color: white;
               border-radius: 15px; padding: 10px; color: black; flex-direction: column;">
                 <h3>id : {{element.id}}</h3>
-                <h1>{{element.title}}</h1>
+                <h2>{{element.title}}</h2>
               </div>
               <mat-card-content>
-                  <img src="../assets/Logo.JPG" style="height: auto; width: 90%;">
+                  <img src="../assets/Logo.JPG" style="height: auto; width: 80%;">
+              </mat-card-content>
+              <mat-card-actions style="display: flex; justify-content: space-between;">
+                  <button mat-stroked-button color="primary"
+                  (click)="goToCourseDetail(element.id)">View Details</button>
+              </mat-card-actions>
+          </mat-card>
+        </div>
+        <div *ngFor="let element of courses" class="main_card"> 
+          <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card">
+              <div style="display: flex; justify-content: start; background-color: white;
+              border-radius: 15px; padding: 10px; color: black; flex-direction: column;">
+                <h3>id : {{element.id}}</h3>
+                <h2>{{element.title}}</h2>
+              </div>
+              <mat-card-content>
+                  <img src="../assets/Logo.JPG" style="height: auto; width: 80%;">
               </mat-card-content>
               <mat-card-actions style="display: flex; justify-content: space-between;">
                   <button mat-stroked-button color="primary"
