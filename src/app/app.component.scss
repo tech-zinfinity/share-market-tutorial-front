@@ -15,6 +15,10 @@
     color: red;
     height: 90%;
 }
+
+button{
+    font-family: 'Nunito', sans-serif !important;
+}
 .logo-img{
     height: 70px; 
     width: 180px;
@@ -41,7 +45,7 @@
         width: 110px;
         margin-left: 2%;
     }
-    button{
+    .btn{
        
         font-size: 10px;
         text-align: center !important;  

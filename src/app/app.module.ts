@@ -44,6 +44,7 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { AddPermissionComponent } from './components/add/add-permission/add-permission.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { SubscribeCourseComponent } from './components/subscribe-course/subscribe-course.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { SubscribeCourseComponent } from './components/subscribe-course/subscrib
     HighLightCardIfTrueDirective,
     ViewCourseDetailComponent,
     AddPermissionComponent,
-    SubscribeCourseComponent
+    SubscribeCourseComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -5,11 +5,15 @@
 display: flex;
 justify-content: center;
  flex-direction: row;
+ font-family: 'Nunito', sans-serif !important;
 }
 
 .logo-img{
     height: auto;
      width: 300px;
+}
+button{
+    font-family: 'Nunito', sans-serif !important;
 }
 
 @media  (max-width: 700px) {

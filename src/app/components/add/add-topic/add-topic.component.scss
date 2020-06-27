@@ -1,0 +1,43 @@
+.div_btn{
+    display: flex;
+     flex-direction: row;
+      justify-content: space-around;
+}
+.vid_btn{
+    width: 40%;
+     float: right;
+      margin-top: 5px;
+       margin-bottom: 10px;
+}
+.sub_btn{
+    width: 40%;
+     float: right;
+      margin-top: 5px;
+       margin-bottom: 10px;
+}
+button{
+    
+    font-family: 'Nunito', sans-serif !important;
+
+}
+@media (max-width: 400px){
+   .div_btn{
+       flex-direction: column;
+   }
+   .vid_btn{
+    width: 80%;
+     float: right;
+      margin-top: 5px;
+      margin-left: 10%;
+      margin-right: 10%;
+       margin-bottom: 10px;
+}
+.sub_btn{
+    width: 80%;
+     float: right;
+      margin-top: 5px;
+       margin-bottom: 10px;
+       margin-left: 10%;
+       margin-right: 10%;
+}
+}

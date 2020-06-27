@@ -5,8 +5,8 @@
         <img src="../assets/Logo.JPG" class="logo-img">
       </div>
       <div class="div-btn" *ngIf="(auth.currentUser | async) === null">
-        <button mat-raised-button color="primary" (click) = "openLoginDialog()">Login</button>&nbsp;&nbsp;
-        <button mat-stroked-button color="warn" (click) = "openSignupDialog()">Sign Up</button>
+        <button class="btn" mat-raised-button color="primary" (click) = "openLoginDialog()">Login</button>&nbsp;&nbsp;
+        <button class="btn" mat-stroked-button color="warn" (click) = "openSignupDialog()">Sign Up</button>
       </div>
       <div *ngIf="(auth.currentUser | async) != null" class="div-name" >
         <button mat-button [matMenuTriggerFor]="menu" color="primary" class="name-btn" >
@@ -29,4 +29,5 @@
   <div style="z-index: 5; margin-left: 7%; margin-right: 7%;">
     <router-outlet></router-outlet>
   </div>
+  <app-footer></app-footer>
 </div>
