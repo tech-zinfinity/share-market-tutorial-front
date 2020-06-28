@@ -97,7 +97,7 @@
                 <h3>{{topic.dscp}}</h3>
                 <div *ngFor="let vid of topic.videolink">
                     <div *ngIf="(this.auth.currentUser | async) != null">
-                        <mat-card [class.mat-elevation-z8]="true" style="margin: 10px; width: fit-content;">
+                        <mat-card [class.mat-elevation-z8]="true" style="margin: 10px;">
                             <mat-toolbar style="width: 50%; background-color: white;"
                             *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
                                 <button mat-stroked-button color="primary"
@@ -112,23 +112,14 @@
                                 *ngIf="vid.paid" (click)="paidUnpaidVideo(vid, false)">Make Free</button>
         
                             </mat-toolbar>
-                            <div [class.disabled-contenct]="vid.paid"
-                             [innerHTML]="vid.video">
-
-                            </div>
-                            <!-- <iframe src="https://player.vimeo.com/video/423912638" width="640" 
-                        height="359" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe> -->
+                            <h3>{{vid.embedLink}}</h3>
                             <h3>{{vid.paid}}</h3>
                             <h3>{{vid.active}}</h3>
                         </mat-card>
                     </div>
-                    <mat-card [class.mat-elevation-z8]="true" style="margin-bottom: 10px;width: fit-content;"
+                    <mat-card [class.mat-elevation-z8]="true" style="margin-bottom: 10px;"
                     *ngIf="(this.auth.currentUser | async) === null">
-                        <div [class.disabled-contenct]="vid.paid"
-                        [innerHTML]="vid.video">
-
-                        </div>
-
+                        <h3>{{vid.embedLink}}</h3>
                         <h3>{{vid.paid}}</h3>
                         <h3>{{vid.active}}</h3>
                     </mat-card>

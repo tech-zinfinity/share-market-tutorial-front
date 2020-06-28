@@ -16,7 +16,7 @@ export class FireService {
       this.db.collection<T>(collection).add(document).then(
         res =>{
           document.id = res.id;
-          this.updateDocument<T>(Object.assign({}, document), collection).subscribe(res =>{
+          this.updateDocument<T>(document, collection).subscribe(res =>{
             observer.next(res);
             observer.complete();
           })
@@ -29,26 +29,10 @@ export class FireService {
     });
   }
 
-  updateDocumentBy <T extends Document> (document: T, collection: string) : Observable<T>{
-    return new Observable((observer)=>{
-      let collectionref = this.db.collection<T>(collection);      
-      collectionref.doc(document.id).update(Object.assign({}, document)).then(res =>{
-        console.log('res',res);
-        
-        observer.next(document);
-        observer.complete();
-      }).catch(error =>{
-        console.log(error)
-      });
-    });
-  }
-
   updateDocument <T extends Document> (document: T, collection: string) : Observable<T>{
     return new Observable((observer)=>{
       let collectionref = this.db.collection<T>(collection);      
-      collectionref.doc(document.id).set(Object.assign({}, document)).then(res =>{
-        console.log('res',res);
-        
+      collectionref.doc(document.id).update(document).then(res =>{
         observer.next(document);
         observer.complete();
       }).catch(error =>{

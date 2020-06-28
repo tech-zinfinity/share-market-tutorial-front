@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
       console.log(data);
       
       data.forEach(courses =>{
-        this.storage.getDocument(courses.coverPhotoImg).subscribe(tata =>{
+        this.storage.getPics(courses.coverPhotoImg).subscribe(tata =>{
           courses.img = tata;
           console.log(tata);
           
