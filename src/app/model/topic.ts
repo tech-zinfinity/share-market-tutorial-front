@@ -1,3 +1,5 @@
+import { SafeHtml } from '@angular/platform-browser';
+
 export interface Topic {
 
     title?:string,
@@ -10,5 +12,6 @@ export interface Topic {
 export interface VideoEntry{
     embedLink?: string,
     paid?: boolean,
-    active?: boolean
+    active?: boolean,
+    video?:SafeHtml
 }

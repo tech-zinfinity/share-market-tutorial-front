@@ -15,6 +15,7 @@ import {Location} from '@angular/common';
 import { FireService } from 'src/app/service/fire.service';
 import { LoginComponent } from '../login/login.component';
 import { FireStorageService } from 'src/app/service/fire-storage.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-view-course',
@@ -40,7 +41,8 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
     private snackbar: MatSnackBar,
     private location: Location,
     private router: Router,
-    private storage: FireStorageService) { 
+    private storage: FireStorageService,
+    private sanitized: DomSanitizer) { 
 
   }
 
@@ -51,6 +53,13 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
       this.id = params['id'];
       this.fire.getCollectionWithCondition('courses', 'id', '==', this.id).subscribe((data: Course[])=>{
         if(data.length >0){
+          data.forEach(kata =>{
+            kata.topics.forEach(nata =>{
+              nata.videolink.forEach(rata =>{
+                rata.video = this.sanitized.bypassSecurityTrustHtml(rata.embedLink);
+              })
+            })
+          })
           this.courseSubject.next(data[0]);
           this.auth.currentUser.subscribe(user =>{
             if(user != null){
@@ -274,13 +283,14 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
       course.topics.forEach(topic =>{
         let vidd = topic.videolink.filter(tata => tata.embedLink === vid.embedLink);
         vidd.forEach(data =>{
-          data.paid = bool;
+          data.paid = bool;          
         });
+        console.log(course);
         
         this.fire.updateDocument(course, 'courses').subscribe(mata =>{
           this.snackbar.open('video status updated successfully', 'close', {duration:1500});
+          //this.courseSubject.next(mata);
           sub2.unsubscribe();
-          this.courseSubject.next(mata);
         })
       });
 
