@@ -2,25 +2,25 @@
     <mat-icon style="cursor: pointer;" (click)="dialogRef.close()">close</mat-icon>
 </mat-toolbar>
 <div class="signUp-div" >
-    <mat-card style="display: flex; justify-content: center; padding: 5px;">
+    <mat-card style="display: flex; justify-content: center; padding: 5px; font-family: 'Nunito', sans-serif !important;">
         <img src="../assets/Logo.JPG" class="logo-img" >
     </mat-card>
     <mat-card>
         <form [formGroup]="signUpForm" style="display: flex; flex-direction: column;
         justify-content: center;">
-            <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-form-field appearance="outline" style="width: 100%; font-family: 'Nunito', sans-serif !important;">
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="name" formControlName="name">
             </mat-form-field>
-            <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-form-field appearance="outline" style="width: 100%; font-family: 'Nunito', sans-serif !important;">
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="email" formControlName="email">
             </mat-form-field>
-            <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-form-field appearance="outline" style="width: 100%;  font-family: 'Nunito', sans-serif !important;">
                 <mat-label>Password</mat-label>
                 <input matInput type="password" placeholder="password" formControlName="password">
             </mat-form-field>
-            <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-form-field appearance="outline" style="width: 100%;  font-family: 'Nunito', sans-serif !important;">
                 <mat-label>Confirm Password</mat-label>
                 <input matInput type="password" placeholder="confirm password" formControlName="confirmpassword">
             </mat-form-field>

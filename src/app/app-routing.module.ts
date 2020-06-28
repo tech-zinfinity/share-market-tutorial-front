@@ -5,13 +5,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AdminGuard } from './guards/admin.guard';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'admin', component: AdminComponent, canActivate:[AdminGuard]},
   {path:'course/:id', component:ViewCourseComponent},
-  {path:'subscription/:id', component:SubscribeCourseComponent}
+  {path:'subscription/:id', component:SubscribeCourseComponent},
+  {path:'footer',component:FooterComponent}
 
 ];
 

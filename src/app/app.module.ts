@@ -47,6 +47,7 @@ import { SubscribeCourseComponent } from './components/subscribe-course/subscrib
 import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { AddFileComponent } from './components/add/add-file/add-file.component';
 import { AddVideoComponent } from './components/add/add-video/add-video.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { AddVideoComponent } from './components/add/add-video/add-video.componen
     SubscribeCourseComponent,
     AddFileComponent,
     AddVideoComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
