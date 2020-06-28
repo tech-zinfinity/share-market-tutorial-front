@@ -66,7 +66,7 @@ import { FooterComponent } from './components/footer/footer.component';
     AddPermissionComponent,
     SubscribeCourseComponent,
     AddFileComponent,
-    AddVideoComponent,
+    AddVideoComponent
     FooterComponent
   ],
   imports: [
