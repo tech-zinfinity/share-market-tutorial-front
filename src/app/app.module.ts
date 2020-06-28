@@ -31,7 +31,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
 import { AdminComponent } from './components/admin/admin.component';
 import { AddCourseComponent } from './components/add/add-course/add-course.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCheckboxModule, MAT_CHECKBOX_CLICK_ACTION} from '@angular/material/checkbox';
 import { AddTopicComponent } from './components/add/add-topic/add-topic.component';
 import { AddSubscriptionComponent } from './components/add/add-subscription/add-subscription.component';
 import { ViewCourseComponent } from './components/view-course/view-course.component';
@@ -44,6 +44,9 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { AddPermissionComponent } from './components/add/add-permission/add-permission.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { SubscribeCourseComponent } from './components/subscribe-course/subscribe-course.component';
+import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
+import { AddFileComponent } from './components/add/add-file/add-file.component';
+import { AddVideoComponent } from './components/add/add-video/add-video.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,9 @@ import { SubscribeCourseComponent } from './components/subscribe-course/subscrib
     HighLightCardIfTrueDirective,
     ViewCourseDetailComponent,
     AddPermissionComponent,
-    SubscribeCourseComponent
+    SubscribeCourseComponent,
+    AddFileComponent,
+    AddVideoComponent
   ],
   imports: [
     BrowserModule,
@@ -89,8 +94,8 @@ import { SubscribeCourseComponent } from './components/subscribe-course/subscrib
     MatDatepickerModule,
     MatNativeDateModule,
     MatMomentDateModule,
-    MatDividerModule
-
+    MatDividerModule,
+    AngularFireStorageModule,
   ],
   entryComponents:[
     LoginComponent,
@@ -99,9 +104,12 @@ import { SubscribeCourseComponent } from './components/subscribe-course/subscrib
     AddCourseComponent,
     AddTopicComponent,
     AddSubscriptionComponent,
-    AddPermissionComponent
+    AddPermissionComponent,
+    AddFileComponent
   ],
-  providers: [AngularFirestore],
+  providers: [
+    AngularFirestore,
+    {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,4 @@
+import { FireStorageService } from './../../service/fire-storage.service';
 import { Course } from './../../model/course';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -30,7 +31,8 @@ export class AdminComponent implements OnInit {
     private fire: FireService,
     private snackbar: MatSnackBar,
     private router: Router,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private storage: FireStorageService) { }
 
   ngOnInit(): void {
     this.db.collection('users').valueChanges().subscribe(users =>{
@@ -38,10 +40,17 @@ export class AdminComponent implements OnInit {
       this.fullUserArray = users;
       this.usersSource.next(users);
     });
-    this.db.collection('courses').valueChanges().subscribe(data =>{
+    this.db.collection('courses').valueChanges().subscribe((data:Course[]) =>{
       console.log(data);
-      
-      this.courses = data;
+      data.forEach(courses =>{
+        this.storage.getPics(courses.coverPhotoImg).subscribe(tata =>{
+          courses.img = tata;
+          console.log(tata);
+          
+        });
+        this.courses = data;
+      })
+      //this.courses = data;
     });
   }
 

@@ -9,4 +9,5 @@ export interface Course extends Document{
     active?: boolean,
     topics?: Topic[],
     coverPhotoImg?:string,
+    img?:string
 }

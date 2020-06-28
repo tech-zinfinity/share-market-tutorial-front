@@ -9,6 +9,9 @@ justify-content: center; flex-direction: row;">
                 <mat-label >Title</mat-label>
                 <input matInput placeholder="title" formControlName="title">
             </mat-form-field>
+            
+            <mat-checkbox formControlName="active" value="true" [checked]="false" value="true">Active</mat-checkbox><br>
+
             <mat-form-field appearance="outline">
                 <mat-label>Enter the Description</mat-label>
                   <textarea #myText matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
@@ -27,8 +30,11 @@ justify-content: center; flex-direction: row;">
                         </div>
                         <textarea  matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
                         cdkAutosizeMinRows="15" cdkAutosizeMaxRows="15"
-                        formControlName="video"></textarea>
+                        formControlName="embedLink"></textarea>
+
                     </mat-form-field>
+                    <mat-checkbox formControlName="active" [checked]="false">Active</mat-checkbox> &nbsp;&nbsp;&nbsp;
+                    <mat-checkbox formControlName="paid" [checked]="false">Paid</mat-checkbox>
                 </div>
             </div>
             

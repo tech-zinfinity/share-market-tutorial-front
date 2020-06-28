@@ -5,14 +5,20 @@ import { Topic } from './../../../model/topic';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, FormArray, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
+import * as firebase from 'firebase/app';
+import { now } from 'moment';
 
 interface topicform{
   title?:string,
   dscp?:string,
-  videolink?: videolink[]
+  videolink?: videolink[],
+  active?: boolean,
+  createOn?:any
 }
 interface videolink{
-  video?:string
+  embedLink?: string,
+  paid?: boolean,
+  active?: boolean
 }
 
 @Component({
@@ -37,14 +43,17 @@ export class AddTopicComponent implements OnInit {
   ngOnInit(): void {
     this.addTopicForm = this.fb.group({
       'title':[null, Validators.required],
-      'dscp':[null, Validators.required],
-      'videolink': this.fb.array([])
+      'dscp':[null],
+      'videolink': this.fb.array([]),
+      'active':[true, Validators.required]
     })
   }
 
   addVideoLinkForm(){
     (this.addTopicForm.controls['videolink'] as FormArray).push(this.fb.group({
-      'video':[null]
+      'embedLink':[null],
+      'active':[true, null],
+      'paid':[true, null]
     }));
   }
 
@@ -65,12 +74,20 @@ export class AddTopicComponent implements OnInit {
     let topicbody: Topic = {
       title: value.title,
       dscp: value.dscp,
-      videolink:[]
+      videolink:[],
+      createOn: firebase.firestore.Timestamp.fromDate(new Date()),
+      active: value.active
     }
     value.videolink.forEach(data =>{
-      topicbody.videolink.push(data.video);
+      let tata: videolink  = {
+        active: data.active,
+        paid:data.paid,
+        embedLink: data.embedLink
+      }
+      topicbody.videolink.push(tata);
     })
-    //console.log(topicbody);
+
+    console.log(topicbody);
     this.fire.getSingleDocumentById(this.courseid,'courses').subscribe((data:Course) =>{
       data.topics === undefined || data.topics === null ? data.topics = [] : data.topics;
       data.topics.push(topicbody);
