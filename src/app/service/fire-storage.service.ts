@@ -29,6 +29,17 @@ export class FireStorageService {
   public getPics(path: any) : Observable<string>{
     return this.afstorage.ref(path).getDownloadURL();
   }
+
+  public getDocument(path: string) : Observable<string>{
+    return new Observable(obs =>{
+      this.afstorage.storage.ref(path).getDownloadURL().then(obj =>{
+        obs.next(obj);
+      }).catch(err =>{
+        obs.error(err);
+      });
+    });
+  }
+
   
   public uploadToStorage(file: any, type: string) : any{
       let newname  = `img_${this.user +'_'+new Date().getTime()}.jpg`
