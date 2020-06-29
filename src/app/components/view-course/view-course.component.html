@@ -2,7 +2,7 @@
     <br>
     <div *ngIf="(this.auth.currentUser | async) != null" style="margin-top: 70px;">
         <mat-toolbar *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')"
-       class="mat_1">
+       class="mat_1" >
         <!-- <div *ngIf="(currentCourse | async).subscription != undefined">
             Cost: {{((currentCourse | async).subscription).amount}}
         </div> -->
@@ -97,7 +97,8 @@
                 <h3>{{topic.dscp}}</h3>
                 <div *ngFor="let vid of topic.videolink">
                     <div *ngIf="(this.auth.currentUser | async) != null">
-                        <mat-card [class.mat-elevation-z8]="true" style="margin: 10px; width: fit-content;">
+                        <mat-card [class.mat-elevation-z8]="true" style="margin: 10px; width: fit-content;"
+                        *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
                             <mat-toolbar style="width: 50%; background-color: white;"
                             *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
                                 <button mat-stroked-button color="primary"
@@ -113,24 +114,22 @@
         
                             </mat-toolbar>
                             <div [class.disabled-contenct]="vid.paid"
-                             [innerHTML]="vid.video">
-
+                             [innerHTML]="vid.video" *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
                             </div>
-                            <!-- <iframe src="https://player.vimeo.com/video/423912638" width="640" 
-                        height="359" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe> -->
-                            <h3>{{vid.paid}}</h3>
-                            <h3>{{vid.active}}</h3>
+                        </mat-card>
+                        <mat-card [class.mat-elevation-z8]="true" style="margin-bottom: 10px;width: fit-content;"
+                        *ngIf="!(this.auth.currentUser | async).roles.includes('ADMIN')" [hidden]="!vid.active">
+                            <div [class.disabled-contenct]="vid.paid"
+                                 [innerHTML]="vid.video" [hidden]="!vid.active">
+                                </div>
                         </mat-card>
                     </div>
                     <mat-card [class.mat-elevation-z8]="true" style="margin-bottom: 10px;width: fit-content;"
-                    *ngIf="(this.auth.currentUser | async) === null">
+                    *ngIf="(this.auth.currentUser | async) === null" [hidden]="!vid.active">
                         <div [class.disabled-contenct]="vid.paid"
                         [innerHTML]="vid.video">
 
                         </div>
-
-                        <h3>{{vid.paid}}</h3>
-                        <h3>{{vid.active}}</h3>
                     </mat-card>
                 </div>
             </mat-card>

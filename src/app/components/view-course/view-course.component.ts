@@ -54,6 +54,7 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
       this.fire.getCollectionWithCondition('courses', 'id', '==', this.id).subscribe((data: Course[])=>{
         if(data.length >0){
           data.forEach(kata =>{
+            if(kata.topics != undefined || kata.topics != null)
             kata.topics.forEach(nata =>{
               nata.videolink.forEach(rata =>{
                 rata.video = this.sanitized.bypassSecurityTrustHtml(rata.embedLink);

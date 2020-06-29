@@ -54,16 +54,16 @@ label{
         padding-top: 10px;
     }
 }
-.cardplacement{
-    flex-direction: row;
-    display: flex;
-    overflow-x: scroll;
-   -webkit-overflow-scrolling: touch;
-   -ms-overflow-style: -ms-autohiding-scrollbar;
-   position: relative;
-   padding-top: 20px;
+// .cardplacement{
+//     flex-direction: row;
+//     display: flex;
+//     overflow-x: scroll;
+//    -webkit-overflow-scrolling: touch;
+//    -ms-overflow-style: -ms-autohiding-scrollbar;
+//    position: relative;
+//    padding-top: 20px;
 
-}
+// }
 .card{
     flex: 0 0 auto;
     margin-bottom:20px !important ;
@@ -116,20 +116,44 @@ label{
     
 }
 @media (min-width: 320px) and (max-width: 600px) {
-    .cardplacement{
-        flex-direction: row;
-        display: flex;
-        flex-direction: column;
-        overflow-x: scroll;
-       -webkit-overflow-scrolling: touch;
-       -ms-overflow-style: -ms-autohiding-scrollbar;
-       position: relative;
-       padding-top: 20px;
+    // .cardplacement{
+    //     flex-direction: row;
+    //     display: flex;
+    //     flex-direction: column;
+    //     overflow-x: scroll;
+    //    -webkit-overflow-scrolling: touch;
+    //    -ms-overflow-style: -ms-autohiding-scrollbar;
+    //    position: relative;
+    //    padding-top: 20px;
        
-    } 
+    // } 
 }
 
 ::ng-deep .mat-dialog-container{
     padding: 0 !important;
+}
+@media (min-width: 480px) {
+    .cardplacement{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 10px; 
+        justify-content: start; cursor: pointer;
+    }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+    .cardplacement{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        margin: 10px;
+        justify-content: start; cursor: pointer;
+    }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+    .cardplacement{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 10px; 
+        justify-content: start; cursor: pointer;
+    }
 }
 
