@@ -1,7 +1,7 @@
 import { SafeHtml } from '@angular/platform-browser';
 
 export interface Topic {
-
+    id?:string
     title?:string,
     dscp?:string,
     videolink?:VideoEntry[],
@@ -10,6 +10,7 @@ export interface Topic {
 
 }
 export interface VideoEntry{
+    id?:string
     embedLink?: string,
     paid?: boolean,
     active?: boolean,

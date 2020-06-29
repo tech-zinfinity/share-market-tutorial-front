@@ -49,7 +49,7 @@
         <mat-card class="mat_2"  [class.mat-elevation-z8]="true" 
         *ngIf="(currentCourse | async).subscription != undefined">
                <span style="font-size: 25px;">
-                Cost: {{((currentCourse | async).subscription).amount}}</span> 
+                Price : &nbsp; {{((currentCourse | async).subscription).amount | currency:'INR'}}</span> 
                
                <button mat-stroked-button style="margin: 5px; margin-top: 20px; 
                background-color: rgb(6, 150, 47); color: white;"
@@ -116,7 +116,8 @@
                     (click)="deleteTopic(topic)"> Delete </button>
                     <button mat-stroked-button color="primary" style="margin: 10px;"> Edit </button>
                     <button mat-stroked-button style="margin: 10px;
-                    background-color: rgb(5, 169, 5);color: white;"> Add Video </button>
+                    background-color: rgb(5, 169, 5);color: white;"
+                    (click)="addVideo(topic.id)"> Add Video </button>
 
                 </mat-toolbar>
             </div>

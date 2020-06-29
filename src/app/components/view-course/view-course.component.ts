@@ -1,3 +1,4 @@
+import { AddVideoComponent } from './../add/add-video/add-video.component';
 import { MyCourse } from './../../model/user';
 import { Topic, VideoEntry } from './../../model/topic';
 import { AddFileComponent } from './../add/add-file/add-file.component';
@@ -255,7 +256,7 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
   changeVideoStatus(vid: VideoEntry, bool: boolean){
     let sub2 = this.currentCourse.subscribe(course =>{
       course.topics.forEach(topic =>{
-        let vidd = topic.videolink.filter(tata => tata.embedLink === vid.embedLink);
+        let vidd = topic.videolink.filter(tata => tata.id === vid.id);
         vidd.forEach(data =>{
           data.active = bool;
         });
@@ -288,7 +289,7 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
   paidUnpaidVideo(vid: VideoEntry, bool: boolean){
     let sub2 = this.currentCourse.subscribe(course =>{
       course.topics.forEach(topic =>{
-        let vidd = topic.videolink.filter(tata => tata.embedLink === vid.embedLink);
+        let vidd = topic.videolink.filter(tata => tata.id === vid.id);
         vidd.forEach(data =>{
           data.paid = bool;          
         });        
@@ -302,9 +303,34 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
     })
   }
 
+  addVideo(topicid: string){
+    let sub = this.currentCourse.subscribe(tata =>{
+
+      let ref = this.dialog.open(AddVideoComponent, {
+        disableClose: true,
+        height: '600px',
+        width: '1000px',
+        data:{
+          course: tata,
+          topicId: topicid
+        }
+      });
+      ref.componentInstance.videoAdded.subscribe(data =>{
+        sub.unsubscribe();
+        this.ngOnInit();
+      })
+      //sub.unsubscribe();
+    });
+  }
+
   ngOnDestroy(){
     if(this.currentUserSubscription != undefined || this.currentUserSubscription!= null)
     this.currentUserSubscription.unsubscribe();
   }
+}
+
+export interface AddvideoIn{
+  course?:Course,
+  topicId?:String
 }
 

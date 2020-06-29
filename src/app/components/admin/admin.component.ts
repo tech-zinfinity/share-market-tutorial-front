@@ -115,4 +115,11 @@ export class AdminComponent implements OnInit {
       this.snackbar.open('User is not available or corrupted', 'close', {duration: 2000});
     })
   }
+
+  deleteCourse(document: Course){
+    this.fire.deleteDocument(document, 'courses').subscribe(data =>{
+      this.snackbar.open('course '+document.id+' deleted Successfully', 'close', {duration: 2000});
+      this.ngOnInit();
+    })
+  }
 }

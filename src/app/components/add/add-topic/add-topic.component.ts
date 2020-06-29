@@ -1,3 +1,4 @@
+import { AuthService } from './../../../service/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Course } from './../../../model/course';
 import { FireService } from './../../../service/fire.service';
@@ -16,6 +17,7 @@ interface topicform{
   createOn?:any
 }
 interface videolink{
+  id?:string
   embedLink?: string,
   paid?: boolean,
   active?: boolean
@@ -35,7 +37,8 @@ export class AddTopicComponent implements OnInit {
     public dialogRef: MatDialogRef<AddTopicComponent>,
     @Inject(MAT_DIALOG_DATA) public courseid,
     private fire: FireService,
-    private snackbar: MatSnackBar) { 
+    private snackbar: MatSnackBar,
+    private auth: AuthService) { 
       //console.log(courseid);
       
     }
@@ -72,6 +75,7 @@ export class AddTopicComponent implements OnInit {
 
   addTopic(value: topicform){
     let topicbody: Topic = {
+      id: this.auth.generateRandomId(),
       title: value.title,
       dscp: value.dscp,
       videolink:[],
@@ -80,6 +84,7 @@ export class AddTopicComponent implements OnInit {
     }
     value.videolink.forEach(data =>{
       let tata: videolink  = {
+        id:this.auth.generateRandomId(),
         active: data.active,
         paid:data.paid,
         embedLink: data.embedLink
