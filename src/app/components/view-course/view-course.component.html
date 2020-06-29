@@ -1,13 +1,12 @@
 <div>
     <br>
-    <div *ngIf="(this.auth.currentUser | async) != null">
+    <div *ngIf="(this.auth.currentUser | async) != null" style="margin-top: 70px;">
         <mat-toolbar *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')"
-        style="display: flex; flex-direction: row; justify-content: flex-end;
-        background-color: white;">
+       class="mat_1" >
         <!-- <div *ngIf="(currentCourse | async).subscription != undefined">
             Cost: {{((currentCourse | async).subscription).amount}}
         </div> -->
-        <div>
+        <div style="margin-top: 400px;">
             <button mat-raised-button color="primary" style="margin: 5px;"
             (click)="openAddTopic()"> Add Topic</button>
             <button mat-stroked-button color="primary" style="margin: 5px;"
@@ -20,6 +19,14 @@
             <button mat-stroked-button *ngIf="(currentCourse | async).active === true"
             style="margin: 5px;background-color: rgb(206, 11, 11); color: white;"
             (click)="publishCourse(false)"> Deactivate </button>
+            <button *ngIf="!fileadded" mat-stroked-button color="primary" (click)="file.click()">
+                select cover photo
+            </button>
+            <input type="file" #file hidden (change)=addImg($event)>
+            <button *ngIf="fileadded" mat-raised-button color="primary" (click)="uploadCoverPic()">
+                upload cover photo
+            </button>
+            <button *ngIf="fileadded" mat-stroked-button color="warn" (click)="emptyFileContent()"><mat-icon>close</mat-icon></button>
 
 
         </div> 
@@ -29,21 +36,20 @@
     <div *ngIf="(this.auth.currentUser | async) == undefined">
         <mat-toolbar
             style="display: flex; flex-direction: row; justify-content: flex-end;
-            background-color: white;">
+            ">
         <!-- <button mat-stroked-button style="margin: 5px; 
         background-color: rgb(6, 150, 47); color: white;"> Subscribe</button>-->
 
         </mat-toolbar>
     </div>
-    <div style="display: flex; flex-direction: row; justify-content: space-between;">
-        <mat-card style="width: 60%;">
-            <span style="color: black; font-size: 40px;background-color:rgb(184, 219, 250);">{{(currentCourse | async).title}}</span>
+    <div class="main_div">
+        <mat-card  class="mat_1">
+            <span class="heading">{{(currentCourse | async).title}}</span>
         </mat-card>
-        <mat-card style="width: 20%; margin-right: 20px; display: flex; flex-direction: column;
-        justify-content: center; align-self: center;" [class.mat-elevation-z8]="true" 
+        <mat-card class="mat_2"  [class.mat-elevation-z8]="true" 
         *ngIf="(currentCourse | async).subscription != undefined">
-               <span style="font-size: 25px;"
-               >Cost: {{((currentCourse | async).subscription).amount}}</span> 
+               <span style="font-size: 25px;">
+                Cost: {{((currentCourse | async).subscription).amount}}</span> 
                
                <button mat-stroked-button style="margin: 5px; margin-top: 20px; 
                background-color: rgb(6, 150, 47); color: white;"
@@ -58,14 +64,76 @@
 
     </div>
     <br><br><br><br>
-    <mat-card style="background-color: aliceblue;">
-        <p style="white-space: pre; word-break: break-all; font-size: 18px;">
+    <mat-card style="background-color: aliceblue; width: 100%;">
+        <span class="dscp">
             {{(currentCourse | async).dscp}}
-        </p>
+        </span>
     </mat-card>
     <br><br><br><br>
-    <span style="font-size: 30px;">Topics</span>
-    <mat-list role="list" *ngFor="let topic of (currentCourse | async).topics">
-        <mat-list-item role="listitem">{{topic.title}}</mat-list-item>
-    </mat-list>
+    <!-- <span style="font-size: 30px;">Topics</span> -->
+    <div *ngFor="let topic of (currentCourse | async).topics">
+        <div style="display: flex; flex-direction: column; margin-bottom: 25px;">
+            <h1>{{topic.title}}</h1>
+            <div *ngIf="(this.auth.currentUser | async) != null">
+                <mat-toolbar style="display: flex; flex-direction: row; justify-content: start;
+                background-color: rgba(234, 234, 241, 0.34); width: 100%;"
+                *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
+                    
+                    <button mat-raised-button  *ngIf="topic.active"
+                    style="margin: 10px;background-color: rgb(206, 11, 11); color: white;"
+                    (click)="changeStatusOfTopic(topic, false)"> Deactivate</button>
+                    <button mat-raised-button color="primary"
+                    *ngIf="!topic.active" style="margin: 10px;"
+                    (click)="changeStatusOfTopic(topic, true)"> Activate</button>
+                    <button mat-raised-button color="warn" style="margin: 10px;"
+                    (click)="deleteTopic(topic)"> Delete </button>
+                    <button mat-stroked-button color="primary" style="margin: 10px;"> Edit </button>
+                    <button mat-stroked-button style="margin: 10px;
+                    background-color: rgb(5, 169, 5);color: white;"> Add Video </button>
+
+                </mat-toolbar>
+            </div>
+            <mat-card>
+                <h3>{{topic.dscp}}</h3>
+                <div *ngFor="let vid of topic.videolink">
+                    <div *ngIf="(this.auth.currentUser | async) != null">
+                        <mat-card [class.mat-elevation-z8]="true" style="margin: 10px; width: fit-content;"
+                        *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
+                            <mat-toolbar style="width: 50%; background-color: white;"
+                            *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
+                                <button mat-stroked-button color="primary"
+                                *ngIf="!vid.active" (click)="changeVideoStatus(vid, true)"> Activate</button>
+                                <button mat-raised-button style="background-color: rgb(206, 11, 11); color: white;"
+                                *ngIf="vid.active" (click)="changeVideoStatus(vid, false)"> Deactivate</button>
+                                <button mat-raised-button color="warn" style="margin-left: 10px;"
+                                (click)="deleteVideoFromTopic(topic, vid)">Delete</button>
+                                <button mat-raised-button style="margin: 10px; background-color: rgb(8, 223, 8);"
+                                *ngIf="!vid.paid" (click)="paidUnpaidVideo(vid, true)">Make Paid</button>
+                                <button mat-raised-button style="margin: 10px; background-color: white;"
+                                *ngIf="vid.paid" (click)="paidUnpaidVideo(vid, false)">Make Free</button>
+        
+                            </mat-toolbar>
+                            <div [class.disabled-contenct]="vid.paid"
+                             [innerHTML]="vid.video" *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
+                            </div>
+                        </mat-card>
+                        <mat-card [class.mat-elevation-z8]="true" style="margin-bottom: 10px;width: fit-content;"
+                        *ngIf="!(this.auth.currentUser | async).roles.includes('ADMIN')" [hidden]="!vid.active">
+                            <div [class.disabled-contenct]="vid.paid"
+                                 [innerHTML]="vid.video" [hidden]="!vid.active">
+                                </div>
+                        </mat-card>
+                    </div>
+                    <mat-card [class.mat-elevation-z8]="true" style="margin-bottom: 10px;width: fit-content;"
+                    *ngIf="(this.auth.currentUser | async) === null" [hidden]="!vid.active">
+                        <div [class.disabled-contenct]="vid.paid"
+                        [innerHTML]="vid.video">
+
+                        </div>
+                    </mat-card>
+                </div>
+            </mat-card>
+            <mat-divider></mat-divider>
+        </div>
+    </div>
 </div>

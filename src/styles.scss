@@ -3,6 +3,10 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~@angular/material/theming';
 
+
+body{
+    font-family: 'Nunito', sans-serif !important;
+}
 #content-desktop {display: block;}
 #content-mobile {display: none;}
 
@@ -13,8 +17,14 @@
 
 }
 
+.disabled-contenct {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
 html, body { height: 100%; }
 body { margin: 0;font-family: 'Poppins', sans-serif !important;
 button{
     font-family: 'Poppins', sans-serif !important;
 }}
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -2,16 +2,17 @@
     <mat-icon style="cursor: pointer;" (click)="dialogRef.close()">close</mat-icon>
 </mat-toolbar>
 <div style="display: flex;
-justify-content: center; flex-direction: row;">
+justify-content: center; flex-direction: row; height: auto;">
         <form [formGroup] = "addTopicForm" style="display: flex; flex-direction: column;
         justify-content: center; width: 90%; margin-top: 2%;">
-            <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-form-field appearance="outline" style="width: 100%; font-family: 'Nunito', sans-serif !important; ">
                 <mat-label >Title</mat-label>
                 <input matInput placeholder="title" formControlName="title">
             </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Enter the Description</mat-label>
-                  <textarea #myText matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+            <mat-checkbox formControlName="active" value="true" [checked]="false" value="true">Active</mat-checkbox><br>
+            <mat-form-field appearance="outline" >
+                <mat-label style=" font-family: 'Nunito', sans-serif !important;">Enter the Description</mat-label>
+                  <textarea style=" font-family: 'Nunito', sans-serif !important;" #myText matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
                    cdkAutosizeMinRows="15" cdkAutosizeMaxRows="15"
                    formControlName="dscp" (input)="onPaste(myText.value)"></textarea>
             </mat-form-field>
@@ -19,7 +20,7 @@ justify-content: center; flex-direction: row;">
                 *ngFor="let item of addTopicForm.get('videolink')['controls']; let i = index;"
                 style="width: 100%;">
                 <div [formGroupName]="i">
-                    <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-form-field appearance="outline" style="width: 100%;  font-family: 'Nunito', sans-serif !important; ">
                         <div style="display: flex; justify-content: flex-end;flex-direction: row;">
                             <!-- <mat-label>Embed Video code</mat-label> -->
                             <button mat-icon-button color="warn"
@@ -27,22 +28,23 @@ justify-content: center; flex-direction: row;">
                         </div>
                         <textarea  matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
                         cdkAutosizeMinRows="15" cdkAutosizeMaxRows="15"
-                        formControlName="video"></textarea>
+                        formControlName="embedLink"></textarea>
+
                     </mat-form-field>
+                    <mat-checkbox formControlName="active" [checked]="false">Active</mat-checkbox> &nbsp;&nbsp;&nbsp;
+                    <mat-checkbox formControlName="paid" [checked]="false">Paid</mat-checkbox>
                 </div>
             </div>
             
             <!-- <mat-checkbox formControlName="active" value="Active">Active</mat-checkbox>  -->
 
-            <div style="display: flex; flex-direction: row; justify-content: space-around;">
+            <div class="div_btn">
                 <button mat-stroked-button color="primary" 
-                 (click)="addVideoLinkForm()" [disabled]="addTopicForm.invalid"
-                style="width: 40%; float: right; margin-top: 5px; margin-bottom: 10px;">
+                 (click)="addVideoLinkForm()" [disabled]="addTopicForm.invalid" class="vid_btn">
                     Add Video Link
                 </button>
                 <button mat-raised-button color="primary" 
-                [disabled]="addTopicForm.invalid" (click)="addTopic(addTopicForm.value)"
-                style="width: 40%; float: right; margin-top: 5px; margin-bottom: 10px;">
+                [disabled]="addTopicForm.invalid" (click)="addTopic(addTopicForm.value)" class="sub_btn">
                     Submit
                 </button>
             </div>

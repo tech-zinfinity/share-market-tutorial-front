@@ -1,0 +1,12 @@
+<mat-toolbar style="display: flex; justify-content: flex-end; position: relative;" color="primary">
+    <mat-icon style="cursor: pointer;" (click)="dialogRef.close()">close</mat-icon>
+</mat-toolbar>
+<div>
+    <button mat-stroked-button color="primary" (click)="file.click()">
+        select
+    </button>
+    <input type="file" #file hidden >
+    <button mat-raised-button color="primary" >
+        upload
+    </button>
+</div>

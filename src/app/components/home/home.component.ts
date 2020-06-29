@@ -1,3 +1,4 @@
+import { FireStorageService } from './../../service/fire-storage.service';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Course } from './../../model/course';
@@ -14,14 +15,23 @@ export class HomeComponent implements OnInit {
   courses: Course[] = [];
 
   constructor(private db: AngularFirestore,
-    private router: Router) { }
+    private router: Router,
+    public storage: FireStorageService) { }
 
   ngOnInit(): void {
     
-    this.db.collection('courses', ref => ref.where('active','==', true)).valueChanges().subscribe(data =>{
+    this.db.collection('courses', ref => ref.where('active','==', true))
+    .valueChanges().subscribe((data: Course[]) =>{
       console.log(data);
       
-      this.courses = data;
+      data.forEach(courses =>{
+        this.storage.getDocument(courses.coverPhotoImg).subscribe(tata =>{
+          courses.img = tata;
+          console.log(tata);
+          
+        });
+        this.courses = data;
+      })
     });
   }
 

@@ -12,7 +12,7 @@
       <div *ngFor="let element of courses"> 
         <mat-card style="margin: 20px; border-left: 1.5px groove #000" [class.mat-elevation-z8]="true" class="ccrd">
             <mat-card-content>
-                <img src="../assets/course1.png" class="card-img">
+                <img [src]="element.img" class="card-img">
             </mat-card-content>
             <mat-card-actions style="display: flex; justify-content: space-between;">
                 <button mat-stroked-button color="primary" (click)="goToCourseDetail(element.id)">View Details</button>

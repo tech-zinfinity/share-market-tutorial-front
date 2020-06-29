@@ -23,7 +23,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { MatSelectModule } from '@angular/material/select';
-import { AngularFireModule, FirebaseFunctions } from '@angular/fire';
+import { AngularFireModule } from '@angular/fire';
 import { environment } from "../environments/environment";
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import {MatIconModule} from '@angular/material/icon';
@@ -31,7 +31,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
 import { AdminComponent } from './components/admin/admin.component';
 import { AddCourseComponent } from './components/add/add-course/add-course.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCheckboxModule, MAT_CHECKBOX_CLICK_ACTION} from '@angular/material/checkbox';
 import { AddTopicComponent } from './components/add/add-topic/add-topic.component';
 import { AddSubscriptionComponent } from './components/add/add-subscription/add-subscription.component';
 import { ViewCourseComponent } from './components/view-course/view-course.component';
@@ -44,6 +44,10 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { AddPermissionComponent } from './components/add/add-permission/add-permission.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { SubscribeCourseComponent } from './components/subscribe-course/subscribe-course.component';
+import { AngularFireStorageModule, } from '@angular/fire/storage';
+import { AddFileComponent } from './components/add/add-file/add-file.component';
+import { AddVideoComponent } from './components/add/add-video/add-video.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,10 @@ import { SubscribeCourseComponent } from './components/subscribe-course/subscrib
     HighLightCardIfTrueDirective,
     ViewCourseDetailComponent,
     AddPermissionComponent,
-    SubscribeCourseComponent
+    SubscribeCourseComponent,
+    AddFileComponent,
+    AddVideoComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -89,8 +96,8 @@ import { SubscribeCourseComponent } from './components/subscribe-course/subscrib
     MatDatepickerModule,
     MatNativeDateModule,
     MatMomentDateModule,
-    MatDividerModule
-
+    MatDividerModule,
+    AngularFireStorageModule,
   ],
   entryComponents:[
     LoginComponent,
@@ -99,9 +106,12 @@ import { SubscribeCourseComponent } from './components/subscribe-course/subscrib
     AddCourseComponent,
     AddTopicComponent,
     AddSubscriptionComponent,
-    AddPermissionComponent
+    AddPermissionComponent,
+    AddFileComponent
   ],
-  providers: [AngularFirestore],
+  providers: [
+    AngularFirestore,
+    {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
