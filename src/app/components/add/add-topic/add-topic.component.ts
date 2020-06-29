@@ -87,11 +87,11 @@ export class AddTopicComponent implements OnInit {
       topicbody.videolink.push(tata);
     })
 
-    console.log(topicbody);
     this.fire.getSingleDocumentById(this.courseid,'courses').subscribe((data:Course) =>{
       data.topics === undefined || data.topics === null ? data.topics = [] : data.topics;
       data.topics.push(topicbody);
       this.fire.updateDocument(data,'courses').subscribe(tata =>{
+        
         this.dialogRef.close();
         this.snackbar.open('Topic added successfully', 'close', {duration:2000});
         this.inserted.emit(true);

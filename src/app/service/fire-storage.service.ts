@@ -10,7 +10,7 @@ export class FireStorageService {
   
   url: any;
   constructor(private afstorage: AngularFireStorage, private share: AuthService) {
-    this.currentUser.subscribe(data =>{
+    let sub  = this.currentUser.subscribe(data =>{      
       if(data !== null){
         this.user = data.username;
       }

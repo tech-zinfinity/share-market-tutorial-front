@@ -32,9 +32,7 @@ export class FireService {
   updateDocumentBy <T extends Document> (document: T, collection: string) : Observable<T>{
     return new Observable((observer)=>{
       let collectionref = this.db.collection<T>(collection);      
-      collectionref.doc(document.id).update(Object.assign({}, document)).then(res =>{
-        console.log('res',res);
-        
+      collectionref.doc(document.id).update(Object.assign({}, document)).then(res =>{        
         observer.next(document);
         observer.complete();
       }).catch(error =>{

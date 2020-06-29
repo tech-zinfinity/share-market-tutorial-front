@@ -1,0 +1,87 @@
+
+<mat-tab-group>
+    <mat-tab label="Requested"> 
+        <div class="cardplacement" >
+            <div *ngFor="let element of RequestedSub" class="main_card"> 
+              <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card">
+                  <div style="display: flex; justify-content: start; background-color: white;
+                  border-radius: 15px; padding: 10px; color: black; flex-direction: column;">
+                    <h3>id : {{element.id}}</h3>
+                    <h3>User Id : {{element.userId}}</h3>
+                    <h3>Status : {{element.status}}</h3>
+                    <h3>Course Id : {{element.courseId}}</h3>
+                    <h3>Course Title : {{element.courseTitle}}</h3>
+                    <h3>User Requested : {{element.username}}</h3>
+                    <h3>Transaction Id : {{element.paymentRef}}</h3>
+                    <h3>Course Cost : {{element.courseCost}}</h3>
+                  </div>
+                  <mat-card-actions style="display: flex; justify-content: flex-end;">
+                      <button mat-stroked-button  style="
+                      background-color: rgb(9, 155, 9); color: white; margin-right: 10px;" 
+                      >Approve</button>
+                      <button mat-stroked-button  style="
+                      background-color: rgb(177, 13, 27); color: white;" 
+                      >Reject</button>
+                  </mat-card-actions>
+              </mat-card>
+            </div>
+      
+        </div>
+    </mat-tab>
+    <mat-tab label="Approved"> 
+        <div class="cardplacement" >
+            <div *ngFor="let element of ApprovedSub" class="main_card"> 
+              <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card">
+                  <div style="display: flex; justify-content: start; background-color: white;
+                  border-radius: 15px; padding: 10px; color: black; flex-direction: column;">
+                    <h3>id : {{element.id}}</h3>
+                    <h3>User Id : {{element.userId}}</h3>
+                    <h3>Status : {{element.status}}</h3>
+                    <h3>Course Id : {{element.courseId}}</h3>
+                    <h3>Course Title : {{element.courseTitle}}</h3>
+                    <h3>User Requested : {{element.username}}</h3>
+                    <h3>Transaction Id : {{element.paymentRef}}</h3>
+                    <h3>Course Cost : {{element.courseCost}}</h3>
+                  </div>
+                  <mat-card-actions style="display: flex; justify-content: flex-end;">
+                      <!-- <button mat-stroked-button  style="
+                      background-color: rgb(9, 155, 9); color: white; margin-right: 10px;" 
+                      >Approve</button>
+                      <button mat-stroked-button  style="
+                      background-color: rgb(177, 13, 27); color: white;" 
+                      >Reject</button> -->
+                  </mat-card-actions>
+              </mat-card>
+            </div>
+      
+        </div>
+    </mat-tab>
+    <mat-tab label="Rejected"> 
+        <div class="cardplacement" >
+            <div *ngFor="let element of RejectedSub" class="main_card"> 
+              <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card">
+                  <div style="display: flex; justify-content: start; background-color: white;
+                  border-radius: 15px; padding: 10px; color: black; flex-direction: column;">
+                    <h3>id : {{element.id}}</h3>
+                    <h3>User Id : {{element.userId}}</h3>
+                    <h3>Status : {{element.status}}</h3>
+                    <h3>Course Id : {{element.courseId}}</h3>
+                    <h3>Course Title : {{element.courseTitle}}</h3>
+                    <h3>User Requested : {{element.username}}</h3>
+                    <h3>Transaction Id : {{element.paymentRef}}</h3>
+                    <h3>Course Cost : {{element.courseCost}}</h3>
+                  </div>
+                  <mat-card-actions style="display: flex; justify-content: flex-end;">
+                      <!-- <button mat-stroked-button  style="
+                      background-color: rgb(9, 155, 9); color: white; margin-right: 10px;" 
+                      >Approve</button>
+                      <button mat-stroked-button  style="
+                      background-color: rgb(177, 13, 27); color: white;" 
+                      >Reject</button> -->
+                  </mat-card-actions>
+              </mat-card>
+            </div>
+      
+        </div>
+    </mat-tab>
+</mat-tab-group>

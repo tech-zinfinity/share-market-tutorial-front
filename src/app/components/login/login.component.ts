@@ -42,17 +42,19 @@ export class LoginComponent implements OnInit {
     this.fire.getCollectionWithCondition('users','email','==',value.username).subscribe((data:User[]) =>{
       if(data.length > 0){
         data.forEach(tata =>{
-          //console.log(atob('ZGFyc2hhbg=='));
-          //console.log('tata----',tata);
+          // console.log(atob('ZGFyc2hhbg=='));
+          // console.log('tata----',tata);
           
           if(tata.password === btoa(value.password)){
             if(tata.loggedIn === true){
               this.snackBar.open('You are already logged in, if not please connect Admin','close', {duration:2000});
             }else{
               tata.loggedIn = true;
-              this.fire.updateDocument(tata,'users').subscribe(dat =>{
+              let sub  = this.fire.updateDocument(tata,'users').subscribe(dat =>{
+                
                 this.auth.publishUser(dat);
                 this.snackBar.open('Login Successful','close', {duration:2000});
+                sub.unsubscribe();
                 this.dialogRef.close();
               });
             }

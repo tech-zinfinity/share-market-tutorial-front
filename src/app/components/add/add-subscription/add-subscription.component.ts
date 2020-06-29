@@ -44,11 +44,12 @@ export class AddSubscriptionComponent implements OnInit {
 
     this.fire.getSingleDocumentById(this.courseid, 'courses').subscribe((data:Course) =>{
         data.subscription = subBody;
-        this.fire.updateDocument(data, 'courses').subscribe(tata =>{
+        let sub4 = this.fire.updateDocument(data, 'courses').subscribe(tata =>{
+          
           this.dialogRef.close();
           this.snackbar.open('Setlled up the Cost', 'close', {duration:2000});
           this.inserted.emit(true);
-  
+          sub4.unsubscribe();
         });
     }, err =>{
       this.dialogRef.close();

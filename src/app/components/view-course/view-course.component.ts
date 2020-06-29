@@ -1,3 +1,4 @@
+import { MyCourse } from './../../model/user';
 import { Topic, VideoEntry } from './../../model/topic';
 import { AddFileComponent } from './../add/add-file/add-file.component';
 import { SubscriptionModel } from './../../model/subscription';
@@ -31,6 +32,7 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
   courseSubscrible: boolean = false;
   currentUser = this.auth.currentUser;
   currentUserSubscription : Subscription;
+  mycourse: MyCourse;
 
   constructor(private route: ActivatedRoute,
     private _location: Location,
@@ -46,9 +48,7 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnInit(): void {
-    console.log(this.file);
-    
+  ngOnInit(): void {    
     this.route.params.subscribe(params => {
       this.id = params['id'];
       this.fire.getCollectionWithCondition('courses', 'id', '==', this.id).subscribe((data: Course[])=>{
@@ -62,22 +62,30 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
             })
           })
           this.courseSubject.next(data[0]);
-          this.auth.currentUser.subscribe(user =>{
+          let sub = this.auth.currentUser.subscribe(user =>{
+            
             if(user != null){
               if(user.myCourses != undefined || user.myCourses != null)
               user.myCourses.forEach(co =>{
                 if(co.courseId === data[0].id){
                   this.courseSubscrible = true;
+                  this.mycourse = co;
+                  console.log(co);
+                  
+                  //sub.unsubscribe();
                 }
               })
             }   
           }); 
           if(!data[0].active){
-            this.auth.currentUser.subscribe(data =>{
+            let sub2 = this.auth.currentUser.subscribe(data =>{
+
               if(!data.roles.includes('ADMIN')){
                 this.snackbar.open('This course is not available for subscription', 'close', {
                   duration:2000
+                  
                 })
+                sub2.unsubscribe();
                 this.location.back();
               }
             })
@@ -120,14 +128,11 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
   }
 
   addImg(event: any){
-    console.log(this.file);
     this.fileadded =true;
     this.file = event.target.files[0];    
     this.imgName = this.file.name;
     var reader = new FileReader()
-    reader.readAsDataURL(this.file);
-    console.log(this.file);
-    
+    reader.readAsDataURL(this.file);    
     reader.onload = (event) => {
       // this.img = event.target.result;
       // this.trustedUrl = event.target.result;
@@ -193,6 +198,7 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
   navigateToSubscription(){
 
     this.currentUserSubscription = this.currentUser.subscribe(user =>{
+      
       if(user === null){
         let ref = this.snackbar.open('plaese login or signup to subscribe course','Login /SignUp Now', {duration:5000,
           verticalPosition: 'bottom',
@@ -224,9 +230,9 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
       let top = course.topics.filter(top => top.title === topic.title);
       top.forEach(tata =>{
         tata.active = bool;
+        sub.unsubscribe();
         this.fire.updateDocument(course, 'courses').subscribe(mata =>{
           this.snackbar.open('topic updated successfully', 'close', {duration:1500});
-          sub.unsubscribe();
           this.courseSubject.next(mata);
         })
       })
@@ -285,9 +291,7 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
         let vidd = topic.videolink.filter(tata => tata.embedLink === vid.embedLink);
         vidd.forEach(data =>{
           data.paid = bool;          
-        });
-        console.log(course);
-        
+        });        
         this.fire.updateDocument(course, 'courses').subscribe(mata =>{
           this.snackbar.open('video status updated successfully', 'close', {duration:1500});
           //this.courseSubject.next(mata);

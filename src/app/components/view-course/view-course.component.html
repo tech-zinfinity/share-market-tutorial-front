@@ -53,12 +53,39 @@
                
                <button mat-stroked-button style="margin: 5px; margin-top: 20px; 
                background-color: rgb(6, 150, 47); color: white;"
+               *ngIf="!courseSubscrible"
                (click)="navigateToSubscription()"> Subscribe</button>
+               
+                <div *ngIf="mycourse != undefined || mycourse != null">
+                    <div mat-stroked-button style="margin: 5px; margin-top: 20px; 
+                    background-color: rgb(157, 50, 157); color: white; 
+                    word-break: keep-all; border-radius: 10px; padding: 10px;"
+                    *ngIf="mycourse.status === 'REQUESTED'">
+                    {{mycourse.message}}
+                    </div>
 
-                <button mat-stroked-button style="margin: 5px; margin-top: 20px; 
-                background-color: plum; color: white;"
-                *ngIf="courseSubscrible"
-                (click)="navigateToSubscription()" [disabled]="true">Alredy Subscribed</button>
+                    <div mat-stroked-button style="margin: 5px; margin-top: 20px; 
+                    background-color: rgb(157, 50, 157); color: white; 
+                    word-break: keep-all; border-radius: 10px; padding: 10px;"
+                    *ngIf="mycourse.status === 'PENDING'">
+                    {{mycourse.message}}
+                    </div>
+
+                    
+                    <div mat-stroked-button style="margin: 5px; margin-top: 20px; 
+                    background-color: rgb(157, 50, 157); color: white; 
+                    word-break: keep-all; border-radius: 10px; padding: 10px;"
+                    *ngIf="mycourse.status === 'APPROVED'">
+                    {{mycourse.message}}
+                    </div>
+
+                    <div mat-stroked-button style="margin: 5px; margin-top: 20px; 
+                    background-color: rgb(157, 50, 157); color: white; 
+                    word-break: keep-all; border-radius: 10px; padding: 10px;"
+                    *ngIf="mycourse.status === 'FAILED'">
+                    {{mycourse.message}}
+                    </div>
+            </div>
 
         </mat-card>
 
