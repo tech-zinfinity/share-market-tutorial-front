@@ -41,11 +41,9 @@ export class AdminComponent implements OnInit {
       this.usersSource.next(users);
     });
     this.db.collection('courses').valueChanges().subscribe((data:Course[]) =>{
-      console.log(data);
       data.forEach(courses =>{
         this.storage.getPics(courses.coverPhotoImg).subscribe(tata =>{
           courses.img = tata;
-          console.log(tata);
           
         });
         this.courses = data;
@@ -68,15 +66,19 @@ export class AdminComponent implements OnInit {
 
   logOutAcc(user: User){
     user.loggedIn = false;
-    this.fire.updateDocument(user,'users').subscribe(data =>{
+    let sub = this.fire.updateDocument(user,'users').subscribe(data =>{
+      
       this.snackbar.open('Logged Out Successfully', 'close', {duration:2000});
+      sub.unsubscribe();
     });
   }
 
   deactivateAcc(user: User){
     user.active = false;
-    this.fire.updateDocument(user,'users').subscribe(data =>{
+    let sub = this.fire.updateDocument(user,'users').subscribe(data =>{
+      
       this.snackbar.open('Logged Out Successfully', 'close', {duration:2000});
+      sub.unsubscribe();
     });
   }
 
@@ -103,13 +105,21 @@ export class AdminComponent implements OnInit {
           data.subscriptions.splice(data.subscriptions.indexOf(permission), 1);
         }
       }
-      this.fire.updateDocument(data, 'users').subscribe(tata =>{
+      let sub = this.fire.updateDocument(data, 'users').subscribe(tata =>{        
         this.snackbar.open('permission deleted', 'close', {duration: 2000});
+        sub.unsubscribe();
       }, err =>{
           this.snackbar.open('problem in deleting permission', 'close', {duration: 2000});
       });
     }, err =>{
       this.snackbar.open('User is not available or corrupted', 'close', {duration: 2000});
+    })
+  }
+
+  deleteCourse(document: Course){
+    this.fire.deleteDocument(document, 'courses').subscribe(data =>{
+      this.snackbar.open('course '+document.id+' deleted Successfully', 'close', {duration: 2000});
+      this.ngOnInit();
     })
   }
 }

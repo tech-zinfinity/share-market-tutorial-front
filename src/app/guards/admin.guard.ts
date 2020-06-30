@@ -13,11 +13,10 @@ export class AdminGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return new Observable((obs) =>{
-        this.auth.currentUser.subscribe((user: User) =>{
+        this.auth.currentUser.subscribe((user: User) =>{          
           if(user.roles.includes('ADMIN')){
             obs.next(true);
           } else{
-            console.log(user.roles);
             this.router.navigate(['']);
             obs.next(false);
           } 

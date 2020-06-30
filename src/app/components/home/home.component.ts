@@ -22,13 +22,9 @@ export class HomeComponent implements OnInit {
     
     this.db.collection('courses', ref => ref.where('active','==', true))
     .valueChanges().subscribe((data: Course[]) =>{
-      console.log(data);
-      
       data.forEach(courses =>{
         this.storage.getDocument(courses.coverPhotoImg).subscribe(tata =>{
-          courses.img = tata;
-          console.log(tata);
-          
+          courses.img = tata;          
         });
         this.courses = data;
       })

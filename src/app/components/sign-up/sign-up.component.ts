@@ -42,15 +42,11 @@ export class SignUpComponent implements OnInit {
   }
 
   signup(value: User){
-    console.log(value);
     this.fire.getCollectionWithCondition('users','email','==',value.email)
     .subscribe((data:User[]) =>{
-      console.log(data);
       this.needLogin.emit(true);
       this.snackBar.open('Email alredy registered','close', {duration:2000});
-    },err =>{
-      console.log(value.password === value.confirmpassword);
-      
+    },err =>{      
       if(value.password != value.confirmpassword){
         //this.completed.emit(true);
         this.snackBar.open('Password is not matching to confirmed password','close', {duration:2000});
@@ -63,6 +59,7 @@ export class SignUpComponent implements OnInit {
         this.fire.saveDocument(value,'users').subscribe(data =>{
           this.dialogRef.close();
           this.snackBar.open('Registration is Successful','close', {duration:2000});
+          
           this.auth.publishUser(data);
           this.dialogRef.close();
           this.completed.emit(true);

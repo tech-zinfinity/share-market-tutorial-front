@@ -51,13 +51,13 @@ export class AppComponent implements OnDestroy{
     this.auth.publishFalse().subscribe(user =>{
       if(user != null ){
         if(user.loggedIn == false){
-          console.log('in logout',user);
           this.fire.getSingleDocumentById(user.id,'users').subscribe((data:User) =>{
-            console.log(data);
             
             data.loggedIn = false;
-            this.fire.updateDocument(data,'users').subscribe(tata=>{
+            let sub = this.fire.updateDocument(data,'users').subscribe(tata=>{
+              
               this.auth.logout();
+              sub.unsubscribe();
             })
           })
         }

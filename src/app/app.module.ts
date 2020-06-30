@@ -49,6 +49,7 @@ import { AngularFireStorageModule, } from '@angular/fire/storage';
 import { AddFileComponent } from './components/add/add-file/add-file.component';
 import { AddVideoComponent } from './components/add/add-video/add-video.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ViewAllSubscriptionResuestComponent } from './components/view-all-subscription-resuest/view-all-subscription-resuest.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { FooterComponent } from './components/footer/footer.component';
     AddFileComponent,
     AddVideoComponent,
     FooterComponent,
+    ViewAllSubscriptionResuestComponent,
     ContactusComponent
   ],
   imports: [
