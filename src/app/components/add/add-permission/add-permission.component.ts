@@ -25,9 +25,7 @@ export class AddPermissionComponent implements OnInit {
     private fb: FormBuilder,
     private db: AngularFirestore,
     private snackbar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public userId: string) { 
-      console.log(userId);
-      
+    @Inject(MAT_DIALOG_DATA) public userId: string) {       
     }
 
   permissionForm: FormGroup;
@@ -46,7 +44,9 @@ export class AddPermissionComponent implements OnInit {
           data.subscriptions === null || data.subscriptions === undefined ? data.subscriptions = []:null;
           data.subscriptions.push(value.permission);
         }
-        this.fire.updateDocument(data, 'users').subscribe(tata=>{
+        let sub = this.fire.updateDocument(data, 'users').subscribe(tata=>{
+          
+          sub.unsubscribe();
           this.dialogRef.close();
           this.added.emit(true);
           this.snackbar.open('permission added successfully', 'close', {duration: 2000});

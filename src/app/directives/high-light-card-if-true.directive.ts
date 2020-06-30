@@ -15,9 +15,7 @@ export class HighLightCardIfTrueDirective implements OnInit, OnChanges{
     //console.log('coming here', JSON.stringify(this.appHighLightCardIfTrue), this.el.nativeElement);
 
     if(changes['appHighLightCardIfTrue']){
-      if(this.appHighLightCardIfTrue === true){
-        console.log('coming here rgba(10, 252, 46, 0.653)');
-        
+      if(this.appHighLightCardIfTrue === true){        
         this.renderer.setAttribute(this.el.nativeElement, 'background-color', 'cyan');
       }
     }

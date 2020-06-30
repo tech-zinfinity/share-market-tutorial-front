@@ -34,4 +34,8 @@ export class AuthService {
       obs.next(this.nowUser);
     });  
   }
+
+  generateRandomId(){
+    return JSON.stringify(Math.floor(Math.random() * (999999 - 100000)) + 100000);
+  }
 }

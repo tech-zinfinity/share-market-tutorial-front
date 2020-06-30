@@ -61,24 +61,13 @@
           <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card">
               <div style="display: flex; justify-content: start; background-color: white;
               border-radius: 15px; padding: 10px; color: black; flex-direction: column;">
+                <button mat-icon-button style="color: rgb(247, 11, 11);"
+                *ngIf="!element.active"><mat-icon>circle</mat-icon></button>
+                <button mat-icon-button style="color: rgb(11, 247, 27);"
+                *ngIf="element.active"><mat-icon>circle</mat-icon></button>
                 <h3>id : {{element.id}}</h3>
                 <h2>{{element.title}}</h2>
-              </div>
-              <mat-card-content>
-                  <img src="../assets/Logo.JPG" style="height: auto; width: 80%;">
-              </mat-card-content>
-              <mat-card-actions style="display: flex; justify-content: space-between;">
-                  <button mat-stroked-button color="primary"
-                  (click)="goToCourseDetail(element.id)">View Details</button>
-              </mat-card-actions>
-          </mat-card>
-        </div>
-        <div *ngFor="let element of courses" class="main_card"> 
-          <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card">
-              <div style="display: flex; justify-content: start; background-color: white;
-              border-radius: 15px; padding: 10px; color: black; flex-direction: column;">
-                <h3>id : {{element.id}}</h3>
-                <h2>{{element.title}}</h2>
+                <h2>active : {{element.active}}</h2>
               </div>
               <mat-card-content>
                   <img [src]="element.img" style="height: auto; width: 80%;">
@@ -86,11 +75,17 @@
               <mat-card-actions style="display: flex; justify-content: space-between;">
                   <button mat-stroked-button color="primary"
                   (click)="goToCourseDetail(element.id)">View Details</button>
+                  <button mat-stroked-button  style="
+                  background-color: rgb(177, 13, 27); color: white;" 
+                  (click)="deleteCourse(element)">Delete</button>
               </mat-card-actions>
           </mat-card>
         </div>
   
     </div>
+  </mat-tab>
+  <mat-tab class="tab" label="Subscription Requests"> 
+    <app-view-all-subscription-resuest></app-view-all-subscription-resuest>
   </mat-tab>
 </mat-tab-group>
 </div>

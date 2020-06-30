@@ -1,3 +1,5 @@
+import { User } from './../../model/user';
+import { PaymentRequestStatus } from './../../constants/constants';
 import { RequestSubcription } from './../../model/request-subcription';
 import { FormControl, FormBuilder, Validators } from '@angular/forms';
 import { BehaviorSubject, Subscription } from 'rxjs';
@@ -7,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from './../../service/auth.service';
 import { FireService } from './../../service/fire.service';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SubscriptionStatus } from 'src/app/constants/constants';
 
@@ -24,7 +26,8 @@ export class SubscribeCourseComponent implements OnInit, OnDestroy {
     public auth: AuthService,
     private dialog: MatDialog,
     private snackbar: MatSnackBar,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private router: Router) { }
   
   id: string;
   course: Course = {};
@@ -46,7 +49,7 @@ export class SubscribeCourseComponent implements OnInit, OnDestroy {
         
       });
     });
-    this.auth.currentUser.subscribe(data =>{
+    this.auth.currentUser.subscribe(data =>{      
       if(data === null){
           this.loggedIn = false;
       }else{
@@ -66,9 +69,28 @@ export class SubscribeCourseComponent implements OnInit, OnDestroy {
     this.userSubscription = this.currentUser.subscribe(user =>{
       body.userId = user.id;
       body.userEmail = user.email;
-      body.username = user.name;
-
-      console.log('should not but still getting called ***',body)
+      body.username = user.name;      
+      this.fire.saveDocument(body, 'requestsubscriptions').subscribe((data:RequestSubcription) =>{
+        this.snackbar.open('reuest sent successfully, reuest-id is'+data.id, 'close', {duration: 4000})
+        let sub1 = this.fire.getSingleDocumentById(user.id, 'users').subscribe((usr:User)=>{
+          this.userSubscription.unsubscribe();          
+          if(usr.myCourses === undefined || usr.myCourses === null){
+            usr.myCourses = [];
+          }
+          usr.myCourses.push({
+            courseId: this.course.id,
+            message: 'Payment is Successfull, Subscription is Requested' ,
+            status: PaymentRequestStatus.REQUESTED,
+            title:this.course.title
+          });
+          let sub = this.fire.updateDocument(usr, 'users').subscribe(tata =>{            
+            sub1.unsubscribe();
+            sub.unsubscribe();            
+            this.auth.publishUser(tata);
+            this.router.navigate(['course', this.course.id]);
+          })
+        })
+      })
 
     })
   }
