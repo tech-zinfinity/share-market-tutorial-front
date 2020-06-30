@@ -9,7 +9,7 @@
     ]
   },
   "hosting": {
-    "public": "ShareMarketTutorial",
+    "public": "dist/share-market-tutorial",
     "ignore": [
       "firebase.json",
       "**/.*",
