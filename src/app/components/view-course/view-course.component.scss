@@ -16,6 +16,7 @@
     flex-direction: row;
      justify-content: space-between;
      font-family: 'Poppins', sans-serif !important;
+     margin-top: 70px;
 }
 .mat_1{
     width: 60%;
@@ -37,8 +38,14 @@
      margin-bottom: 20px !important;
      
 }
-button{
+// button{
     
+// }
+.mat_btn{
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+   
 }
 
 .dscp{
@@ -48,17 +55,33 @@ button{
      display: block;
     white-space: pre-line;
 }
+.btn_main_div{
+    display: flex;
+    flex-direction: row ;
+}
+
+.mat_topic_btn{
+     display: flex;
+     flex-direction: row; 
+     justify-content: start;
+     background-color: rgba(234, 234, 241, 0.34);
+     height: auto; 
+     margin-bottom: 20px;
+     width: 100%;
+     
+}
 @media (min-width: 300px) and (max-width: 900px) {
     .main_div{
         display: flex; 
         flex-direction: column;
          justify-content: space-between;
+         margin-top: 50px;
     } 
     .mat_1{
         width: 100% !important;
         text-align: center;
     }
-    .mat_2{
+    .mat_2 {
         width: 280px;
          margin-right:5px;
       display: flex; 
@@ -66,19 +89,80 @@ button{
       justify-content: center;
      align-self: center;
     }
+
+   
 }
 
-@media (max-width: 500px){
+@media (max-width: 550px){
     
         .heading{
             color: black;
-             font-size: 20px;
-             margin-top: 20px !important;
-             margin-bottom: 10px !important;
+             font-size: 17px;
+             margin-top: 2px !important;
+            //  margin-bottom: 10px !important;
+             margin: 0px;
+             
         }
         .dscp{
             font-size: 15px;
            
         }
+        .btn_main_div{
+            display: flex;
+            flex-direction: column ;
+            justify-content: center;
+        }
+        .btn_admn{
+            justify-content: center;
+            margin: 5px;
+        }
+        .slt_pht ,.add_vid{
+            width: 98%;
+            
+        }
+        .mat_btn{
+            justify-content: center;
+            margin: 5px;
+            padding-top: 50px;
+        }
+        .mat_topic_btn{
+            justify-content: center;
+            margin: 5px;
+        }
+        .video{
+            width: 200px;
+            height: auto;
+        }
+        .vid_btn{
+            width: auto;
+            text-align: center;
+            padding: 5px;
+        }
+
     
+}
+
+@media(min-width: 500px) and (max-width: 1000px){
+    .heading{
+        font-size: 25px;     
+    }  
+}
+@media(min-width: 1000px) and (max-width: 1150px){
+    .heading{   
+         font-size: 30px;     
+    }  
+}
+
+@media (max-width: 350px){
+   .btn_admn{
+       width: 32%;
+     
+     text-align: center;
+     font-size: 12px;
+   }
+   button{
+       padding: 5px;
+   }
+
+   
 }
