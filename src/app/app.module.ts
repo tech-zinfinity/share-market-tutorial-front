@@ -1,3 +1,4 @@
+import { ContactusComponent } from './components/contactus/contactus.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ConfirmationBoxComponent } from './common/confirmation-box/confirmation-box/confirmation-box.component';
 import { ConfirmationBoxModule } from './common/confirmation-box/confirmation-box/confirmation-box.module';
@@ -48,7 +49,6 @@ import { AngularFireStorageModule, } from '@angular/fire/storage';
 import { AddFileComponent } from './components/add/add-file/add-file.component';
 import { AddVideoComponent } from './components/add/add-video/add-video.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ContactusComponent } from './components/contactus/contactus.component';
 
 @NgModule({
   declarations: [
