@@ -1,44 +1,45 @@
 .main{
     padding-top: 90px;
     width: 100%;
-    font-family: 'Nunito', sans-serif !important;
+    display: flex;
     
 }
 .sec-1{
     background-color: white;
-     margin-left: 2%;
+    
       display: flex;
        justify-content: space-between;
         flex-direction: row;
         padding-top: 20px;
         margin-bottom: 60px;
-        font-family: 'Nunito', sans-serif !important;
+        
 }
 .srch-btn{
     font-size: 15px; 
     width: 40%;
-    margin-right: 5%;
+
     margin-top: 20px;
-    font-family: 'Nunito', sans-serif !important;
 }
 .btn{
     padding: 2px;
 }
-.card{
-    margin-right: 30px !important;
-    font-family: 'Nunito', sans-serif !important;
-}
+
 h2,h3,button{
-    font-family: 'Nunito', sans-serif !important;
+    font-family: 'Poppins', sans-serif !important
 }
 .tab{
-    font-family: 'Nunito', sans-serif !important;
-   
+    font-family: 'Poppins', sans-serif !important
 }
-label{
-    font-family: 'Nunito', sans-serif !important;
 
-}
+::ng-deep .mat-tab-label .mat-tab-label-content {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: large;
+    
+    }
+
+    ::ng-deep .mat-form-field{
+        font-family: 'Poppins', sans-serif !important;
+    }
 
 
 
@@ -54,27 +55,19 @@ label{
         padding-top: 10px;
     }
 }
-// .cardplacement{
-//     flex-direction: row;
-//     display: flex;
-//     overflow-x: scroll;
-//    -webkit-overflow-scrolling: touch;
-//    -ms-overflow-style: -ms-autohiding-scrollbar;
-//    position: relative;
-//    padding-top: 20px;
 
-// }
 .card{
     flex: 0 0 auto;
     margin-bottom:20px !important ;
     margin: 0 auto;
-    width:350px;
+    width:340px;
+    font-family: 'Poppins', sans-serif !important
 }
 
 .main_card{
     flex: 0 0 auto;
     margin-right:20px ;
-    margin: 10px;
+   
 }
 
 ::-webkit-scrollbar {
@@ -109,24 +102,14 @@ label{
        margin-bottom: 20px;
     }
     .course-card{
-        margin: 10px; 
+        
         width: 250px; 
         border-left: 1.5px groove #000 !important;
     }
     
 }
 @media (min-width: 320px) and (max-width: 600px) {
-    // .cardplacement{
-    //     flex-direction: row;
-    //     display: flex;
-    //     flex-direction: column;
-    //     overflow-x: scroll;
-    //    -webkit-overflow-scrolling: touch;
-    //    -ms-overflow-style: -ms-autohiding-scrollbar;
-    //    position: relative;
-    //    padding-top: 20px;
-       
-    // } 
+   
 }
 
 ::ng-deep .mat-dialog-container{
@@ -134,17 +117,19 @@ label{
 }
 @media (min-width: 480px) {
     .cardplacement{
-        display: grid;
+        display: grid;  
+        width: 100%;
         grid-template-columns: repeat(3, 1fr);
-        margin: 10px; 
-        justify-content: start; cursor: pointer;
+        // margin: 10px; 
+        justify-content: start; 
+        cursor: pointer;
     }
 }
 @media (min-width: 320px) and (max-width: 480px) {
     .cardplacement{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        margin: 10px;
+        
         justify-content: start; cursor: pointer;
     }
 }
@@ -152,7 +137,7 @@ label{
     .cardplacement{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        margin: 10px; 
+ 
         justify-content: start; cursor: pointer;
     }
 }

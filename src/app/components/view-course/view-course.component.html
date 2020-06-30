@@ -1,6 +1,7 @@
 <div>
     <br>
-    <div *ngIf="(this.auth.currentUser | async) != null" style="margin-top: 70px;">
+    
+    <div *ngIf="(this.auth.currentUser | async) != null" style="margin-top: 20px;">
         <mat-toolbar *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')"
        class="mat_1" >
         <!-- <div *ngIf="(currentCourse | async).subscription != undefined">
@@ -33,15 +34,17 @@
  
         </mat-toolbar> 
     </div>
+
     <div *ngIf="(this.auth.currentUser | async) == undefined">
         <mat-toolbar
-            style="display: flex; flex-direction: row; justify-content: flex-end;
-            ">
+            style="display: flex; flex-direction: row; justify-content: flex-end;">
         <!-- <button mat-stroked-button style="margin: 5px; 
         background-color: rgb(6, 150, 47); color: white;"> Subscribe</button>-->
 
         </mat-toolbar>
     </div>
+
+    <br>
     <div class="main_div">
         <mat-card  class="mat_1">
             <span class="heading">{{(currentCourse | async).title}}</span>
@@ -52,7 +55,7 @@
                 Cost: {{((currentCourse | async).subscription).amount}}</span> 
                
                <button mat-stroked-button style="margin: 5px; margin-top: 20px; 
-               background-color: rgb(6, 150, 47); color: white;"
+               background-color: orangered; color: white;"
                (click)="navigateToSubscription()"> Subscribe</button>
 
                 <button mat-stroked-button style="margin: 5px; margin-top: 20px; 
@@ -64,7 +67,7 @@
 
     </div>
     <br><br><br><br>
-    <mat-card style="background-color: aliceblue; width: 100%;">
+    <mat-card style="background-color: aliceblue; width: 100%;  font-family: 'Poppins', sans-serif !important;">
         <span class="dscp">
             {{(currentCourse | async).dscp}}
         </span>

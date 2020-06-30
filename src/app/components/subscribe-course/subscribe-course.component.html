@@ -5,16 +5,16 @@
 {{(courseObs | async).subscription.expiry}}
 </div> -->
 
-<div  class="main-div" >
+<div  class="main-div">
     <mat-card class="mat_card_1" >       
        <img src="../../../assets/qr.jpg" class="img"  >
     </mat-card>
     <mat-card class="mat_card_2">
        
-        <h2 style=" font-family: 'Nunito', sans-serif !important;">Course - <b> {{(courseObs | async).title}} </b></h2>   
-        <h2 style=" font-family: 'Nunito', sans-serif !important; " *ngIf="(courseObs | async).subscription != undefined">Price - <b>{{(courseObs | async).subscription.amount}}</b> </h2>   
+        <h2 >Course - <b> {{(courseObs | async).title}} </b></h2>   
+        <h2 *ngIf="(courseObs | async).subscription != undefined">Price - <b>{{(courseObs | async).subscription.amount}}</b> </h2>   
 
-        <h3 style=" font-family: 'Nunito', sans-serif !important;">Please pay by UPI and update the Transaction Number in below field </h3>
+        <h3>Please pay by UPI and update the Transaction Number in below field </h3>
         
         <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label >Transaction Number</mat-label>

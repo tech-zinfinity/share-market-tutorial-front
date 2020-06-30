@@ -1,5 +1,6 @@
+<div style="display: flex; width: 100%;">
 <mat-tab-group animationDuration="20ms" class="main">
-  <mat-tab class="tab" label="Users"> 
+  <mat-tab class="tab" label="Users" > 
     <!-- <mat-toolbar style="background-color: white; margin-left: 2%;"> -->
       <mat-toolbar class="sec-1">
         <button  mat-raised-button color="primary"><mat-icon>add</mat-icon></button>
@@ -11,7 +12,7 @@
     <!-- </mat-toolbar> -->
     <div class="cardplacement" >
       <div *ngFor="let element of usersObs | async" class="card" > 
-        <mat-card style=" border-left: 1.5px groove #000" 
+        <mat-card style=" border-left: 1px groove #3f51b5" 
         [class.mat-elevation-z8]="true" class="ccrd">
         <button mat-icon-button style="color: rgb(247, 11, 11);"
         *ngIf="!element.loggedIn"><mat-icon>circle</mat-icon></button>
@@ -52,7 +53,7 @@
   </div>  
   </mat-tab>
   <mat-tab class="tab" label="Courses"> 
-    <mat-toolbar style="background-color: white; margin-left: 2%;">
+    <mat-toolbar style="background-color: white; ">
       <button mat-raised-button color="primary" (click)="addCourse()"><mat-icon>add</mat-icon></button>
     </mat-toolbar>
     <div class="cardplacement" >
@@ -92,3 +93,4 @@
     </div>
   </mat-tab>
 </mat-tab-group>
+</div>
