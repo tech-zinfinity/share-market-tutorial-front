@@ -7,19 +7,19 @@
 .mat_1{
     display: flex;
     flex-direction: row; 
-    justify-content: center;
-    background-color: white;
-    font-family: 'Nunito', sans-serif !important;
+    font-family: 'Yeseva One', cursive;
+    background-color: transparent;
+   
 }
 .main_div{
     display: flex; 
     flex-direction: row;
      justify-content: space-between;
-     font-family: 'Nunito', sans-serif !important;
+     font-family: 'Poppins', sans-serif !important;
 }
 .mat_1{
     width: 60%;
-    font-family: 'Nunito', sans-serif !important;
+  
 }
 .mat_2{
     width: 280px;
@@ -28,23 +28,23 @@
       flex-direction: column;
         justify-content: center;
          align-self: center;
-         font-family: 'Nunito', sans-serif !important;
+       
 }
 .heading{
     color: black;
-     font-size: 40px;
-     margin-top: 40px !important;
+     font-size: 35px;
+    
      margin-bottom: 20px !important;
-     font-family: 'Nunito', sans-serif !important;
+     
 }
 button{
-    font-family: 'Nunito', sans-serif !important;
+    
 }
 
 .dscp{
     font-size: 18px;
      width: 100% !important; 
-     font-family: 'Nunito', sans-serif !important; 
+    
      display: block;
     white-space: pre-line;
 }

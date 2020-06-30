@@ -1,9 +1,10 @@
 <div style="height: 100%; width: 100%;">
-  <mat-toolbar style="background-color: whitesmoke; display: flex; flex-direction: row;
-    justify-content: space-between; position: fixed; z-index: 10; height: auto; " >
+  <mat-toolbar style="background-color: white; display: flex; flex-direction: row;
+    justify-content: space-between; position: fixed; z-index: 10; height: auto;box-shadow: 0 1px 1px 0 rgba(180, 181, 184, 0.28);" >
       <div  style=" cursor: pointer;" (click)="navigateToHome()">
         <img src="../assets/Logo.JPG" class="logo-img">
       </div>
+     
       <div class="div-btn" *ngIf="(auth.currentUser | async) === null">
         <button class="btn" mat-raised-button color="primary" (click) = "openLoginDialog()">Login</button>&nbsp;&nbsp;
         <button class="btn" mat-stroked-button color="warn" (click) = "openSignupDialog()">Sign Up</button>
@@ -12,6 +13,7 @@
         <button mat-button [matMenuTriggerFor]="menu" color="primary" class="name-btn" >
           {{(auth.currentUser | async)?.name}}
         </button>
+        
         <mat-menu #menu="matMenu" class="mat-menu-btn">
           <button mat-menu-item [routerLink]="['admin']" *ngIf="(auth.currentUser | async)?.roles.includes('ADMIN')">
             <mat-icon style="color: black;">https</mat-icon>Admin</button>
