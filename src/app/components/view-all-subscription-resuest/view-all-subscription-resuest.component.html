@@ -2,10 +2,10 @@
 <mat-tab-group>
     <mat-tab label="Requested"> 
         <div class="cardplacement" >
-            <div *ngFor="let element of RequestedSub" class="main_card"> 
-              <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card" style="background-color: rgba(32, 138, 243, 0.639);">
+            <div *ngFor="let element of RequestedSub" class="main_card" style="font-family: 'Poppins', sans-serif !important"> 
+              <mat-card   [class.mat-elevation-z8]="true" class=" course-card" style="background-color: #3355ff;">
                   <div style="display: flex; justify-content: start;
-                  border-radius: 15px; padding: 10px; color: black; flex-direction: column;">
+                  border-radius: 15px; padding: 10px; color: black; flex-direction: column;font-family: 'Poppins', sans-serif !important; ">
                     <h3>id : {{element.id}}</h3>
                     <h3>User Id : {{element.userId}}</h3>
                     <h3>Status : {{element.status}}</h3>

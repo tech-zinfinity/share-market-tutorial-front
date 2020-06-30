@@ -17,7 +17,6 @@
 .srch-btn{
     font-size: 15px; 
     width: 40%;
-
     margin-top: 20px;
 }
 .btn{
@@ -35,14 +34,23 @@ h2,h3,button{
     font-family: 'Poppins', sans-serif !important;
     font-size: large;
     
+    
     }
-
+   
     ::ng-deep .mat-form-field{
         font-family: 'Poppins', sans-serif !important;
     }
 
+::ng-deep .card {
+    border: none;
+}
 
+::ng-deep .mat-ink-bar {
+    background-color: var(--primary-color,#e94f07) !important;
+    }
+    
 
+   
 @media (max-width: 600px){
     .sec-1{
         flex-direction: column;
@@ -66,7 +74,7 @@ h2,h3,button{
 
 .main_card{
     flex: 0 0 auto;
-    margin-right:20px ;
+    
    
 }
 
@@ -84,7 +92,7 @@ h2,h3,button{
     
     margin: 0 auto;
     width: 340px; 
-    border-left: 1.5px groove #000;    
+    border-left: 1px groove #3f51b5;    
 }
 
 @media (max-width: 450px) {
@@ -100,22 +108,22 @@ h2,h3,button{
         margin: 0 auto;
         width:270px;
        margin-bottom: 20px;
-    }
-    .course-card{
-        
-        width: 250px; 
-        border-left: 1.5px groove #000 !important;
+       border: none !important;
     }
     
+    
 }
-@media (min-width: 320px) and (max-width: 600px) {
-   
+
+.addbtn{
+    width: 30%; 
+    height: 50px;
 }
+
 
 ::ng-deep .mat-dialog-container{
     padding: 0 !important;
 }
-@media (min-width: 480px) {
+
     .cardplacement{
         display: grid;  
         width: 100%;
@@ -124,21 +132,53 @@ h2,h3,button{
         justify-content: start; 
         cursor: pointer;
     }
-}
+
 @media (min-width: 320px) and (max-width: 480px) {
     .cardplacement{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         
         justify-content: start; cursor: pointer;
+        
     }
+
+    .addbtn{
+        width: 100%; 
+        height: 50px;
+    }
+   .card{
+       margin-top: 70px;
+   }
+
+   .course-card{
+    margin-bottom: 20px;    
+    width: 270px !important; 
+    border-left: 1px groove #3f51b5 !important;
 }
-@media (min-width: 481px) and (max-width: 767px) {
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
     .cardplacement{
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
- 
-        justify-content: start; cursor: pointer;
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: start; 
+        cursor: pointer;
     }
-}
+
+    .card{
+        margin-top: 70px;
+        width: 500px;
+    }
+    .course-card{
+        margin-bottom: 20px;
+        width: 700px !important; 
+        border-left: 1px groove #3f51b5 !important;
+    }
+    
+    
+  }
+
+
 

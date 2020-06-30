@@ -1,24 +1,24 @@
 <div style="width: 100%;display: flex;margin: 0 auto; height: auto; ">
     <div class="contactus" [class.mat-elevation-z8]="true" >
-        <form class="form">
+        <form class="form" [formGroup]="ContactForm">
             <mat-form-field  class="name" appearance="outline">
                 <mat-label>Name</mat-label>
-                <input matInput placeholder="Name"  outline="appearance">    
+                <input matInput placeholder="Name"  formControlName="name" outline="appearance">    
             </mat-form-field>
             <mat-form-field  class="phone" appearance="outline">
                 <mat-label>Phone</mat-label>
-                <input matInput placeholder="Phone"  outline="appearance">    
+                <input matInput placeholder="Phone" formControlName="form_phone" outline="appearance">    
             </mat-form-field>
             <mat-form-field style="width: 100%" appearance="outline">
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="Email"  outline="appearance">    
+                <input matInput placeholder="Email" formControlName="form_email" outline="appearance">    
             </mat-form-field>
             <mat-form-field style="width: 100%" appearance="outline">
                 <mat-label>Message</mat-label>
-                <textarea matInput placeholder="Message"  style="height: 200px;"></textarea>    
+                <textarea matInput placeholder="Message" formControlName="form_message" style="height: 200px;"></textarea>    
             </mat-form-field>
 
-            <button mat-raised-button color="primary" class="submit">Sumbit</button>
+            <button mat-raised-button color="primary" class="submit" [disabled]="ContactForm.invalid">Sumbit</button>
              <button mat-raised-button  class="clr">Clear</button>
  
         </form>

@@ -1,6 +1,7 @@
 @media (min-width: 480px) {
     .cardplacement{
         display: grid;
+        
         grid-template-columns: repeat(3, 1fr);
         margin: 10px; 
         justify-content: start; cursor: pointer;
@@ -21,4 +22,8 @@
         margin: 10px; 
         justify-content: start; cursor: pointer;
     }
+}
+
+h3{
+   font-family: 'Poppins', sans-serif !important;
 }

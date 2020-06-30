@@ -51,6 +51,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ViewAllSubscriptionResuestComponent } from './components/view-all-subscription-resuest/view-all-subscription-resuest.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +71,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
     AddFileComponent,
     AddVideoComponent,
     FooterComponent,
-    ViewAllSubscriptionResuestComponent
+    ViewAllSubscriptionResuestComponent,
     ContactusComponent
   ],
   imports: [
