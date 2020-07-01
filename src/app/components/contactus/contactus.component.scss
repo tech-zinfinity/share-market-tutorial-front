@@ -1,12 +1,22 @@
-@media (min-width: 480px) {
-
+.main{
+    width: 100% !important;margin: 0 auto; height: auto; display: flex;
 }
 
 .contactus{
-    margin: 0 auto; 
+    
     margin-top: 40px; 
-    width: 60%; padding: 3%;
+    display: flex;
+    flex-direction: row ;
+    width: 50%;
+     padding: 3%;
     background-color: white;
+}
+
+.location{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-top: 40px;
 }
 .name{
     width: 49%; 
@@ -30,10 +40,21 @@
     font-family: 'Poppins', sans-serif !important
 }
 @media (min-width: 320px) and (max-width: 480px) {
-  
+    
+    .main{
+        display: flex;
+        flex-direction: column;
+    }
     .contactus{
+        display: flex;
+        flex-direction: column;
         width: 100%;
         margin-top: 20px; 
+    }
+    .location{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
     }
     .name{
         width: 100%; 
@@ -50,7 +71,19 @@
         width: 100%;
         margin-bottom: 10px;
     }
+    .a1{
+        width: 100%; display: flex;
+        flex-direction: column;
+      }
   }
 
 
-  
+  .a1{
+    width: 100%; display: flex;
+  }
+  .a{
+    display: flex; width: 50%;
+  }
+  .b{
+    display: flex; width: 50%;
+  }

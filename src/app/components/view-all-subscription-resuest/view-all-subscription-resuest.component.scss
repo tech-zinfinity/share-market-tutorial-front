@@ -6,6 +6,10 @@
         margin: 10px; 
         justify-content: start; cursor: pointer;
     }
+    .course-card{
+        width: 333px;
+        height: auto;
+    }
 }
 @media (min-width: 320px) and (max-width: 480px) {
     .cardplacement{
@@ -13,6 +17,10 @@
         grid-template-columns: repeat(1, 1fr);
         margin: 10px;
         justify-content: start; cursor: pointer;
+    }
+    .course-card{
+        width: 290px;
+        margin-bottom: 20px;
     }
 }
 @media (min-width: 481px) and (max-width: 767px) {
@@ -25,5 +33,22 @@
 }
 
 h3{
-   font-family: 'Poppins', sans-serif !important;
+   font-family: 'Poppins', sans-serif !important;   
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .cardplacement{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center; 
+        cursor: pointer;
+        
+    }
+    .course-card{
+        width: 500px;
+        height: auto;
+        
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
 }

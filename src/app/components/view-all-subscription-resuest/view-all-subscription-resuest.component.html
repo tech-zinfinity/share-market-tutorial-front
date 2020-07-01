@@ -2,8 +2,8 @@
 <mat-tab-group>
     <mat-tab label="Requested"> 
         <div class="cardplacement" >
-            <div *ngFor="let element of RequestedSub" class="main_card" style="font-family: 'Poppins', sans-serif !important"> 
-              <mat-card   [class.mat-elevation-z8]="true" class=" course-card" style="background-color: #3355ff;">
+            <div *ngFor="let element of RequestedSub" class="main_card" > 
+              <mat-card   [class.mat-elevation-z8]="true" class=" course-card" style="background-color: #6ed3cf;">
                   <div style="display: flex; justify-content: start;
                   border-radius: 15px; padding: 10px; color: black; flex-direction: column;font-family: 'Poppins', sans-serif !important; ">
                     <h3>id : {{element.id}}</h3>
@@ -17,10 +17,10 @@
                   </div>
                   <mat-card-actions style="display: flex; justify-content: flex-start;">
                       <button mat-stroked-button  style="
-                      background-color: rgb(9, 155, 9); color: white; margin-right: 10px;" 
+                      background-color: rgb(9, 155, 9); color: white; margin-right: 10px; width: 48%;" 
                       (click)="changeStatusOfSubscription('APPROVED',element.id)">Approve</button>
                       <button mat-stroked-button  style="
-                      background-color: rgb(177, 13, 27); color: white;" 
+                      background-color: rgb(177, 13, 27); color: white;width: 48%;" 
                       (click)="changeStatusOfSubscription('FAILED',element.id)">Reject</button>
                   </mat-card-actions>
               </mat-card>
@@ -31,7 +31,7 @@
     <mat-tab label="Approved"> 
         <div class="cardplacement" >
             <div *ngFor="let element of ApprovedSub" class="main_card"> 
-              <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card" style="background-color: rgba(66, 248, 66, 0.49);">
+              <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card" style="background-color: #00c07f;">
                   <div style="display: flex; justify-content: start;
                   border-radius: 15px; padding: 10px; color: black; flex-direction: column;">
                     <h3>id : {{element.id}}</h3>
@@ -59,7 +59,7 @@
     <mat-tab label="Rejected"> 
         <div class="cardplacement" >
             <div *ngFor="let element of RejectedSub" class="main_card"> 
-              <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card" style="background-color: rgba(248, 167, 167, 0.769);">
+              <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card" style="background-color: #e0474c">
                   <div style="display: flex; justify-content: start;
                   border-radius: 15px; padding: 10px; color: black; flex-direction: column;">
                     <h3>id : {{element.id}}</h3>
