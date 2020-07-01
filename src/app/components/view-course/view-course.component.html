@@ -87,7 +87,7 @@
     </div>
 
     <div *ngIf="(this.auth.currentUser | async) == undefined">
-        <mat-toolbar style="display: flex; flex-direction: row; justify-content: flex-end;">
+        <mat-toolbar style="display: flex; flex-direction: row; justify-content: flex-end; background-color: transparent; margin-top: -60px;">
             <!-- <button mat-stroked-button style="margin: 5px; 
         background-color: rgb(6, 150, 47); color: white;"> Subscribe</button>-->
 
@@ -97,7 +97,7 @@
 
 
     <br><br><br><br>
-    <mat-card style="background-color: aliceblue; width: 100%;  font-family: 'Poppins', sans-serif !important;">
+    <mat-card style="background-color: aliceblue; width: 100%; font-family: 'Poppins', sans-serif !important;">
         <span class="dscp">
             {{(currentCourse | async).dscp}}
         </span>
@@ -106,7 +106,7 @@
     <!-- <span style="font-size: 30px;">Topics</span> -->
     <div *ngFor="let topic of (currentCourse | async).topics">
         <div style="display: flex; flex-direction: column; margin-bottom: 25px;">
-            <h1>{{topic.title}}</h1>
+            <h1 style=" font-family: 'Poppins', sans-serif !important;">{{topic.title}}</h1>
             <div *ngIf="(this.auth.currentUser | async) != null">
                 <mat-toolbar class="mat_topic_btn" 
                     *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
@@ -130,12 +130,13 @@
                 </mat-toolbar>
             </div>
             <mat-card style="height: auto; ">
-                <h3>{{topic.dscp}}</h3>
+                <h3 style="background-color: aliceblue; width: 100%; height: auto;  font-family: 'Poppins', sans-serif !important; padding: 5px;">
+                    {{topic.dscp}}</h3>
                 <div *ngFor="let vid of topic.videolink">
                     <div *ngIf="(this.auth.currentUser | async) != null" >
                         <mat-card [class.mat-elevation-z8]="true" style="margin-bottom: 20px; width: fit-content; padding: 0px ;"  class="div_card"
                             *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
-                            <mat-toolbar style=" background-color: white; padding: 5px;"  
+                            <mat-toolbar style=" background-color: white; padding: 5px; justify-content: center;"  
                                 *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
                                 <button mat-stroked-button color="primary" *ngIf="!vid.active" class="vid_btn"
                                     (click)="changeVideoStatus(vid, true)"> Activate</button>
@@ -162,7 +163,7 @@
                     <mat-card [class.mat-elevation-z8]="true" style="margin-bottom: 10px;width: fit-content; "
                         *ngIf="(this.auth.currentUser | async) === null" [hidden]="!vid.active">
                         <div [class.disabled-contenct]="vid.paid" [innerHTML]="vid.video">
-
+                            
                         </div>
                     </mat-card>
                 </div>

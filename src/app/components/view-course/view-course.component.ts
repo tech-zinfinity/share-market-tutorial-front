@@ -231,9 +231,9 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
       let top = course.topics.filter(top => top.title === topic.title);
       top.forEach(tata =>{
         tata.active = bool;
-        sub.unsubscribe();
         this.fire.updateDocument(course, 'courses').subscribe(mata =>{
           this.snackbar.open('topic updated successfully', 'close', {duration:1500});
+          sub.unsubscribe();
           this.courseSubject.next(mata);
         })
       })

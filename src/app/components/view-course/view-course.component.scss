@@ -44,7 +44,7 @@
 .mat_btn{
     width: 100%;
     padding: 0;
-    background-color: transparent;
+    background-color: transparent !important;
    
 }
 
@@ -135,6 +135,9 @@
             width: auto;
             text-align: center;
             padding: 5px;
+        }
+        .div_card{
+            margin: 0 auto;
         }
 
     
