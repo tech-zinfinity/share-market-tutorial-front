@@ -67,9 +67,10 @@
      background-color: rgba(234, 234, 241, 0.34);
      height: auto; 
      margin-bottom: 20px;
-     width: 100%;
-     
+     width: 100%;    
 }
+
+
 @media (min-width: 300px) and (max-width: 900px) {
     .main_div{
         display: flex; 
@@ -129,10 +130,7 @@
             justify-content: center;
             margin: 5px;
         }
-        .video{
-            width: 200px;
-            height: auto;
-        }
+       
         .vid_btn{
             width: auto;
             text-align: center;
@@ -162,7 +160,6 @@
    }
    button{
        padding: 5px;
-   }
-
-   
+   } 
 }
+
