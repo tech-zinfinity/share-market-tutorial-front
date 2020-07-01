@@ -135,7 +135,7 @@
                     <div *ngIf="(this.auth.currentUser | async) != null" >
                         <mat-card [class.mat-elevation-z8]="true" style="margin-bottom: 20px; width: fit-content; padding: 0px ;"  class="div_card"
                             *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
-                            <mat-toolbar style=" background-color: white; padding: 5px;"  
+                            <mat-toolbar style=" background-color: white; padding: 5px; justify-content: center;"  
                                 *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
                                 <button mat-stroked-button color="primary" *ngIf="!vid.active" class="vid_btn"
                                     (click)="changeVideoStatus(vid, true)"> Activate</button>
