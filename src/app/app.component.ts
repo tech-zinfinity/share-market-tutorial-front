@@ -36,6 +36,7 @@ export class AppComponent implements OnDestroy{
   }
   openSignupDialog(){
     this.dialog.open(SignUpComponent,{
+      width:'600px',
       disableClose:true
     });
   }
