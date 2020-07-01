@@ -162,7 +162,7 @@
                     <mat-card [class.mat-elevation-z8]="true" style="margin-bottom: 10px;width: fit-content;"
                         *ngIf="(this.auth.currentUser | async) === null" [hidden]="!vid.active">
                         <div [class.disabled-contenct]="vid.paid" [innerHTML]="vid.video">
-
+                            
                         </div>
                     </mat-card>
                 </div>
