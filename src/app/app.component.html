@@ -1,5 +1,5 @@
 <div style="height: 100%; width: 100%;">
-  <mat-toolbar style="background-color: white; display: flex; flex-direction: row;
+  <!-- <mat-toolbar style="background-color: white; display: flex; flex-direction: row;
     justify-content: space-between; position: fixed; z-index: 10; height: auto;box-shadow: 0 1px 1px 0 rgba(180, 181, 184, 0.28);" >
       <div  style=" cursor: pointer;" (click)="navigateToHome()">
         <img src="../assets/Logo.JPG" class="logo-img">
@@ -17,6 +17,58 @@
         <mat-menu #menu="matMenu" class="mat-menu-btn">
           <button mat-menu-item [routerLink]="['admin']" *ngIf="(auth.currentUser | async)?.roles.includes('ADMIN')">
             <mat-icon style="color: black;">https</mat-icon>Admin</button>
+        
+          <button mat-menu-item>
+            <mat-icon style="color: brown;">article</mat-icon>My Courses</button>
+          <button mat-menu-item>
+            <mat-icon style="color: blue;">face</mat-icon>Profile</button>
+          <button mat-menu-item (click) = "logOut()">
+            <mat-icon style="color: red;">power_settings_new</mat-icon>Logout</button>
+        </mat-menu>
+        
+      </div>
+  </mat-toolbar> -->
+
+<!-- bootstrap header -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light " id="mainNav">
+    <div class="container-fluid">
+      <a class="navbar-brand " style=" cursor: pointer;" (click)="navigateToHome()">
+  
+        <img src="../assets/Logo.JPG" class="logo-img" >
+      </a>
+     
+     
+      
+     
+  
+  
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link" (click)="navigateToHome()" >Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" >Careers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Profile</a>
+          </li>
+        
+        </ul>
+      </div>
+
+      <div class="div-btn" *ngIf="(auth.currentUser | async) === null">
+        <button class="btn" mat-raised-button color="primary" (click) = "openLoginDialog()">Login</button>&nbsp;&nbsp;
+        <button class="btn" mat-stroked-button color="warn" (click) = "openSignupDialog()">Sign Up</button>
+      </div>
+      <div *ngIf="(auth.currentUser | async) != null" class="div-name" >
+        <button mat-button [matMenuTriggerFor]="menu" color="primary" class="name-btn" >
+          {{(auth.currentUser | async)?.name}}
+        </button>
+        
+        <mat-menu #menu="matMenu" class="mat-menu-btn">
+          <button mat-menu-item [routerLink]="['admin']" *ngIf="(auth.currentUser | async)?.roles.includes('ADMIN')">
+            <mat-icon style="color: black; ">https</mat-icon>Admin</button>
           <!-- <button mat-menu-item> -->
           <button mat-menu-item>
             <mat-icon style="color: brown;">article</mat-icon>My Courses</button>
@@ -27,7 +79,20 @@
         </mat-menu>
         <!-- <button mat-stroked-button color="warn" (click) = "auth.logout()">Logout</button> -->
       </div>
-  </mat-toolbar>
+
+      
+      <button id="navbarCollapse" class="navbar-toggler tgl_btn" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive " aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="color:black !important;"></span>
+    </button>
+     
+
+    </div>
+  
+  </nav>
+
+
   <div style="z-index: 5; margin-left: 7%; margin-right: 7%;">
     <router-outlet></router-outlet>
   </div>
