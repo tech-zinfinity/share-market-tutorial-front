@@ -27,9 +27,18 @@
 
 
     </div>
-    <div class="location" [class.mat-elevation-z8]="true">
+    <div class="location" >
         <div style="width: 100%; padding: 5%;">
-        <img src="../../../assets/location.PNG" alt=""  width="100%" height="100%">
+        <h1 class="why">WHY INDISTOX? </h1>
+        <p style="color: blanchedalmond;">Monk-E is a 360° creative digital media organisation that unifies Talent 
+            Management, Video Production, Social Media Management and Influencer Marketing 
+            under one roof. Conceptualised by Viraj Sheth and Ranveer Allahbadia, we are an ensemble 
+            set of young creators who specialise in all things digital.
+        </p><br>
+
+        <a href="" style="cursor: pointer;"><img src="../../../assets/location.PNG" alt="location" style="height: 250px; width: 100%;"></a>
+        <button mat-raised-button class="direction" >Get Direction</button>
+        <button mat-raised-button (click)="openBottomSheet()" class="follow">Follow us</button>
     </div>
     </div>
 

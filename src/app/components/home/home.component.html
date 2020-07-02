@@ -1,13 +1,49 @@
-<div class="div-bnr">
-    <div>
+<div class="main">
+    <div class="banner">
       <img src="../assets/banner.png" class="graphic-img">
+    </div>
+    <div class="banner-side">
+      
+      <p class="title">Share Market <br><br><br> Blogs...</p><br>
+      <p>Learn the basics of share market and how to invest in Indian stock market from the experts of India's best stock Market Company IndiStox.</p><br>
+      <div id="content-desktop">
+      <section class="content" >
+        <div class="search-bar">
+          <input 
+                 type="text" 
+                 class="search-bar__input" 
+                 placeholder="Search Courses"
+                 aria-label="search"/>
+          <button 
+                  class="search-bar__submit"
+                  aria-label="submit search">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <button class="social">
+        <i class="fa fa-facebook" style="padding: 5px;"></i>
+      </button>
+      <button class="social">
+        <i class="fa fa-instagram" ></i>
+      </button>
+      </section>
+    </div>
+      
+
     </div>
 </div>
 
-<div>
+<div style="display: flex;">
   <p class="courses">Courses</p>
 </div>
    
+<div id="content-mobile">
+  <mat-form-field style="width: 100%;"  appearance="outline">
+    <mat-label>Search By Name</mat-label>
+    <input matInput  placeholder="Search Course">
+  </mat-form-field>
+</div>
+
     <div class="cardplacement">
       <div *ngFor="let element of courses"> 
         <mat-card style="margin: 30px;" [class.mat-elevation-z8]="true" class="ccrd">
