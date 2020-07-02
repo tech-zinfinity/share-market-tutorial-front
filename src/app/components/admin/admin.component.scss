@@ -91,8 +91,13 @@ h2,h3,button{
 .course-card{
     
     margin: 0 auto;
-    width: 340px; 
+    width: 360px; 
     border-left: 1px groove #3f51b5;    
+}
+
+img{
+    height: 327px; 
+    width: 327px;
 }
 
 @media (max-width: 450px) {
@@ -110,6 +115,8 @@ h2,h3,button{
        margin-bottom: 20px;
        border: none !important;
     }
+
+   
     
     
 }
@@ -155,6 +162,16 @@ h2,h3,button{
     width: 270px !important; 
     border-left: 1px groove #3f51b5 !important;
 }
+img{
+    height: auto;
+    width: 100%;
+}
+.btn{
+    width: 90% !important;
+}
+.issue{
+    margin-left: 8px !important;
+}
 }
 
 
@@ -163,7 +180,7 @@ h2,h3,button{
     .cardplacement{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        justify-content: start; 
+        justify-content: center; 
         cursor: pointer;
     }
 
@@ -173,11 +190,14 @@ h2,h3,button{
     }
     .course-card{
         margin-bottom: 20px;
-        width: 700px !important; 
+        width: 650px !important; 
         border-left: 1px groove #3f51b5 !important;
     }
-    
-    
+    img{
+        height: auto;
+        width: 100%;
+    }
+   
   }
 
 
