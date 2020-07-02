@@ -9,6 +9,8 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
+declare var $: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -69,4 +71,14 @@ export class AppComponent implements OnDestroy{
   ngOnDestroy(){
     this.currentUser.subscribe().unsubscribe();
   }
+
+  ngOnInit() {
+    $(function(){ 
+      var navMain = $(".navbar-collapse");
+ 
+      navMain.on("click", "a", null, function () {
+          navMain.collapse('hide');
+      });
+  });
+}
 }
