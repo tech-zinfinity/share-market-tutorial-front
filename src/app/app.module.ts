@@ -54,7 +54,9 @@ import { SocialBottomsheetComponent } from './components/social-bottomsheet/soci
 import { QuillModule } from 'ngx-quill';
 import { EditorPanelComponent } from './components/blog/editor-panel/editor-panel.component';
 import { EditCourseComponent } from './components/add/edit-course/edit-course.component';
-import { EditTopicComponent } from './components/add/edit-topic/edit-topic.component'
+import { EditTopicComponent } from './components/add/edit-topic/edit-topic.component';
+import { AddTagComponent } from './components/add/add-tag/add-tag.component'
+import {MatChipsModule} from '@angular/material/chips';
 
 
 @NgModule({
@@ -81,7 +83,8 @@ import { EditTopicComponent } from './components/add/edit-topic/edit-topic.compo
     SocialBottomsheetComponent,
     EditorPanelComponent,
     EditCourseComponent,
-    EditTopicComponent
+    EditTopicComponent,
+    AddTagComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +115,8 @@ import { EditTopicComponent } from './components/add/edit-topic/edit-topic.compo
     MatMomentDateModule,
     MatDividerModule,
     AngularFireStorageModule,
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    MatChipsModule
   ],
   entryComponents:[
     LoginComponent,
@@ -124,7 +128,8 @@ import { EditTopicComponent } from './components/add/edit-topic/edit-topic.compo
     AddPermissionComponent,
     AddFileComponent,
     EditCourseComponent,
-    EditTopicComponent
+    EditTopicComponent,
+    AddTagComponent
   ],
   providers: [
     AngularFirestore,
