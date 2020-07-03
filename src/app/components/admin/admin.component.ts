@@ -42,10 +42,12 @@ export class AdminComponent implements OnInit {
     });
     this.db.collection('courses').valueChanges().subscribe((data:Course[]) =>{
       data.forEach(courses =>{
-        this.storage.getPics(courses.coverPhotoImg).subscribe(tata =>{
-          courses.img = tata;
-          
-        });
+        if(courses.coverPhotoImg != undefined || courses.coverPhotoImg != null){
+          this.storage.getPics(courses.coverPhotoImg).subscribe(tata =>{
+            courses.img = tata;
+            
+          });
+        }
         this.courses = data;
       })
       //this.courses = data;

@@ -12,6 +12,8 @@ export interface Course extends Document{
     topics?: Topic[];
     coverPhotoImg?:string;
     img?:string,
-    publishDate?: any | firebase.firestore.Timestamp;
-    tags?:string[]
+    publishDate?: any | Date;
+    tags?:string[],
+    trending?:true,
+    tutor?:any
 }

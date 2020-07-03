@@ -12,6 +12,7 @@ export interface User extends Document{
     confirmpassword?:string,
     subscriptions?:string[],
     myCourses?:MyCourse[],
+    favorites?:ShortCourseInfo[]
 }
 
 export interface MyCourse {
@@ -19,4 +20,12 @@ export interface MyCourse {
     status?:string,
     title?:string,
     message?:string
+}
+
+
+export interface ShortCourseInfo{
+    courseId?:string,
+    courseTitle?:string,
+    courseDscp?:string,
+    coursePrice?:number
 }

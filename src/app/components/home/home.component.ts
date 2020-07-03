@@ -1,8 +1,9 @@
 import { FireStorageService } from './../../service/fire-storage.service';
 import { Router } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, QueryFn, Query } from '@angular/fire/firestore';
 import { Course } from './../../model/course';
 import { Component, OnInit } from '@angular/core';
+import {take} from 'rxjs/operators/';
 
 @Component({
   selector: 'app-home',
@@ -19,13 +20,15 @@ export class HomeComponent implements OnInit {
     public storage: FireStorageService) { }
 
   ngOnInit(): void {
-    
-    this.db.collection('courses', ref => ref.where('active','==', true))
-    .valueChanges().subscribe((data: Course[]) =>{
+    this.db.collection('courses', ref=>ref.where('active', '==', true)
+    .limit(5))
+    .valueChanges().pipe(take(5)).subscribe((data: Course[]) =>{
       data.forEach(courses =>{
-        this.storage.getDocument(courses.coverPhotoImg).subscribe(tata =>{
-          courses.img = tata;          
-        });
+        if(courses.coverPhotoImg != undefined || courses.coverPhotoImg != null){
+          this.storage.getDocument(courses.coverPhotoImg).subscribe(tata =>{
+            courses.img = tata;          
+          });
+        }
         this.courses = data;
       })
     });

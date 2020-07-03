@@ -395,6 +395,14 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
       })
     })
   }
+
+  addToFavorite(){
+    this.currentCourse.subscribe(data => {
+      this.currentUser.subscribe(user =>{
+
+      })
+    })
+  }
 }
 
 export interface AddvideoIn{
