@@ -59,7 +59,7 @@ export class AdminComponent implements OnInit {
   addCourse(){
     this.dialogRef.open(AddCourseComponent,{
       disableClose: true,
-      height:'90%',
+      height:'76%',
       width: '90%'
     });
   }

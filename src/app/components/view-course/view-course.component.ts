@@ -1,3 +1,5 @@
+import { EditTopicComponent } from './../add/edit-topic/edit-topic.component';
+import { EditCourseComponent } from './../add/edit-course/edit-course.component';
 import { AddVideoComponent } from './../add/add-video/add-video.component';
 import { MyCourse } from './../../model/user';
 import { Topic, VideoEntry } from './../../model/topic';
@@ -326,6 +328,40 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     if(this.currentUserSubscription != undefined || this.currentUserSubscription!= null)
     this.currentUserSubscription.unsubscribe();
+  }
+
+  openEditCourseDialog(){
+    let sub = this.currentCourse.subscribe(data =>{
+      let ref = this.dialog.open(EditCourseComponent,{
+        disableClose: true,
+        height:'76%',
+        width: '90%',
+        data: data
+      });
+      ref.componentInstance.courseUpdated.subscribe(tata =>{
+        sub.unsubscribe();
+        this.courseSubject.next(tata);
+      })
+    });
+  }
+
+  openEditTopicDialog(id: string){
+    let tata: AddvideoIn = {
+    }
+    let sub = this.currentCourse.subscribe(data =>{
+      tata.course = data;
+      tata.topicId = id;
+      let ref = this.dialog.open(EditTopicComponent,{
+        disableClose: true,
+        height:'70%',
+        width: '90%',
+        data: tata
+      });
+      ref.componentInstance.courseUpdated.subscribe(tata =>{
+        sub.unsubscribe();
+        this.courseSubject.next(tata);
+      })
+    });
   }
 }
 

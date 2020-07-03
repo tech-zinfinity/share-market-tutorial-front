@@ -56,6 +56,8 @@
                     <button mat-stroked-button color="primary" class="btn_admn" style="margin: 5px;"
                         (click)="openAddSubscription()"> Set
                         Cost</button>
+                    <button mat-stroked-button color="accent" style="margin: 5px;" class="btn_admn"
+                    (click)="openEditCourseDialog()"> Edit </button>
 
 
                     <button mat-stroked-button *ngIf="(currentCourse | async).active === null 
@@ -120,7 +122,8 @@
                             <button mat-raised-button color="warn"  class="btn_admn" (click)="deleteTopic(topic)">
                                 Delete
                             </button>
-                            <button mat-stroked-button color="primary" style="margin: 5px;" class="btn_admn"> Edit </button>
+                            <button mat-stroked-button color="primary" style="margin: 5px;" class="btn_admn"
+                            (click)="openEditTopicDialog(topic.id)"> Edit </button>
                         </div>
                         <div>
                             <button mat-stroked-button style=" margin: 5px;
