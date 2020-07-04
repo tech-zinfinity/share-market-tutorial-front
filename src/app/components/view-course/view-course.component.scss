@@ -6,8 +6,8 @@
 }
 .mat_1{
     display: flex;
-    flex-direction: row; 
-    font-family: 'Yeseva One', cursive;
+    flex-direction: column; 
+    //font-family: 'Yeseva One', cursive;
     background-color: transparent;
    
 }
@@ -33,9 +33,9 @@
 }
 .heading{
     color: black;
-     font-size: 35px;
-    
-     margin-bottom: 20px !important;
+    font-size: 35px;
+    font-family: 'Yeseva One', cursive;
+    margin-bottom: 20px !important;
      
 }
 // button{

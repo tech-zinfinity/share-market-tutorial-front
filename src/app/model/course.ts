@@ -1,3 +1,4 @@
+import { User } from './user';
 import { Topic } from './topic';
 import { SubscriptionModel } from './subscription';
 import { Document } from './../service/fire.service';
@@ -15,5 +16,9 @@ export interface Course extends Document{
     publishDate?: any | Date;
     tags?:string[],
     trending?:true,
-    tutor?:any
+    tutor?:any,
+    learnings?:string[],
+    finalDuration?:number,
+    temntutor?:User,
+    advantages?:string[]
 }

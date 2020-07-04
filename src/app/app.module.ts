@@ -57,6 +57,8 @@ import { EditCourseComponent } from './components/add/edit-course/edit-course.co
 import { EditTopicComponent } from './components/add/edit-topic/edit-topic.component';
 import { AddTagComponent } from './components/add/add-tag/add-tag.component'
 import {MatChipsModule} from '@angular/material/chips';
+import { AddLearningComponent } from './components/add/add-learning/add-learning.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -84,7 +86,8 @@ import {MatChipsModule} from '@angular/material/chips';
     EditorPanelComponent,
     EditCourseComponent,
     EditTopicComponent,
-    AddTagComponent
+    AddTagComponent,
+    AddLearningComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +119,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatDividerModule,
     AngularFireStorageModule,
     QuillModule.forRoot(),
-    MatChipsModule
+    MatChipsModule,
+    HttpClientModule
   ],
   entryComponents:[
     LoginComponent,
@@ -129,7 +133,8 @@ import {MatChipsModule} from '@angular/material/chips';
     AddFileComponent,
     EditCourseComponent,
     EditTopicComponent,
-    AddTagComponent
+    AddTagComponent,
+    AddLearningComponent
   ],
   providers: [
     AngularFirestore,

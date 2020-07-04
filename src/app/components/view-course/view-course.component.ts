@@ -1,7 +1,8 @@
+import { AddLearningComponent } from './../add/add-learning/add-learning.component';
 import { EditTopicComponent } from './../add/edit-topic/edit-topic.component';
 import { EditCourseComponent } from './../add/edit-course/edit-course.component';
 import { AddVideoComponent } from './../add/add-video/add-video.component';
-import { MyCourse } from './../../model/user';
+import { MyCourse, ShortCourseInfo, User } from './../../model/user';
 import { Topic, VideoEntry } from './../../model/topic';
 import { AddFileComponent } from './../add/add-file/add-file.component';
 import { SubscriptionModel } from './../../model/subscription';
@@ -65,7 +66,14 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
               nata.videolink.forEach(rata =>{
                 rata.video = this.sanitized.bypassSecurityTrustHtml(rata.embedLink);
               })
-            })
+            });
+            if(kata.tutor != null || kata.tutor != undefined){
+              this.db.doc(kata.tutor).valueChanges().subscribe(cata =>{
+                kata.temntutor = cata;
+              }, err =>{
+                console.log(err);
+              })
+            }
           })
           this.courseSubject.next(data[0]);
           let sub = this.auth.currentUser.subscribe(user =>{
@@ -391,15 +399,87 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
         this.courseSubject.next(tata);
         this.snackbar.open('tag removed successfully', 'close', {duration: 2000});
       }, err=>{
-
+        this.snackbar.open('Backend is down, connect with Admin', 'close', {duration:2000})
       })
     })
   }
 
   addToFavorite(){
-    this.currentCourse.subscribe(data => {
-      this.currentUser.subscribe(user =>{
+    let sub1 = this.currentCourse.subscribe(data => {
+      let sub2 = this.currentUser.subscribe(user =>{
+        let body : ShortCourseInfo = {
+          courseDscp: data.dscp,
+          courseId: data.id,
+          coursePrice: data.subscription.amount,
+          courseTitle: data.title
+        }
+        this.fire.getSingleDocumentById<User>(user.id, 'users').subscribe(tata =>{
+          sub2.unsubscribe();
+          if(tata.favorites === undefined || tata.favorites === null){
+            tata.favorites = []
+          }
+          tata.favorites.push(body);
+          this.fire.updateDocument(tata, 'users').subscribe(nata =>{
+            sub1.unsubscribe();
+            this.auth.publishUser(nata);
+            this.snackbar.open('Course added to favorites', 'close', {duration: 2000});
 
+          },err =>{
+            this.snackbar.open('Error in adding course in favorite', 'close', {duration: 2000});
+
+          })
+        }, err=>{
+          this.snackbar.open('Error in adding course in favorite', 'close', {duration: 2000});
+
+        })
+      })
+    })
+  }
+
+  openAddLearningDialog(){
+    let sub = this.currentCourse.subscribe(data =>{
+      let ref = this.dialog.open(AddLearningComponent,{
+        disableClose: true,
+        height:'fit-content',
+        width: '500px',
+        data: data.id
+      });
+      ref.componentInstance.added.subscribe(tata =>{
+        sub.unsubscribe();
+        this.courseSubject.next(tata);
+      })
+    });
+  }
+
+  removeLearning(learning: string){
+    let sub = this.currentCourse.subscribe(data =>{
+      data.learnings.splice(data.tags.indexOf(learning), 1);
+      this.fire.updateDocument(data, 'courses').subscribe(tata =>{
+        sub.unsubscribe();
+        this.courseSubject.next(tata);
+        this.snackbar.open('Larning removed successfully', 'close', {duration: 2000});
+      }, err=>{
+        this.snackbar.open('Backend is down, connect with Admin', 'close', {duration:2000})
+      })
+    })
+  }
+
+  publishTutor(){
+    let sub = this.currentCourse.subscribe(course =>{
+      let sub2 = this.currentUser.subscribe(user =>{
+        // let ref = this.db.collection('users', ref => ref.where('id', '==',user.id));
+        let ref2 = this.db.doc('users/'+user.id).ref.path;
+        console.log((ref2));
+        course.tutor = ref2;
+        this.db.collection('courses').doc(course.id).update(JSON.parse(
+          JSON.stringify(course))).then(obj =>{
+          sub.unsubscribe();
+          sub2.unsubscribe();
+          this.snackbar.open('publihed as user', 'close', {duration:1500});
+        }).catch(err =>{
+          console.log(err);
+          
+        })
       })
     })
   }
