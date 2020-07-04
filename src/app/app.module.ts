@@ -51,6 +51,12 @@ import { AddVideoComponent } from './components/add/add-video/add-video.componen
 import { FooterComponent } from './components/footer/footer.component';
 import { ViewAllSubscriptionResuestComponent } from './components/view-all-subscription-resuest/view-all-subscription-resuest.component';
 import { SocialBottomsheetComponent } from './components/social-bottomsheet/social-bottomsheet.component';
+import { QuillModule } from 'ngx-quill';
+import { EditorPanelComponent } from './components/blog/editor-panel/editor-panel.component';
+import { EditCourseComponent } from './components/add/edit-course/edit-course.component';
+import { EditTopicComponent } from './components/add/edit-topic/edit-topic.component';
+import { AddTagComponent } from './components/add/add-tag/add-tag.component'
+import {MatChipsModule} from '@angular/material/chips';
 
 
 @NgModule({
@@ -74,7 +80,11 @@ import { SocialBottomsheetComponent } from './components/social-bottomsheet/soci
     FooterComponent,
     ViewAllSubscriptionResuestComponent,
     ContactusComponent,
-    SocialBottomsheetComponent
+    SocialBottomsheetComponent,
+    EditorPanelComponent,
+    EditCourseComponent,
+    EditTopicComponent,
+    AddTagComponent
   ],
   imports: [
     BrowserModule,
@@ -105,6 +115,8 @@ import { SocialBottomsheetComponent } from './components/social-bottomsheet/soci
     MatMomentDateModule,
     MatDividerModule,
     AngularFireStorageModule,
+    QuillModule.forRoot(),
+    MatChipsModule
   ],
   entryComponents:[
     LoginComponent,
@@ -114,7 +126,10 @@ import { SocialBottomsheetComponent } from './components/social-bottomsheet/soci
     AddTopicComponent,
     AddSubscriptionComponent,
     AddPermissionComponent,
-    AddFileComponent
+    AddFileComponent,
+    EditCourseComponent,
+    EditTopicComponent,
+    AddTagComponent
   ],
   providers: [
     AngularFirestore,

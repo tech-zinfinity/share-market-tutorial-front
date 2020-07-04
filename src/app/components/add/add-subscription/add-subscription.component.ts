@@ -39,7 +39,7 @@ export class AddSubscriptionComponent implements OnInit {
     //console.log( firebase.firestore.Timestamp.fromDate(value.expiry.toDate()));
     let subBody:SubscriptionModel = {
       amount: value.amount,
-      expiry: firebase.firestore.Timestamp.fromDate(value.expiry.toDate())
+      expiry: value.expiry.toDate()
     }
 
     this.fire.getSingleDocumentById(this.courseid, 'courses').subscribe((data:Course) =>{

@@ -1,3 +1,5 @@
+import { EditTopicComponent } from './../add/edit-topic/edit-topic.component';
+import { EditCourseComponent } from './../add/edit-course/edit-course.component';
 import { AddVideoComponent } from './../add/add-video/add-video.component';
 import { MyCourse } from './../../model/user';
 import { Topic, VideoEntry } from './../../model/topic';
@@ -18,6 +20,9 @@ import { FireService } from 'src/app/service/fire.service';
 import { LoginComponent } from '../login/login.component';
 import { FireStorageService } from 'src/app/service/fire-storage.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import * as firebase from 'firebase/app';
+import { AddTagComponent } from '../add/add-tag/add-tag.component';
+
 
 @Component({
   selector: 'app-view-course',
@@ -54,7 +59,7 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
       this.id = params['id'];
       this.fire.getCollectionWithCondition('courses', 'id', '==', this.id).subscribe((data: Course[])=>{
         if(data.length >0){
-          data.forEach(kata =>{
+          data.forEach(kata =>{            
             if(kata.topics != undefined || kata.topics != null)
             kata.topics.forEach(nata =>{
               nata.videolink.forEach(rata =>{
@@ -184,6 +189,7 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
   publishCourse(bool: boolean){
     this.fire.getSingleDocumentById(this.id,'courses').subscribe((data: Course) =>{
       data.active = bool;
+      data.publishDate = new Date();
       this.fire.updateDocument(data, 'courses').subscribe(tata =>{
         this.snackbar.open('Course '+this.id+ ' published successfully','close', {duration:2000} );
         this.ngOnInit();
@@ -326,6 +332,76 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     if(this.currentUserSubscription != undefined || this.currentUserSubscription!= null)
     this.currentUserSubscription.unsubscribe();
+  }
+
+  openEditCourseDialog(){
+    let sub = this.currentCourse.subscribe(data =>{
+      let ref = this.dialog.open(EditCourseComponent,{
+        disableClose: true,
+        height:'76%',
+        width: '90%',
+        data: data
+      });
+      ref.componentInstance.courseUpdated.subscribe(tata =>{
+        sub.unsubscribe();
+        this.courseSubject.next(tata);
+      })
+    });
+  }
+
+  openEditTopicDialog(id: string){
+    let tata: AddvideoIn = {
+    }
+    let sub = this.currentCourse.subscribe(data =>{
+      tata.course = data;
+      tata.topicId = id;
+      let ref = this.dialog.open(EditTopicComponent,{
+        disableClose: true,
+        height:'70%',
+        width: '90%',
+        data: tata
+      });
+      ref.componentInstance.courseUpdated.subscribe(tata =>{
+        sub.unsubscribe();
+        this.courseSubject.next(tata);
+      })
+    });
+  }
+
+  openAddTagDialog(){
+    let sub = this.currentCourse.subscribe(data =>{
+      let ref = this.dialog.open(AddTagComponent,{
+        disableClose: true,
+        height:'fit-content',
+        width: 'fit-content',
+        data: data.id
+      });
+      ref.componentInstance.added.subscribe(tata =>{
+        sub.unsubscribe();
+        this.courseSubject.next(tata);
+      })
+    });
+  }
+
+  removeTag(tag: string){
+    let sub = this.currentCourse.subscribe(data =>{
+      data.tags.splice(data.tags.indexOf(tag), 1);
+      this.fire.updateDocument(data, 'courses').subscribe(tata =>{
+        sub.unsubscribe();
+        this.courseSubject.next(tata);
+        this.snackbar.open('tag removed successfully', 'close', {duration: 2000});
+      }, err=>{
+
+      })
+    })
+  }
+
+  addToFavorite(){
+    this.currentCourse.subscribe(data => {
+      this.currentUser.subscribe(user =>{
+
+      })
+    })
   }
 }
 

@@ -4,6 +4,8 @@
         <mat-card class="mat_1">
             <span class="heading">{{(currentCourse | async).title}}</span>
         </mat-card>
+        <span style="margin-top: 10px;"> Published On : 
+            {{(currentCourse | async).publishDate | date: 'medium'}}</span>
         <mat-card class="mat_2" [class.mat-elevation-z8]="true"
             *ngIf="(currentCourse | async).subscription != undefined">
             <span style="font-size: 25px;">
@@ -43,6 +45,17 @@
         </mat-card>
 
     </div>
+    <mat-chip-list *ngFor="let tag of (currentCourse | async).tags">
+        <mat-chip style="margin-bottom: 10px; background-color: black; color: cyan; 
+        font-size: 20px; border: solid rgba(0, 255, 255, 0.646); padding: 20px;">
+            {{tag}}
+            &nbsp;
+            <div *ngIf="(this.auth.currentUser | async) != null">
+                <mat-icon (click)="removeTag(tag)" 
+                *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">cancel</mat-icon>    
+            </div>
+        </mat-chip>
+    </mat-chip-list>
     <div *ngIf="(this.auth.currentUser | async) != null" style="margin-top: 20px;">
         <mat-toolbar *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')" class="mat_btn">
             <!-- <div *ngIf="(currentCourse | async).subscription != undefined">
@@ -56,6 +69,11 @@
                     <button mat-stroked-button color="primary" class="btn_admn" style="margin: 5px;"
                         (click)="openAddSubscription()"> Set
                         Cost</button>
+                    <button mat-stroked-button color="accent" style="margin: 5px;" class="btn_admn"
+                    (click)="openEditCourseDialog()"> Edit </button>
+
+                    <button mat-stroked-button color="primary" style="margin: 5px;" class="btn_admn"
+                    (click)="openAddTagDialog()"> Add Tags </button>
 
 
                     <button mat-stroked-button *ngIf="(currentCourse | async).active === null 
@@ -120,7 +138,8 @@
                             <button mat-raised-button color="warn"  class="btn_admn" (click)="deleteTopic(topic)">
                                 Delete
                             </button>
-                            <button mat-stroked-button color="primary" style="margin: 5px;" class="btn_admn"> Edit </button>
+                            <button mat-stroked-button color="primary" style="margin: 5px;" class="btn_admn"
+                            (click)="openEditTopicDialog(topic.id)"> Edit </button>
                         </div>
                         <div>
                             <button mat-stroked-button style=" margin: 5px;

@@ -1,0 +1,14 @@
+<p style="margin-top: 100px;">editor-panel works!</p>
+
+<quill-editor [styles]="{height: '500px'}"
+[(ngModel)]="content"></quill-editor>
+
+<mat-card style="margin-top: 50px;">
+    <pre><code>{{ content }}</code></pre>
+</mat-card>
+
+<mat-card style="margin-top: 50px;" [innerHTML]="this.sanitized.bypassSecurityTrustHtml(content)">
+    
+</mat-card>
+
+<blockquote><strong class="ql-size-huge">somthing</strong></blockquote>

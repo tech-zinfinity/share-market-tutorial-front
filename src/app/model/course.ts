@@ -1,6 +1,8 @@
 import { Topic } from './topic';
 import { SubscriptionModel } from './subscription';
 import { Document } from './../service/fire.service';
+import * as firebase from 'firebase/app';
+
 export interface Course extends Document{
     
     title?:string;
@@ -9,5 +11,9 @@ export interface Course extends Document{
     active?: boolean;
     topics?: Topic[];
     coverPhotoImg?:string;
-    img?:string
+    img?:string,
+    publishDate?: any | Date;
+    tags?:string[],
+    trending?:true,
+    tutor?:any
 }
