@@ -65,7 +65,7 @@
         <button mat-button [matMenuTriggerFor]="menu" color="primary" class="name-btn" >
           {{(auth.currentUser | async)?.name}}
         </button>
-        
+        <div>
         <mat-menu #menu="matMenu" class="mat-menu-btn">
           <button mat-menu-item [routerLink]="['admin']" *ngIf="(auth.currentUser | async)?.roles.includes('ADMIN')">
             <mat-icon style="color: black; ">https</mat-icon>Admin</button>
@@ -77,6 +77,7 @@
           <button mat-menu-item (click) = "logOut()">
             <mat-icon style="color: red;">power_settings_new</mat-icon>Logout</button>
         </mat-menu>
+      </div>
         <!-- <button mat-stroked-button color="warn" (click) = "auth.logout()">Logout</button> -->
       </div>
 
