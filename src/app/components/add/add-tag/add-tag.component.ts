@@ -1,3 +1,4 @@
+import { CourseService } from 'src/app/service/course.service';
 import { Course } from './../../../model/course';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -24,7 +25,8 @@ export class AddTagComponent implements OnInit {
     private fb: FormBuilder,
     private db: AngularFirestore,
     private snackbar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public courseId: string) {       
+    @Inject(MAT_DIALOG_DATA) public courseId: string,
+    private courseservice: CourseService) {       
     }
 
   tagForm: FormGroup;
@@ -60,7 +62,7 @@ export class AddTagComponent implements OnInit {
   }
 
   updateCourse(){
-    let sub  = this.fire.getSingleDocumentById<Course>(this.courseId, 'courses').subscribe(data =>{
+    let sub  = this.courseservice.getSingleDocumentById<Course>(this.courseId, 'courses').subscribe(data =>{
       if(data.tags === undefined || data.tags ===null){
         data.tags = []
       }

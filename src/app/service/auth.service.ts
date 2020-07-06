@@ -1,8 +1,10 @@
+import { Course } from './../model/course';
 import { Router } from '@angular/router';
 import { User } from './../model/user';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +12,18 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
 
   constructor(private router: Router,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    private db: AngularFirestore) { }
+
   dummy: User ={};
   userSource = new BehaviorSubject(this.dummy);
   currentUser = this.userSource.asObservable();
   nowUser: User;
 
+  dummycourse: Course = {}
+  courseSoure  = new BehaviorSubject([this.dummycourse]);
+  courseObs = this.courseSoure.asObservable();
+  
   publishUser(user: User){
     user.password = '';
     user.confirmpassword = '';
@@ -59,5 +67,18 @@ export class AuthService {
       console.log(err);
       
     });
+  }
+
+  publishAllCourses(){
+    this.db.collection('courses').valueChanges().subscribe(data =>{
+      console.log('publishAllCourses()');
+      
+      this.courseSoure.next(data);
+    }, err =>{
+
+    }, () =>{
+      console.log('completed');
+      
+    })
   }
 }

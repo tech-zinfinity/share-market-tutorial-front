@@ -1,12 +1,15 @@
+import { AuthService } from './../../../service/auth.service';
 import { Course } from './../../../model/course';
-import { learnings } from './../add-learning/add-learning.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FireService } from './../../../service/fire.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
+import { CourseService } from 'src/app/service/course.service';
 
+export interface learnings{
+  learning?:string
+}
 @Component({
   selector: 'app-add-learning',
   templateUrl: './add-learning.component.html',
@@ -20,7 +23,9 @@ export class AddLearningComponent implements OnInit {
     private fire: FireService,
     private fb: FormBuilder,
     private snackbar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public courseId: string) {       
+    @Inject(MAT_DIALOG_DATA) public courseId: string,
+    private auth: AuthService,
+    private courseservice: CourseService) {       
     }
 
   learningForm: FormGroup;
@@ -56,7 +61,7 @@ export class AddLearningComponent implements OnInit {
   }
 
   updateCourse(){
-    let sub  = this.fire.getSingleDocumentById<Course>(this.courseId, 'courses').subscribe(data =>{
+    let sub  = this.courseservice.getSingleDocumentById<Course>(this.courseId, 'courses').subscribe(data =>{
       if(data.learnings === undefined || data.learnings ===null){
         data.learnings = []
       }

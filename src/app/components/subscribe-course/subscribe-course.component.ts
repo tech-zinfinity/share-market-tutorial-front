@@ -1,3 +1,4 @@
+import { CourseService } from './../../service/course.service';
 import { User } from './../../model/user';
 import { PaymentRequestStatus } from './../../constants/constants';
 import { RequestSubcription } from './../../model/request-subcription';
@@ -27,7 +28,8 @@ export class SubscribeCourseComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private snackbar: MatSnackBar,
     private fb: FormBuilder,
-    private router: Router) { }
+    private router: Router,
+    private courseservice: CourseService) { }
   
   id: string;
   course: Course = {};
@@ -43,7 +45,7 @@ export class SubscribeCourseComponent implements OnInit, OnDestroy {
     
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.fire.getSingleDocumentById<Course>(this.id, 'courses').subscribe(data =>{
+      this.courseservice.getSingleDocumentById<Course>(this.id, 'courses').subscribe(data =>{
         this.course = data;
         this.courseSubject.next(data);
         
