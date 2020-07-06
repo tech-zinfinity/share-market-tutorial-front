@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AdminGuard } from './guards/admin.guard';
 import { FooterComponent } from './components/footer/footer.component';
 import { EditorPanelComponent } from './components/blog/editor-panel/editor-panel.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   ]},
   {path:'course/:id', component:ViewCourseComponent},
   {path:'subscription/:id', component:SubscribeCourseComponent},
-  {path:'footer',component:FooterComponent}
+  {path:'footer',component:FooterComponent},
+  {path: 'search', component: SearchComponent}
 
 ];
 

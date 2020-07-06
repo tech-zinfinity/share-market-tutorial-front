@@ -28,7 +28,7 @@
               <mat-list role="list" *ngFor="let per of element.permissions" style="width: 90%;">
                 <mat-list-item role="listitem"
                 style="display: flex; width: 100%; flex-direction: row; justify-content: space-between;">
-                  <div style="">{{per}}</div>
+                  <div >{{per}}</div>
                   <button mat-icon-button style="margin-left: 20px;"(click)="deletePermission(element.id, per)">
                     <mat-icon style="font-size: 18px; color: red;"
                     >delete</mat-icon>

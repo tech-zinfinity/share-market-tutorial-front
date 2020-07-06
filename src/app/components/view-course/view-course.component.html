@@ -2,7 +2,7 @@
     <br>
     <div class="main_div">
         <mat-card class="mat_1">
-            <span class="heading">{{(currentCourse | async).title}}</span>
+            <h2 class="heading">{{(currentCourse | async).title}}</h2>
         </mat-card>
         <span style="margin-top: 10px;"> Published On : 
             {{(currentCourse | async).publishDate | date: 'medium'}}</span>

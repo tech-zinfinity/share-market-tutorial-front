@@ -57,6 +57,7 @@ import { EditCourseComponent } from './components/add/edit-course/edit-course.co
 import { EditTopicComponent } from './components/add/edit-topic/edit-topic.component';
 import { AddTagComponent } from './components/add/add-tag/add-tag.component'
 import {MatChipsModule} from '@angular/material/chips';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import {MatChipsModule} from '@angular/material/chips';
     EditorPanelComponent,
     EditCourseComponent,
     EditTopicComponent,
-    AddTagComponent
+    AddTagComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
