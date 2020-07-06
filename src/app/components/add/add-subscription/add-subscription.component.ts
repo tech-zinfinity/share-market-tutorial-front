@@ -1,3 +1,4 @@
+import { CourseService } from 'src/app/service/course.service';
 import { Course } from './../../../model/course';
 import { SubscriptionModel } from './../../../model/subscription';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -25,7 +26,8 @@ export class AddSubscriptionComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public courseid,
     private fire: FireService,
     private snackbar: MatSnackBar,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private courseservice: CourseService) { }
 
 
   ngOnInit(): void {
@@ -42,7 +44,7 @@ export class AddSubscriptionComponent implements OnInit {
       expiry: value.expiry.toDate()
     }
 
-    this.fire.getSingleDocumentById(this.courseid, 'courses').subscribe((data:Course) =>{
+    this.courseservice.getSingleDocumentById(this.courseid, 'courses').subscribe((data:Course) =>{
         data.subscription = subBody;
         let sub4 = this.fire.updateDocument(data, 'courses').subscribe(tata =>{
           

@@ -27,5 +27,6 @@ export interface ShortCourseInfo{
     courseId?:string,
     courseTitle?:string,
     courseDscp?:string,
-    coursePrice?:number
+    coursePrice?:number,
+    courseCover?:string
 }

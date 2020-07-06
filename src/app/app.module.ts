@@ -59,7 +59,7 @@ import { AddTagComponent } from './components/add/add-tag/add-tag.component'
 import {MatChipsModule} from '@angular/material/chips';
 import { AddLearningComponent } from './components/add/add-learning/add-learning.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { SearchCourseComponent } from './components/search-course/search-course.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +87,8 @@ import { HttpClientModule } from '@angular/common/http';
     EditCourseComponent,
     EditTopicComponent,
     AddTagComponent,
-    AddLearningComponent
+    AddLearningComponent,
+    SearchCourseComponent
   ],
   imports: [
     BrowserModule,
@@ -120,7 +121,8 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireStorageModule,
     QuillModule.forRoot(),
     MatChipsModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   entryComponents:[
     LoginComponent,
