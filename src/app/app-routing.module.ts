@@ -1,3 +1,4 @@
+import { SearchCourseComponent } from './components/search-course/search-course.component';
 import { SubscribeCourseComponent } from './components/subscribe-course/subscribe-course.component';
 import { ViewCourseComponent } from './components/view-course/view-course.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -23,8 +24,9 @@ const routes: Routes = [
   {path:'course/:id', component:ViewCourseComponent},
   {path:'subscription/:id', component:SubscribeCourseComponent},
   {path:'footer',component:FooterComponent},
-  {path: 'search', component: SearchComponent}
+  {path: 'search', component: SearchComponent},
 
+  {path:'search/:searchstring', component: SearchCourseComponent}
 ];
 
 @NgModule({

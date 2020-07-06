@@ -1,3 +1,4 @@
+import { CourseService } from './../../../service/course.service';
 import { AuthService } from './../../../service/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Course } from './../../../model/course';
@@ -38,7 +39,8 @@ export class AddTopicComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public courseid,
     private fire: FireService,
     private snackbar: MatSnackBar,
-    private auth: AuthService) { 
+    private auth: AuthService,
+    private courseservice: CourseService) { 
       //console.log(courseid);
       
     }
@@ -92,7 +94,7 @@ export class AddTopicComponent implements OnInit {
       topicbody.videolink.push(tata);
     })
 
-    this.fire.getSingleDocumentById(this.courseid,'courses').subscribe((data:Course) =>{
+    this.courseservice.getSingleDocumentById(this.courseid,'courses').subscribe((data:Course) =>{
       data.topics === undefined || data.topics === null ? data.topics = [] : data.topics;
       data.topics.push(topicbody);
       this.fire.updateDocument(data,'courses').subscribe(tata =>{

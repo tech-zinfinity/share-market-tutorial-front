@@ -1,0 +1,35 @@
+<mat-toolbar style="display: flex; justify-content: flex-end;" color="primary">
+    <mat-icon style="cursor: pointer;" (click)="dialogRef.close()">close</mat-icon>
+</mat-toolbar>
+<div style="display: flex;
+justify-content: center; flex-direction: row;">
+        <form [formGroup] = "learningForm" style="display: flex; flex-direction: column;
+        justify-content: center; width: 90%; margin-top: 2%;">
+            <div style="display: flex; flex-direction: row;">
+                <mat-form-field appearance="outline" style="width: 80%;">
+                    <mat-label >learning</mat-label>
+                    <input matInput placeholder="learning" formControlName="learning">
+                </mat-form-field>
+                <button mat-icon-button (click)="addlearning(learningForm.value)">
+                    <mat-icon matSuffix style="color: red;">add</mat-icon>
+                </button>
+            </div>
+
+            <mat-chip-list *ngFor="let learning of learnings">
+                <mat-chip style="margin-bottom: 10px;">
+                  {{learning}}
+                  &nbsp;
+                  <mat-icon (click)="removelearning(learning)">cancel</mat-icon>
+                </mat-chip>
+            </mat-chip-list>
+            <!-- <div >
+                {{learning}}
+            </div> -->
+            <button mat-raised-button color="primary" 
+            [disabled]="!enableSubmit" (click)="updateCourse()"
+            style="width: 50%; float: right; margin-top: 5px; margin-bottom: 10px;">
+                Add
+            </button>
+
+        </form>
+</div> 

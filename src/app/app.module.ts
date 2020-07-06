@@ -59,6 +59,9 @@ import { AddTagComponent } from './components/add/add-tag/add-tag.component'
 import {MatChipsModule} from '@angular/material/chips';
 import { SearchComponent } from './components/search/search.component';
 
+import { AddLearningComponent } from './components/add/add-learning/add-learning.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SearchCourseComponent } from './components/search-course/search-course.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +89,9 @@ import { SearchComponent } from './components/search/search.component';
     EditCourseComponent,
     EditTopicComponent,
     AddTagComponent,
-    SearchComponent
+    SearchComponent,
+    AddLearningComponent,
+    SearchCourseComponent
   ],
   imports: [
     BrowserModule,
@@ -118,7 +123,9 @@ import { SearchComponent } from './components/search/search.component';
     MatDividerModule,
     AngularFireStorageModule,
     QuillModule.forRoot(),
-    MatChipsModule
+    MatChipsModule,
+    HttpClientModule,
+    
   ],
   entryComponents:[
     LoginComponent,
@@ -131,7 +138,8 @@ import { SearchComponent } from './components/search/search.component';
     AddFileComponent,
     EditCourseComponent,
     EditTopicComponent,
-    AddTagComponent
+    AddTagComponent,
+    AddLearningComponent
   ],
   providers: [
     AngularFirestore,

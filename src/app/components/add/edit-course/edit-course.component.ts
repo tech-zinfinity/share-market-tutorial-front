@@ -32,7 +32,8 @@ export class EditCourseComponent implements OnInit {
       'title':[this.data.title, Validators.required],
       'dscp':[this.data.dscp, Validators.required],
       'active':[this.data.active],
-      'coverPhotoImg':[this.data.coverPhotoImg]
+      'coverPhotoImg':[this.data.coverPhotoImg],
+      'finalDuration':[this.data.finalDuration]
     });
   }
 
@@ -48,6 +49,7 @@ export class EditCourseComponent implements OnInit {
     });
     this.data.dscp = this.desctiption;
     this.data.title = value.title;
+    this.data.finalDuration = value.finalDuration;
     this.fire.updateDocument(this.data, 'courses').subscribe(data =>{
       this.dialogRef.close();
       this.courseUpdated.emit(data);

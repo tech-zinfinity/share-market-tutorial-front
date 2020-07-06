@@ -80,5 +80,6 @@ export class AppComponent implements OnDestroy{
           navMain.collapse('hide');
       });
   });
+  this.auth.publishAllCourses();
 }
 }
