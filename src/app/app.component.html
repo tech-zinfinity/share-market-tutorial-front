@@ -1,5 +1,5 @@
 <div style="height: 100%; width: 100%;">
-  <!-- <mat-toolbar style="background-color: white; display: flex; flex-direction: row;
+  <mat-toolbar style="background-color:white; display: flex; flex-direction: row; top: 0;
     justify-content: space-between; position: fixed; z-index: 10; height: auto;box-shadow: 0 1px 1px 0 rgba(180, 181, 184, 0.28);" >
       <div  style=" cursor: pointer;" (click)="navigateToHome()">
         <img src="../assets/Logo.JPG" class="logo-img">
@@ -20,6 +20,8 @@
         
           <button mat-menu-item>
             <mat-icon style="color: brown;">article</mat-icon>My Courses</button>
+          <button mat-menu-item [routerLink]="['admin/editblog/0']" *ngIf="(auth.currentUser | async)?.roles.includes('ADMIN')">
+              <mat-icon style="color: brown;">history_edu</mat-icon>Write Blog</button>
           <button mat-menu-item>
             <mat-icon style="color: blue;">face</mat-icon>Profile</button>
           <button mat-menu-item (click) = "logOut()">
@@ -27,21 +29,15 @@
         </mat-menu>
         
       </div>
-  </mat-toolbar> -->
+  </mat-toolbar>
 
 <!-- bootstrap header -->
-  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light " id="mainNav">
+  <!-- <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light " id="mainNav">
     <div class="container-fluid">
       <a class="navbar-brand " style=" cursor: pointer;" (click)="navigateToHome()">
   
         <img src="../assets/Logo.JPG" class="logo-img" >
       </a>
-     
-     
-      
-     
-  
-  
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item ">
@@ -69,7 +65,7 @@
         <mat-menu #menu="matMenu" class="mat-menu-btn">
           <button mat-menu-item [routerLink]="['admin']" *ngIf="(auth.currentUser | async)?.roles.includes('ADMIN')">
             <mat-icon style="color: black; ">https</mat-icon>Admin</button>
-          <!-- <button mat-menu-item> -->
+         
           <button mat-menu-item>
             <mat-icon style="color: brown;">article</mat-icon>My Courses</button>
           <button mat-menu-item [routerLink]="['admin/editblog/0']" *ngIf="(auth.currentUser | async)?.roles.includes('ADMIN')">
@@ -80,7 +76,7 @@
             <mat-icon style="color: red;">power_settings_new</mat-icon>Logout</button>
         </mat-menu>
       </div>
-        <!-- <button mat-stroked-button color="warn" (click) = "auth.logout()">Logout</button> -->
+      
       </div>
 
       
@@ -93,7 +89,7 @@
 
     </div>
   
-  </nav>
+  </nav> -->
 
 
   <div style="z-index: 5; margin-left: 7%; margin-right: 7%;">

@@ -46,10 +46,10 @@ button{
   
 }
 
-@media (min-width: 350px)and(max-width: 450px) {
+@media (min-width: 300px)and(max-width: 450px) {
     .logo-img{
         height: auto; 
-        width: 90px;
+        width: 120px;
         margin-left: 2%;
     }
     .btn{
@@ -67,157 +67,46 @@ button{
 
 }
 
-@media (max-width: 350px){
-    .logo-img{
-        height: auto; 
-        width: 90px;
-        margin-left: 0;
-    }
-    .div-btn{
-       margin-left: -20px;
-    }
-    .btn{
+// @media (max-width: 350px){
+//     .logo-img{
+//         height: auto; 
+//         width: 90px;
+//         margin-left: 0;
+//     }
+//     .div-btn{
+//        margin-left: -20px;
+//     }
+//     .btn{
        
-         font-size: 11px;
-         text-align: center !important;  
-     }
-     .name-btn{
-        font-size: 11px;
-    }
-    .tgl_btn{
-      font-size: 10px;
-    }
+//          font-size: 11px;
+//          text-align: center !important;  
+//      }
+//      .name-btn{
+//         font-size: 11px;
+//     }
+//     .tgl_btn{
+//       font-size: 10px;
+//     }
 
     
-}
+// }
 
 
-// bootrsap header
+// // bootrsap header
 
-.navbar{
-    background-color: white !important;
-  }
-  .main-menubox {
-    display: none;
-  }
-  
-  .main-menu:hover .main-menubox{
-    display: block;
-  }
-  
-  nav{
-   
-        
-  }
-  .nav-link{
-    color: black !important;
-  }
-  
-//   @media(min-width:1000px){
-  
-  
-//   .scrolled-nav .pmt_btn{
-//     display: contents !important;
-//     margin-top: 60px !important;
-//     text-align: center;  
+// .navbar{
+//     background-color: white !important;
+//   }
+//   .main-menubox {
+//     display: none;
 //   }
   
-//   .scrolled-nav .main_btn{
-    
-//     align-self: center !important;
-   
-//    padding: 5px;
-//     border-radius: 15px !important;
-//     padding-left: 10px !important;
-//     padding-right: 10px !important;
-   
-//     text-decoration: none !important;
-//     background-color: black !important;
-//     color:#ffffff !important;
-//     font-family: arial-unicode !important;
-//     border: 2px solid #ffffff;
+//   .main-menu:hover .main-menubox{
+//     display: block;
 //   }
-//   .scrolled-nav .main_btn:hover{
-//     border: 2px solid #f96e12 !important;
-   
-   
-//   }
-//   .scrolled-nav .btn_id{
-   
-//     height: 30px !important;
-//     text-decoration: none !important;
+  
+  
+//   .nav-link{
 //     color: black !important;
-//     font-weight: bold !important;
-//   }
 //   }
   
-//   @media (min-width:750px)
-//   and (max-width:980px){
-    
-    
-//     .scrolled-nav .logo{
-//       width: auto !important;
-//       height: 50px !important;
-//     }
-//     .scrolled-nav .pmt_btn_ipad{
-//       display: contents !important;
-//       margin-top: 60px !important;
-//     }
-    
-//     .scrolled-nav .main_btn_ipad{
-//       // margin-top: 15px !important;
-//       align-self: center !important;
-   
-   
-//     border-radius: 15px !important;
-//     padding-left: 10px !important;
-//     padding-right: 10px !important;
-//     text-decoration: none !important;
-//     font-family: arial-unicode !important;
-//     background-color: black !important;
-//     color: white !important;
-//     }
-//     .scrolled-nav .main_btn_ipad:hover{
-//       color: #ffffff !important;
-   
-//     background-color: #367d01 !important ;
-//     }
-//     .scrolled-nav .btn_id{
-     
-//       height: 30px !important;
-//       text-decoration: none !important;
-//       color: black !important;
-//       font-weight: bold !important;
-//     }
-//     }
-  
-//   @media (min-width: 320px) and (max-width: 1200px) {
-    
-//     #smainNav{
-//       height: auto !important;
-//     } 
-//   }
-  
-  
-  
-//   li.nav-item{  
-//       padding: 10px 20px;
-//       // background-color: red;
-//       align-self: center;
-//     }
-    
-//   .pmt_btn , .pmt_btn_ipad{
-//     display: none !important;
-//   }
-  
-//   .btn_id{
-   
-//     height: 35px !important;
-//     text-decoration: none !important;
-//     color: black !important;
-//     font-weight: bold !important;
-//   }
-//   a{
-    
-//     font-size: 20px;
-//   }

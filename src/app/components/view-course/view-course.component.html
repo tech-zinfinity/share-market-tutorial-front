@@ -5,9 +5,9 @@
             <span class="heading" style="line-height: 120%;">{{(currentCourse | async).title}}</span>
             <span style="margin-top: 10px;"> <strong>{{(currentCourse | async).finalDuration }}</strong>
                 minutes of on demand video tutorials </span><br><br>
-            <span style="margin-top: 10px;"> Published On : 
+            <span style="margin-top: 10px;"> Published On :
                 {{(currentCourse | async).publishDate | date: 'medium'}}</span><br><br>
-            <span style="margin-top: 10px;" *ngIf="(currentCourse | async).temntutor != undefined"> Tutor : 
+            <span style="margin-top: 10px;" *ngIf="(currentCourse | async).temntutor != undefined"> Tutor :
                 {{(currentCourse | async).temntutor.name}}</span><br><br>
         </mat-card>
         <mat-card class="mat_2" [class.mat-elevation-z8]="true"
@@ -47,29 +47,34 @@
                 </div>
             </div>
             <mat-card style="display: flex; flex-direction: column;">
-                <span style="border-left: solid green; padding-left: 5px;">Full Lifetime Access with updates 
+                <span style="border-left: solid green; padding-left: 5px;">Full Lifetime Access with updates
                 </span><br>
-                <span style="border-left: solid green; padding-left: 5px;">On Demand Vedio Tutorial 
-                </span><br>                
-                <span style="border-left: solid green; padding-left: 5px;">You can directly ask queries to tutor on portal itself
+                <span style="border-left: solid green; padding-left: 5px;">On Demand Vedio Tutorial
+                </span><br>
+                <span style="border-left: solid green; padding-left: 5px;">You can directly ask queries to tutor on
+                    portal itself
                 </span><br>
             </mat-card>
         </mat-card>
     </div>
-    
-    <mat-chip-list >
+    <br>
+<div>
+    <mat-chip-list>
         <mat-chip *ngFor="let tag of (currentCourse | async).tags" style="margin-bottom: 10px; background-color: black; color: cyan; 
         font-size: 20px; border: solid rgba(0, 255, 255, 0.646); padding: 15px;">
-           <span (click)="this.auth.callbackend()">{{tag}}</span>
+            <span (click)="this.auth.callbackend()">{{tag}}</span>
             &nbsp;
             <div *ngIf="(this.auth.currentUser | async) != null">
-                <mat-icon (click)="removeTag(tag)" 
-                *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">cancel</mat-icon>    
+                <mat-icon (click)="removeTag(tag)" *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
+                    cancel</mat-icon>
             </div>
         </mat-chip>
     </mat-chip-list>
-    <div *ngIf="(this.auth.currentUser | async) != null" style="margin-top: 20px;">
+    </div>
+    <br> <br> <br>
+    <div *ngIf="(this.auth.currentUser | async) != null" style="height: auto;">
         <mat-toolbar *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')" class="mat_btn">
+           
             <div class="btn_main_div">
                 <div>
                     <button mat-raised-button color="primary" class="btn_admn" style="margin: 5px;"
@@ -78,14 +83,6 @@
                     <button mat-stroked-button color="primary" class="btn_admn" style="margin: 5px;"
                         (click)="openAddSubscription()"> Set
                         Cost</button>
-                    <button mat-stroked-button color="accent" style="margin: 5px;" class="btn_admn"
-                    (click)="openEditCourseDialog()"> Edit </button>
-
-                    <button mat-stroked-button color="primary" style="margin: 5px;" class="btn_admn"
-                    (click)="openAddTagDialog()"> Add Tags </button>
-
-                    <button mat-stroked-button color="accent" style="margin: 5px;" class="btn_admn"
-                    (click)="openAddLearningDialog()"> Add Learning </button>
 
                     <button mat-stroked-button *ngIf="(currentCourse | async).active === null 
                         || (currentCourse | async).active === false" class="btn_admn"
@@ -95,10 +92,21 @@
                     <button mat-stroked-button *ngIf="(currentCourse | async).active === true"
                         style="margin: 5px;background-color: rgb(206, 11, 11); color: white;" class="btn_admn"
                         (click)="publishCourse(false)"> Deactivate </button>
+                </div>
+                <div>
+                    <button mat-stroked-button color="accent" style="margin: 5px;" class="btn_admn"
+                        (click)="openEditCourseDialog()"> Edit </button>
 
+                    <button mat-stroked-button color="primary" style="margin: 5px;" class="btn_admn"
+                        (click)="openAddTagDialog()"> Add Tags </button>
+
+                    <button mat-stroked-button color="accent" style="margin: 5px;" class="btn_admn"
+                        (click)="openAddLearningDialog()"> Add Learning </button>
+                </div>
+                <div>
                     <button mat-stroked-button *ngIf="(currentCourse | async).temntutor === undefined"
-                    style="margin: 5px;background-color: rgb(10, 145, 42); color: white;" class="btn_admn"
-                    (click)="publishTutor(false)"> Publish me as Tutor </button>
+                        style="margin: 5px;background-color: rgb(10, 145, 42); color: white;" class="slt_pht"
+                        (click)="publishTutor(false)"> Publish me as Tutor </button>
                 </div>
                 <div>
                     <button *ngIf="!fileadded" mat-stroked-button color="primary" style="margin: 5px;"
@@ -118,96 +126,103 @@
 
         </mat-toolbar>
     </div>
-
+<br>
     <div *ngIf="(this.auth.currentUser | async) == undefined">
-        <mat-toolbar style="display: flex; flex-direction: row; justify-content: flex-end; background-color: transparent; margin-top: -60px;">
+        <mat-toolbar
+            style="display: flex; flex-direction: row; justify-content: flex-end; background-color: transparent; margin-top: -60px;">
             <!-- <button mat-stroked-button style="margin: 5px; 
         background-color: rgb(6, 150, 47); color: white;"> Subscribe</button>-->
 
         </mat-toolbar>
     </div>
 
-    <br><br><br><br>
-    <div style="display: flex; flex-direction: row; justify-content: start;">
-        <mat-card style="background-color: aliceblue; width: 50%; font-family: 'Poppins', sans-serif !important;">
+    <br><br><br><br> <br>
+    <div class="" style="display: flex; flex-direction: row; justify-content: start; ">
+        <mat-card
+            style="background-color: rgba(149, 153, 158, 0.979); width: 50%; font-family: 'Poppins', sans-serif !important;">
             <span class="dscp">
                 <h2><strong>About Course</strong></h2>
                 {{(currentCourse | async).dscp}}
             </span>
         </mat-card>
-        <mat-card style="background-color: rgb(255, 255, 255); width: 50%; font-family: 'Poppins', sans-serif !important;">
+        <mat-card
+            style="background-color:  rgba(149, 153, 158, 0.979); margin-left: 10px; width: 50%; font-family: 'Poppins', sans-serif !important;">
             <h2><strong>What you will learn</strong></h2>
-                <div *ngFor="let l of (currentCourse | async).learnings" style="
+            <div *ngFor="let l of (currentCourse | async).learnings" style="
                 display: flex; flex-direction: column;">
-                    <div style="display: flex; flex-direction: row;">
-                        <div *ngIf="(this.auth.currentUser | async) != null">
-                            <mat-icon *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')"
-                            style="cursor: pointer; color: red;"
-                            (click)="removeLearning(l)">cancel</mat-icon>
-                        </div>
-                        <mat-icon style="color: blue;">beenhere</mat-icon> &nbsp;
-                        <div mat-line style="word-break: keep-all;">{{l}}</div>
+                <div style="display: flex; flex-direction: row;">
+                    <div *ngIf="(this.auth.currentUser | async) != null">
+                        <mat-icon *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')"
+                            style="cursor: pointer; color: red;" (click)="removeLearning(l)">cancel</mat-icon>
                     </div>
-                    <br>
-
+                    <mat-icon style="color: blue;">beenhere</mat-icon> &nbsp;
+                    <div mat-line style="word-break: keep-all;">{{l}}</div>
                 </div>
+                <br>
+
+            </div>
         </mat-card>
     </div>
     <br><br><br><br>
-    
+
     <!-- <span style="font-size: 30px;">Topics</span> -->
     <div *ngFor="let topic of (currentCourse | async).topics">
         <div style="display: flex; flex-direction: column; margin-bottom: 25px;">
             <h1 style=" font-family: 'Poppins', sans-serif !important;">{{topic.title}}</h1>
             <div *ngIf="(this.auth.currentUser | async) != null">
-                <mat-toolbar class="mat_topic_btn" 
-                    *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
+                <mat-toolbar class="mat_topic_btn" *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
                     <div class="btn_main_div">
                         <div>
                             <button mat-raised-button *ngIf="topic.active"
                                 style="margin: 5px;background-color: rgb(206, 11, 11); color: white;" class="btn_admn"
                                 (click)="changeStatusOfTopic(topic, false)"> Deactivate</button>
-                            <button mat-raised-button color="primary" *ngIf="!topic.active" style="margin: 5px;" class="btn_admn"
-                                (click)="changeStatusOfTopic(topic, true)"> Activate</button>
-                            <button mat-raised-button color="warn"  class="btn_admn" (click)="deleteTopic(topic)">
+                            <button mat-raised-button color="primary" *ngIf="!topic.active" style="margin: 5px;"
+                                class="btn_admn" (click)="changeStatusOfTopic(topic, true)"> Activate</button>
+                            <button mat-raised-button color="warn" class="btn_admn" (click)="deleteTopic(topic)">
                                 Delete
                             </button>
                             <button mat-stroked-button color="primary" style="margin: 5px;" class="btn_admn"
-                            (click)="openEditTopicDialog(topic.id)"> Edit </button>
+                                (click)="openEditTopicDialog(topic.id)"> Edit </button>
                         </div>
                         <div>
                             <button mat-stroked-button style=" margin: 5px;
-                    background-color: rgb(5, 169, 5);color: white;" (click)="addVideo(topic.id)" class="add_vid" > Add Video </button>
+                    background-color: rgb(5, 169, 5);color: white;" (click)="addVideo(topic.id)" class="add_vid"> Add
+                                Video </button>
                         </div>
                     </div>
                 </mat-toolbar>
             </div>
             <mat-card style="height: auto; ">
-                <h3 style="background-color: aliceblue; width: 100%; height: auto;  font-family: 'Poppins', sans-serif !important; padding: 5px;">
+                <h3
+                    style="background-color: aliceblue; width: 100%; height: auto;  font-family: 'Poppins', sans-serif !important; padding: 5px;">
                     {{topic.dscp}}</h3>
                 <div *ngFor="let vid of topic.videolink">
-                    <div *ngIf="(this.auth.currentUser | async) != null" >
-                        <mat-card [class.mat-elevation-z8]="true" style="margin-bottom: 20px; width: fit-content; padding: 0px ;"  class="div_card"
+                    <div *ngIf="(this.auth.currentUser | async) != null">
+                        <mat-card [class.mat-elevation-z8]="true"
+                            style="margin-bottom: 20px; width: fit-content; padding: 0px ;" class="div_card"
                             *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
-                            <mat-toolbar style=" background-color: white; padding: 5px; justify-content: center;"  
+                            <mat-toolbar style=" background-color: white; padding: 5px; justify-content: center;"
                                 *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
                                 <button mat-stroked-button color="primary" *ngIf="!vid.active" class="vid_btn"
                                     (click)="changeVideoStatus(vid, true)"> Activate</button>
-                                <button mat-raised-button style="background-color: rgb(206, 11, 11); color: white;" class="vid_btn"
-                                    *ngIf="vid.active" (click)="changeVideoStatus(vid, false)"> Deactivate</button>
-                                <button mat-raised-button color="warn" style="margin-left: 10px;"  class="vid_btn"
+                                <button mat-raised-button style="background-color: rgb(206, 11, 11); color: white;"
+                                    class="vid_btn" *ngIf="vid.active" (click)="changeVideoStatus(vid, false)">
+                                    Deactivate</button>
+                                <button mat-raised-button color="warn" style="margin-left: 10px;" class="vid_btn"
                                     (click)="deleteVideoFromTopic(topic, vid)">Delete</button>
-                                <button mat-raised-button style="margin: 5px; background-color: rgb(8, 223, 8);"  class="vid_btn"
-                                    *ngIf="!vid.paid" (click)="paidUnpaidVideo(vid, true)">Make Paid</button>
-                                <button mat-raised-button style="margin: 5px; background-color: white;"  class="vid_btn"
+                                <button mat-raised-button style="margin: 5px; background-color: rgb(8, 223, 8);"
+                                    class="vid_btn" *ngIf="!vid.paid" (click)="paidUnpaidVideo(vid, true)">Make
+                                    Paid</button>
+                                <button mat-raised-button style="margin: 5px; background-color: white;" class="vid_btn"
                                     *ngIf="vid.paid" (click)="paidUnpaidVideo(vid, false)">Make Free</button>
 
                             </mat-toolbar>
-                            <div class="video"  [class.disabled-contenct]="vid.paid" [innerHTML]="vid.video"
-                                *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')" >
+                            <div class="video" [class.disabled-contenct]="vid.paid" [innerHTML]="vid.video"
+                                *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
                             </div>
                         </mat-card>
-                        <mat-card [class.mat-elevation-z8]="true" style="margin-bottom: 10px; width: fit-content; padding: 2px;"
+                        <mat-card [class.mat-elevation-z8]="true"
+                            style="margin-bottom: 10px; width: fit-content; padding: 2px;"
                             *ngIf="!(this.auth.currentUser | async).roles.includes('ADMIN')" [hidden]="!vid.active">
                             <div [class.disabled-contenct]="vid.paid" [innerHTML]="vid.video" [hidden]="!vid.active">
                             </div>
@@ -216,7 +231,7 @@
                     <mat-card [class.mat-elevation-z8]="true" style="margin-bottom: 10px;width: fit-content; "
                         *ngIf="(this.auth.currentUser | async) === null" [hidden]="!vid.active">
                         <div [class.disabled-contenct]="vid.paid" [innerHTML]="vid.video">
-                            
+
                         </div>
                     </mat-card>
                 </div>
