@@ -1,70 +1,96 @@
 <br><br>
 <div class="main">
-    <div class="banner">
-      <img src="../assets/banner.png" class="graphic-img">
-    </div>
-    <div class="banner-side">
-      
-      <p class="title">Share Market <br><br><br> Blogs...</p><br>
-      <p>Learn the basics of share market and how to invest in Indian stock market from the experts of India's best stock Market Company IndiStox.</p><br>
-      <div id="content-desktop">
-      <section class="content" >
-        <div class="search-bar">
-          <input 
-                 type="text" 
-                 class="search-bar__input" 
-                 placeholder="Search Courses"
-                 aria-label="search"/>
-          <button 
-                  class="search-bar__submit"
-                  aria-label="submit search">
+  <div class="banner">
+    <img src="../assets/banner.png" class="graphic-img">
+  </div>
+  <div class="banner-side">
+
+    <h1 class="title">Share Market  Blogs...</h1><br>
+    <p>Learn the basics of share market and how to invest in Indian stock market from the experts of India's best stock
+      Market Company IndiStox.</p><br>
+    <div id="content-desktop">
+      <section class="content">
+        <div class="search-bar" >
+          <input type="text" routerLink="/search" class="search-bar__input" placeholder="Search Courses" aria-label="search" />
+          <button class="search-bar__submit" aria-label="submit search" routerLink="/search">
             <i class="fas fa-search"></i>
           </button>
         </div>
         <button class="social">
-        <i class="fa fa-facebook" style="padding: 5px;"></i>
-      </button>
-      <button class="social">
-        <i class="fa fa-instagram" ></i>
-      </button>
+          <i class="fa fa-facebook" style="padding: 5px;"></i>
+        </button>
+        <button class="social">
+          <i class="fa fa-instagram"></i>
+        </button>
       </section>
     </div>
-      
 
-    </div>
+
+  </div>
 </div>
 
 <div style="display: flex;">
   <p class="courses">Courses</p>
 </div>
-   
+
 <div id="content-mobile">
-  <mat-form-field style="width: 100%;"  appearance="outline">
+  <mat-form-field style="width: 100%;" appearance="outline">
     <mat-label>Search By Name</mat-label>
-    <input matInput  placeholder="Search Course">
+    <input matInput placeholder="Search Course">
   </mat-form-field>
 </div>
 
-    <div class="cardplacement">
-      <div *ngFor="let element of courses"> 
-        <mat-card style="margin: 30px;" [class.mat-elevation-z8]="true" class="ccrd">
-            <mat-card-content>
-                <img [src]="element.img" class="card-img">
-            </mat-card-content>
-            <mat-card-actions style="display: flex; justify-content: space-between;">
-                <button mat-stroked-button style="color: white;background-color: #3f51b5;" (click)="goToCourseDetail(element.id)">View Details</button>
-                <button mat-stroked-button style="color: white;background-color: orangered;">Subscribe</button>
-            </mat-card-actions>
-        </mat-card>
+<!-- <div class="cardplacement">
+  <div *ngFor="let element of courses">
+    <mat-card style="margin: 30px;" [class.mat-elevation-z8]="true" class="ccrd">
+      <mat-card-content>
+        <img [src]="element.img" class="card-img">
+      </mat-card-content>
+      <mat-card-actions style="display: flex; justify-content: space-between;">
+        <button mat-stroked-button style="color: white;background-color: #3f51b5;"
+          (click)="goToCourseDetail(element.id)">View Details</button>
+        <button mat-stroked-button style="color: white;background-color: orangered;">Subscribe</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</div> -->
+
+<div style="width: 100%; display: flex;">
+  <div class="cardplacement">
+    <div *ngFor="let element of courses">
+    <div style="margin: 30px;">
+      <img [src]="element.img" alt="courseImg" class="post__image"
+        style="width: 100%; height: 330px;">
+      <div class="course_details">
+        <h4 style="font-size: 17px;font-family: 'Bebas Neue', cursive; margin-bottom: 3px;">{{element.title}}</h4>
+        <div>
+          <button (click)="goToCourseDetail(element.id)" mat-mini-fab  aria-label="Example icon button with a info icon" 
+           class="info" style="color: #3f51b5; background-color: aliceblue; outline: none;">
+            <mat-icon>info</mat-icon>
+          </button> &nbsp;
+
+          <button mat-mini-fab  aria-label="Example icon button with a favorite icon" class="fav" style="color: red; background-color: aliceblue; outline: none;">
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <div class="main_subscribe">
+          <button mat-stroked-button class="subscribe" >Subscribe</button>
+        </div>
+        </div>
       </div>
-
     </div>
 
-    
-    <div>
-      <p class="courses">Get in touch</p>
-    </div>
-    <div class="contact">
-    <app-contactus></app-contactus>
-    </div>
-    <br><br>
+
+  </div>
+</div>
+</div>
+
+<div>
+  <p class="courses">Get in touch</p>
+</div>
+<div class="contact">
+  <app-contactus></app-contactus>
+</div>
+<br><br>
+
+

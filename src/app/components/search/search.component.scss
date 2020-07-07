@@ -1,0 +1,201 @@
+.main{
+    display: flex; 
+    width: 100%;
+    padding-top: 90px;
+}
+
+.content{
+    display: flex;
+    background-color: white;
+    width: 100%;
+    padding: 2rem 3rem;
+    box-shadow: 0 0 3em rgba(0,0,0,0.15);
+    position: relative;
+  }
+
+  .search-bar{
+    --size: 50px;
+    border: 2px solid orangered;
+    display: flex;
+    border-radius: 100vh;
+    width: 100%;;
+    height: var(--size);
+    padding: 3px;
+    position: relative;
+    overflow: hidden;
+    
+    transition: width 400ms cubic-bezier(0.18,0.89,0.32,1.15);
+    &__input {
+      flex-grow: 1;
+      font-size: 0.6rem;
+      padding: 0 0.5em;
+      border: 0;
+      background-color: transparent;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 10;
+      color: #3f51b5;
+      cursor: pointer;
+      transition: opacity 400ms ease-in;
+      &:focus{
+        outline: 0;
+      }
+    }
+    &__submit{
+      font-size: 1.7rem;
+      cursor: pointer;
+      border: 0;
+      background-color: transparent;
+      border-radius: 50%;
+      background-color: orangered;
+      width: calc(var(--size) - 10px);
+      height: calc(var(--size) - 10px);
+      margin-left: auto;
+      transition: background-color 350ms ease-in-out;
+    }
+  /* focus-within alters the parent of the child being focus*/
+    &:focus-within {
+      width: 100%;
+      .search-bar__submit{
+        background-color:orangered;
+        color: white;
+        &:focus,
+        &:hover {
+          outline: 0;
+          box-shadow: 0 0 10px rgba(0,0,0,0.45);
+        }
+      }
+      .search-bar__input{
+        opacity: 1;
+        cursor: initial;
+        width: calc(100% - var(--size));
+      }
+    }
+  }
+
+  .fa-search{
+    color: white;
+}
+
+
+.courses{
+    font-size: 45px;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 1px;
+    margin-top: 5%;
+    margin-bottom: 0%;
+
+}
+
+.course_details{
+    height: auto; 
+    margin-top: -5rem;  
+    margin-right: 2rem ; 
+    margin-left: 2rem; 
+    padding: 1.5rem;
+    background-color: #fff; 
+    border-radius: 3px; 
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15);
+    -webkit-transition: margin 0.2s ease-in-out;
+    transition: margin 0.2s ease-in-out;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .info{
+    color: #3f51b5;
+    font-size: small;
+    
+  }
+  .fav{
+    color: red;
+    font-size: small;
+  }
+
+  .subscribe{
+    color: white;
+    background-color: orangered;
+    width: 100%;
+     font-size: small;
+     outline: none;
+     border-radius: 0px;
+  }
+@media (min-width: 320px) and (max-width: 480px) {
+  
+    .courses{
+        font-size: 25px;
+        font-family: 'Bebas Neue', cursive;
+        letter-spacing: 1px;
+        margin-top: 10%;
+        // text-align: center;
+        margin-bottom: 1%;
+    
+    }
+
+    .cardplacement{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        margin-top: 30px;
+        justify-content: start; cursor: pointer;
+    }
+
+    .course_details{
+        margin: 0;
+        height: auto; 
+        padding: 1.5rem;
+        background-color: #fff; 
+        border-radius: 3px; 
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15);
+        -webkit-transition: margin 0.2s ease-in-out;
+        transition: margin 0.2s ease-in-out;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+      }
+      .main_subscribe{
+        margin-top: 10px;
+      }
+
+      .subscribe{
+        color: white;
+        background-color: orangered;
+         width: auto;
+         font-size: small;
+         outline: none;
+         width: 100%;
+         border-radius: 0px;
+         margin-top: 5px;
+      }
+}
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .cardplacement{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 30px; 
+        justify-content: start; cursor: pointer;
+    }
+    .main_subscribe{
+        margin-top: 10px;
+      }
+}
+
+@media (min-width: 480px) {
+    .cardplacement{
+        background-color: rgb(250, 250, 250);
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 30px; 
+        justify-content: start; 
+        cursor: pointer;
+    }
+    .main_subscribe{
+        margin-top: 10px;
+      }
+    
+}

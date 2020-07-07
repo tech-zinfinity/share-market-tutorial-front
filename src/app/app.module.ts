@@ -57,9 +57,12 @@ import { EditCourseComponent } from './components/add/edit-course/edit-course.co
 import { EditTopicComponent } from './components/add/edit-topic/edit-topic.component';
 import { AddTagComponent } from './components/add/add-tag/add-tag.component'
 import {MatChipsModule} from '@angular/material/chips';
+import { SearchComponent } from './components/search/search.component';
+
 import { AddLearningComponent } from './components/add/add-learning/add-learning.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchCourseComponent } from './components/search-course/search-course.component';
+import { MyprofileComponent } from './components/myprofile/myprofile.component';
 
 @NgModule({
   declarations: [
@@ -87,8 +90,10 @@ import { SearchCourseComponent } from './components/search-course/search-course.
     EditCourseComponent,
     EditTopicComponent,
     AddTagComponent,
+    SearchComponent,
     AddLearningComponent,
-    SearchCourseComponent
+    SearchCourseComponent,
+    MyprofileComponent
   ],
   imports: [
     BrowserModule,
