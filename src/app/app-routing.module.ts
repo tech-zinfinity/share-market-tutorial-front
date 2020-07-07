@@ -9,6 +9,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { FooterComponent } from './components/footer/footer.component';
 import { EditorPanelComponent } from './components/blog/editor-panel/editor-panel.component';
 import { SearchComponent } from './components/search/search.component';
+import { MyprofileComponent } from './components/myprofile/myprofile.component';
 
 
 const routes: Routes = [
@@ -24,9 +25,10 @@ const routes: Routes = [
   {path:'course/:id', component:ViewCourseComponent},
   {path:'subscription/:id', component:SubscribeCourseComponent},
   {path:'footer',component:FooterComponent},
-  {path: 'search', component: SearchComponent},
+  {path:'search', component: SearchComponent},
 
-  {path:'search/:searchstring', component: SearchCourseComponent}
+  {path:'search/:searchstring', component: SearchCourseComponent},
+  {path:'profile', component:MyprofileComponent}
 ];
 
 @NgModule({

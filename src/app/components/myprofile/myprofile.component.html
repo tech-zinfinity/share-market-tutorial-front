@@ -1,1 +1,15 @@
-<p>myprofile works!</p>
+<br><br><br><br><br><br><br><br>
+<div style="min-height: 60vh;height: 100%;">
+<div style="display: flex; flex-direction: row; justify-content: start;">
+    <div style="width: 20%;height: auto;word-break: break-all;">{{(currentUser | async).email}}</div>
+    <div style="width: 80%;height: auto;word-break: break-all;" 
+    *ngFor="let course of (currentUser | async).myCourses">
+        {{course.courseId}}
+        {{course.status}}</div>
+</div>
+</div>
+<!-- <div style="display: flex;width: 100%;">
+
+<div style="display: flex; width: 20%;">ppppppppp</div>
+<div style="width: 80%; display: flex;">kkkkkkk</div>
+</div> -->
