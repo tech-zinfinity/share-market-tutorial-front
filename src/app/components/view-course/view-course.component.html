@@ -75,7 +75,7 @@
             (click)="navigateToSubscription()"> Raise Query</button>
         </mat-card>
     </div>
-    
+    <br>
     <mat-chip-list >
         <mat-chip *ngFor="let tag of (currentCourse | async).tags" style="margin-bottom: 10px; background-color: black; color: cyan; 
         font-size: 20px; border: solid cyan; padding: 15px;">
@@ -87,6 +87,7 @@
             </div>
         </mat-chip>
     </mat-chip-list>
+    <br>
     <div *ngIf="(this.auth.currentUser | async) != null" style="margin-top: 20px;">
         <mat-toolbar *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')" class="mat_btn">
             <div class="btn_main_div">
@@ -97,6 +98,16 @@
                     <button mat-stroked-button color="primary" class="btn_admn" style="margin: 5px;"
                         (click)="openAddSubscription()"> Set
                         Cost</button>
+
+                     <button mat-stroked-button *ngIf="(currentCourse | async).active === null 
+                        || (currentCourse | async).active === false" class="btn_admn"
+                        style="margin: 5px;background-color: rgb(6, 150, 47); color: white;"
+                        (click)="publishCourse(true)"> Publish</button>
+
+                    <button mat-stroked-button *ngIf="(currentCourse | async).active === true"
+                        style="margin: 5px;background-color: rgb(206, 11, 11); color: white;" class="btn_admn"
+                        (click)="publishCourse(false)"> Deactivate </button>
+</div> <div>
                     <button mat-stroked-button color="accent" style="margin: 5px;" class="btn_admn"
                     (click)="openEditCourseDialog()"> Edit </button>
 
@@ -106,17 +117,10 @@
                     <button mat-stroked-button color="accent" style="margin: 5px;" class="btn_admn"
                     (click)="openAddLearningDialog()"> Add Learning </button>
 
-                    <button mat-stroked-button *ngIf="(currentCourse | async).active === null 
-                        || (currentCourse | async).active === false" class="btn_admn"
-                        style="margin: 5px;background-color: rgb(6, 150, 47); color: white;"
-                        (click)="publishCourse(true)"> Publish</button>
-
-                    <button mat-stroked-button *ngIf="(currentCourse | async).active === true"
-                        style="margin: 5px;background-color: rgb(206, 11, 11); color: white;" class="btn_admn"
-                        (click)="publishCourse(false)"> Deactivate </button>
+                  </div> <div>
 
                     <button mat-stroked-button *ngIf="(currentCourse | async).temntutor === undefined"
-                    style="margin: 5px;background-color: rgb(10, 145, 42); color: white;" class="btn_admn"
+                    style="margin: 5px;background-color: rgb(10, 145, 42); color: white;" class="slt_pht"
                     (click)="publishTutor()"> Publish me as Tutor </button>
                 </div>
                 <div>
@@ -146,15 +150,15 @@
         </mat-toolbar>
     </div>
 
-    <br><br><br><br>
-    <div style="display: flex; flex-direction: row; justify-content: start;">
-        <mat-card style="background-color: aliceblue; width: 50%; font-family: 'Poppins', sans-serif !important;">
+    <br><br><br><br> <br> <br>
+    <div class="content">
+        <mat-card class="card_1">
             <span class="dscp">
                 <h2><strong>About Course</strong></h2>
                 {{(currentCourse | async).dscp}}
             </span>
         </mat-card>
-        <mat-card style="background-color: rgb(255, 255, 255); width: 50%; font-family: 'Poppins', sans-serif !important;">
+        <mat-card class="card_2" >
             <h2><strong>What you will learn</strong></h2>
                 <div *ngFor="let l of (currentCourse | async).learnings" style="
                 display: flex; flex-direction: column;">

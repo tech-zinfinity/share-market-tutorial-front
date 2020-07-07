@@ -72,14 +72,5 @@ export class AppComponent implements OnDestroy{
     this.currentUser.subscribe().unsubscribe();
   }
 
-  ngOnInit() {
-    $(function(){ 
-      var navMain = $(".navbar-collapse");
- 
-      navMain.on("click", "a", null, function () {
-          navMain.collapse('hide');
-      });
-  });
-  this.auth.publishAllCourses();
-}
+  
 }
