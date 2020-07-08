@@ -9,7 +9,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
-declare var $: any;
+
 
 @Component({
   selector: 'app-root',
@@ -18,6 +18,10 @@ declare var $: any;
 })
 export class AppComponent implements OnDestroy{
 
+ ngOnInit() {
+ 
+  this.auth.publishAllCourses();
+}
 
   constructor(private bottomSheet: MatBottomSheet, 
     private dialog: MatDialog,
@@ -72,5 +76,6 @@ export class AppComponent implements OnDestroy{
     this.currentUser.subscribe().unsubscribe();
   }
 
-  
+
+
 }

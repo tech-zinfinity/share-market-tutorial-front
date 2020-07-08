@@ -12,7 +12,9 @@ export interface User extends Document{
     confirmpassword?:string,
     subscriptions?:string[],
     myCourses?:MyCourse[],
-    favorites?:ShortCourseInfo[]
+    favorites?:ShortCourseInfo[],
+    profilePic?:string,
+    tempProfilePic?:any
 }
 
 export interface MyCourse {
