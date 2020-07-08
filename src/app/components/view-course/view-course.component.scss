@@ -71,6 +71,26 @@
      width: 100%;    
 }
 
+.content{
+    display: flex;
+     flex-direction: row;
+      justify-content: start;
+}
+
+.card_1{
+    background-color: aliceblue;
+     width: 50%; 
+     font-family: 'Poppins', sans-serif !important;
+     margin: 10px;
+}
+
+.card_2{
+    background-color:aliceblue;
+     width: 50%;
+      font-family: 'Poppins', sans-serif !important;
+      margin: 10px;
+}
+
 
 @media (min-width: 300px) and (max-width: 900px) {
     .main_div{
@@ -157,13 +177,37 @@
 
 @media (max-width: 350px){
    .btn_admn{
-       width: 32%;
      
-     text-align: center;
+    
      font-size: 12px;
+     
    }
-   button{
-       padding: 5px;
-   } 
+ 
+}
+
+@media (max-width:1100px){
+    .btn_main_div{
+        display: flex;
+        flex-direction: column ;
+        justify-content: center;
+    }
+    .content{
+        display: flex;
+         flex-direction: column;
+          justify-content: start;
+    }
+    
+    .card_1{
+        background-color: aliceblue;
+         width: 100%; 
+         font-family: 'Poppins', sans-serif !important;
+    }
+    
+    .card_2{
+        background-color:aliceblue;
+         width: 100%;
+          font-family: 'Poppins', sans-serif !important;
+         
+    }
 }
 

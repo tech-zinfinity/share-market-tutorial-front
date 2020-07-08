@@ -18,6 +18,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnDestroy{
 
+ ngOnInit() {
+ 
+  this.auth.publishAllCourses();
+}
 
   constructor(private bottomSheet: MatBottomSheet, 
     private dialog: MatDialog,
@@ -72,8 +76,6 @@ export class AppComponent implements OnDestroy{
     this.currentUser.subscribe().unsubscribe();
   }
 
-  ngOnInit() {
- 
-  this.auth.publishAllCourses();
-}
+
+
 }
