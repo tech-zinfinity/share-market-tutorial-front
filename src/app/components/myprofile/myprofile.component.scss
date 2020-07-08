@@ -1,17 +1,62 @@
 .main{
-    width: 100%;
-    min-height: 100vh;
+    min-height: 60vh;
     height: 100%;
-    display: flex ;
-    padding: 90px;
+    margin-top: 90px;
 }
 
 .profile{
-    width: 20% !important;
-}
-.profile_info{
-    width: 80% !important;
-}
-.mat-icon {
-    font-size: 120px;
-  }
+    display: flex;
+    background-color: white;
+    width: 100%;
+    padding: 2em;
+    box-shadow: 0 0 3em rgba(0,0,0,0.15);
+    }
+
+.fav{
+    font-size: 45px;
+    width: 100%;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 1px;
+    margin-top: 5%;
+    margin-bottom: 0%;
+
+    }
+
+    @media (min-width: 320px) and (max-width: 480px) {
+  
+    }
+
+    @media (min-width: 481px) and (max-width: 767px) {
+   
+    }
+
+    @media (min-width: 480px) {
+     
+    }
+
+
+
+    .container1{
+        display: grid;
+        grid-gap:20px;
+        grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    }
+    .layout-box{
+        background: #ec5126;
+        border-radius: 5px;
+        padding: 2rem 3rem;
+        box-shadow: 0 0 3em rgba(0,0,0,0.15);
+        padding: 10px;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+    }
+  
+    .layout-box1{
+        background: #4b60d4d5;
+        padding: 2rem 3rem;
+        box-shadow: 0 0 3em rgba(0,0,0,0.15);
+        border-radius: 5px;
+        padding: 10px;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+    }

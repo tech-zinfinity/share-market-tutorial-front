@@ -1,15 +1,86 @@
-<br><br><br><br><br><br><br><br>
-<div style="min-height: 60vh;height: 100%;">
-<div style="display: flex; flex-direction: row; justify-content: start;">
-    <div style="width: 20%;height: auto;word-break: break-all;">{{(currentUser | async).email}}</div>
-    <div style="width: 80%;height: auto;word-break: break-all;" 
-    *ngFor="let course of (currentUser | async).myCourses">
-        {{course.courseId}}
-        {{course.status}}</div>
-</div>
-</div>
-<!-- <div style="display: flex;width: 100%;">
+<br><br>
+<div class="main">
+    <div class="profile">
+        <div style="float: right;">
 
-<div style="display: flex; width: 20%;">ppppppppp</div>
-<div style="width: 80%; display: flex;">kkkkkkk</div>
-</div> -->
+            <h3 style="font-family: 'Poppins', sans-serif !important;">
+                <i class="fas fa-user" style="color: #3f51b5; font-size: 40px;"
+                *ngIf="(currentUser | async).tempProfilePic === null"></i>&nbsp;
+                
+                <img [src]="(currentUser | async).tempProfilePic" *ngIf="(currentUser | async).tempProfilePic != undefined
+                || (currentUser | async).tempProfilePic != null" style="width: 100px; height: 100px;">
+
+                Name : {{(currentUser | async).name}}</h3>
+            <h4 style="font-family: 'Poppins', sans-serif !important; font-size: 15px; 
+        margin-top: -5px;">
+                {{(currentUser | async).email}}</h4>
+        </div>
+        <div>
+            <button mat-stroked-button color="primary" *ngIf="!filebool" (click)="file.click()">
+                Select</button>
+            <input type="file" #file hidden (change)=addFile($event)>
+            <label *ngIf="imgName != undefined || imgName != null">{{imgName}}</label>
+            <button mat-stroked-button color="warn" *ngIf="filebool"
+            (click)="uploadProfilePic()">upload</button>
+            <button mat-icon-button *ngIf="filebool"
+            (click)="emptyFileContent()">
+                <mat-icon>cancel</mat-icon>
+            </button>
+
+        </div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: start;">
+        <h2 class="fav">Favourite</h2>
+    </div><br>
+
+    <div class="container1">
+        <div class="layout-box" *ngFor="let course of (currentUser | async).favorites">
+            <h4 style="color: honeydew;font-family: 'Poppins', sans-serif !important;">
+                Course Id : {{course.courseId}}</h4>
+            <h4 style="color: honeydew;font-family: 'Bebas Neue', cursive; 
+        letter-spacing: 1px; font-size: large;">
+                {{course.courseTitle}}</h4>
+            <h4 style="color: honeydew;font-family: 'Poppins', sans-serif !important;">
+                <button type="button" class="btn "
+                    style="background-color: #3f51b5;border-radius: 50px; color: honeydew;">
+                    {{course.coursePrice | currency:'INR'}}</button> </h4>
+
+            <button (click)="navigateToCourse(course.courseId)" mat-mini-fab
+                aria-label="Example icon button with a info icon" class="info"
+                style="color: #3f51b5; background-color: aliceblue; outline: none;">
+                <mat-icon>info</mat-icon>
+            </button>
+
+        </div>
+
+    </div>
+    <br>
+
+    <div style="display: flex;  justify-content: start;">
+        <h2 class="fav">My Courses</h2>
+    </div><br>
+
+    <div class="container1">
+        <div class="layout-box1" *ngFor="let course of (currentUser | async).myCourses">
+            <h4 style="color: honeydew;font-family: 'Poppins', sans-serif !important;">
+                Course Id : {{course.courseId}}</h4>
+
+            <h4 style="color: honeydew;font-family: 'Bebas Neue', cursive; 
+            letter-spacing: 1px; font-size: large;">
+                {{course.title}}</h4>
+
+            <h4 style="color: honeydew;font-family: 'Poppins', sans-serif !important;">
+                Status <button type="button" class="btn "
+                    style="background-color: #f43a09;border-radius: 50px; color: honeydew;">
+                    {{course.status}} </button></h4>
+
+            <h4 style="color: honeydew;font-family: 'Poppins', sans-serif !important;">
+                Message : {{course.message}}</h4>
+
+
+
+        </div>
+
+    </div>
+    <br><br>
