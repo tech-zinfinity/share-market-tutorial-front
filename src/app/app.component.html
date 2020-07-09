@@ -24,7 +24,7 @@
            <button mat-menu-item [routerLink]="['admin/editblog/0']" *ngIf="(auth.currentUser | async)?.roles.includes('ADMIN')">
               <mat-icon style="color: brown;">history_edu</mat-icon>Write Blog</button>
 
-          <button mat-menu-item>
+          <button mat-menu-item  [routerLink]="['profile']">
             <mat-icon style="color: blue;">face</mat-icon>Profile</button>
           <button mat-menu-item (click) = "logOut()">
             <mat-icon style="color: red;">power_settings_new</mat-icon>Logout</button>
