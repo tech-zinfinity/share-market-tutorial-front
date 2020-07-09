@@ -6,6 +6,7 @@ import { RequestSubcription } from 'src/app/model/request-subcription';
 import { auth } from 'firebase';
 import { AuthService } from 'src/app/service/auth.service';
 import { User } from 'src/app/model/user';
+import { ShareObjectService } from 'src/app/service/share-object.service';
 
 
 @Component({
@@ -24,14 +25,14 @@ export class ViewAllSubscriptionResuestComponent implements OnInit {
   currentUser = this.auth.currentUser;
 
   constructor(private fire: FireService,
-    private snackbar: MatSnackBar, private auth : AuthService) { }
+    private snackbar: MatSnackBar, 
+    private auth : AuthService,
+    private share: ShareObjectService) { }
 
   ngOnInit(): void {
-    this.fire.getCollection('requestsubscriptions')
+    this.share.requestSubObs
     .subscribe((data:RequestSubcription[]) =>{
-      this.subs = data;
-      console.log(data);
-      
+      this.subs = data;      
       this.RequestedSub = data.filter(tata => tata.status === SubscriptionStatus.REQUESTED);
       this.ApprovedSub = data.filter(tata => tata.status === SubscriptionStatus.APPROVED);
       this.RejectedSub = data.filter(tata => tata.status === SubscriptionStatus.FAILED);

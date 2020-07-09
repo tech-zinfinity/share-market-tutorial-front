@@ -70,15 +70,9 @@ export class AuthService {
   }
 
   publishAllCourses(){
-    this.db.collection('courses').valueChanges().subscribe(data =>{
-      console.log('publishAllCourses()');
-      
+    this.db.collection('courses').valueChanges().subscribe(data =>{      
       this.courseSoure.next(data);
     }, err =>{
-
-    }, () =>{
-      console.log('completed');
-      
-    })
+    });
   }
 }

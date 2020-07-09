@@ -86,7 +86,9 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
                 user.myCourses.forEach(co =>{
                   if(co.courseId === data[0].id){
                     this.courseSubscrible = true;
-                    this.mycourse = co;                    
+                    this.mycourse = co;  
+                    console.log(co);
+                                      
                     //sub.unsubscribe();
                   }
                 })

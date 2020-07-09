@@ -6,14 +6,14 @@
               <mat-card   [class.mat-elevation-z8]="true" class=" course-card" style="background-color: #6ed3cf;">
                   <div style="display: flex; justify-content: start;
                   border-radius: 15px; padding: 10px; color: black; flex-direction: column;font-family: 'Poppins', sans-serif !important; ">
-                    <h3>id : {{element.id}}</h3>
-                    <h3>User Id : {{element.userId}}</h3>
-                    <h3>Status : {{element.status}}</h3>
-                    <h3>Course Id : {{element.courseId}}</h3>
-                    <h3>Course Title : {{element.courseTitle}}</h3>
-                    <h3>User Requested : {{element.username}}</h3>
-                    <h3>Transaction Id : {{element.paymentRef}}</h3>
-                    <h3>Course Cost : {{element.courseCost}}</h3>
+                    <!-- <h3 style="margin: 0;">id : {{element.id}}</h3>
+                    <h3 style="margin: 0;">User Id : {{element.userId}}</h3> -->
+                    <!-- <h3 style="margin: 0;">Course Id : {{element.courseId}}</h3> -->
+                    <h3 style="margin: 0;">User Requested : {{element.username}}</h3>
+                    <h3 style="margin: 0;">Course Title : {{element.courseTitle}}</h3>
+                    <h3 style="margin: 0;">Course Cost : {{element.courseCost}}</h3>
+                    <h3 style="margin: 0;">Transaction Id : {{element.paymentRef}}</h3>
+                    <h3 style="margin: 0;">Status : {{element.status}}</h3>
                   </div>
                   <mat-card-actions style="display: flex; justify-content: flex-start;">
                       <button mat-stroked-button  style="
@@ -31,17 +31,17 @@
     <mat-tab label="Approved"> 
         <div class="cardplacement" >
             <div *ngFor="let element of ApprovedSub" class="main_card"> 
-              <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card" style="background-color: #00c07f;">
+              <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card">
                   <div style="display: flex; justify-content: start;
                   border-radius: 15px; padding: 10px; color: black; flex-direction: column;">
-                    <h3>id : {{element.id}}</h3>
-                    <h3>User Id : {{element.userId}}</h3>
-                    <h3>Status : {{element.status}}</h3>
-                    <h3>Course Id : {{element.courseId}}</h3>
-                    <h3>Course Title : {{element.courseTitle}}</h3>
-                    <h3>User Requested : {{element.username}}</h3>
-                    <h3>Transaction Id : {{element.paymentRef}}</h3>
-                    <h3>Course Cost : {{element.courseCost}}</h3>
+                    <!-- <h3 style="margin: 0;">id : {{element.id}}</h3> -->
+                    <!-- <h3 style="margin: 0;">User Id : {{element.userId}}</h3> -->
+                    <!-- <h3 style="margin: 0;">Course Id : {{element.courseId}}</h3> -->
+                    <h3 style="margin: 0;">User Requested : {{element.username}}</h3>
+                    <h3 style="margin: 0;">Course Title : {{element.courseTitle}}</h3>
+                    <h3 style="margin: 0;">Course Cost : {{element.courseCost}}</h3>
+                    <h3 style="margin: 0;">Transaction Id : {{element.paymentRef}}</h3>
+                    <h3 style="margin: 0;">Status : {{element.status}}</h3>
                   </div>
                   <mat-card-actions style="display: flex; justify-content: flex-end;">
                       <!-- <button mat-stroked-button  style="
@@ -61,15 +61,16 @@
             <div *ngFor="let element of RejectedSub" class="main_card"> 
               <mat-card   [class.mat-elevation-z8]="true" class="ccrd course-card" style="background-color: #e0474c">
                   <div style="display: flex; justify-content: start;
-                  border-radius: 15px; padding: 10px; color: black; flex-direction: column;">
-                    <h3>id : {{element.id}}</h3>
-                    <h3>User Id : {{element.userId}}</h3>
-                    <h3>Status : {{element.status}}</h3>
-                    <h3>Course Id : {{element.courseId}}</h3>
-                    <h3>Course Title : {{element.courseTitle}}</h3>
-                    <h3>User Requested : {{element.username}}</h3>
-                    <h3>Transaction Id : {{element.paymentRef}}</h3>
-                    <h3>Course Cost : {{element.courseCost}}</h3>
+                  border-radius: 15px; padding: 10px; color: black; flex-direction: column;
+                  margin: 0;">
+                    <!-- <h3 style="margin: 0;">id : {{element.id}}</h3>
+                    <h3 style="margin: 0;">User Id : {{element.userId}}</h3> -->
+                    <!-- <h3 style="margin: 0;">Course Id : {{element.courseId}}</h3> -->
+                    <h3 style="margin: 0;">User Requested : {{element.username}}</h3>
+                    <h3 style="margin: 0;">Course Title : {{element.courseTitle}}</h3>
+                    <h3 style="margin: 0;">Course Cost : {{element.courseCost}}</h3>
+                    <h3 style="margin: 0;">Transaction Id : {{element.paymentRef}}</h3>
+                    <h3 style="margin: 0;">Status : {{element.status}}</h3>
                   </div>
                   <mat-card-actions style="display: flex; justify-content: flex-start;">
                       <!-- <button mat-stroked-button  style="

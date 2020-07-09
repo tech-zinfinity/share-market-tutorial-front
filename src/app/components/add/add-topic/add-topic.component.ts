@@ -8,7 +8,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, FormArray, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import * as firebase from 'firebase/app';
-import { now } from 'moment';
 
 interface topicform{
   title?:string,

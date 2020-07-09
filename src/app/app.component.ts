@@ -1,3 +1,4 @@
+import { ShareObjectService } from './service/share-object.service';
 import { User } from './model/user';
 import { FireService } from './service/fire.service';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -19,8 +20,8 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnDestroy{
 
  ngOnInit() {
- 
   this.auth.publishAllCourses();
+  this.share.publishRequestSubscriptions();
 }
 
   constructor(private bottomSheet: MatBottomSheet, 
@@ -28,7 +29,8 @@ export class AppComponent implements OnDestroy{
     public auth: AuthService,
     private router: Router,
     private db: AngularFirestore,
-    private fire: FireService){
+    private fire: FireService,
+    private share: ShareObjectService){
       if(localStorage.getItem('shareuser') != null){
         auth.publishUser(JSON.parse(localStorage.getItem('shareuser')));
       }else{

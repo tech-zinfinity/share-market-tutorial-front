@@ -13,6 +13,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SubscriptionStatus } from 'src/app/constants/constants';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-subscribe-course',
@@ -66,7 +67,9 @@ export class SubscribeCourseComponent implements OnInit, OnDestroy {
       courseId: this.course.id,
       courseTitle: this.course.title,
       status: SubscriptionStatus.REQUESTED,
-      paymentRef: value
+      paymentRef: value,
+      createdOn: new Date(),
+      updatedOn: firebase.firestore.Timestamp.fromDate(new Date())
     }
     this.userSubscription = this.currentUser.subscribe(user =>{
       body.userId = user.id;
