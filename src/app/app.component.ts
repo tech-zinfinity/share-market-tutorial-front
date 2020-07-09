@@ -48,6 +48,11 @@ export class AppComponent implements OnDestroy{
   navigateToHome(){
     this.router.navigate(['']);
   }
+
+  navigateToCourse(){
+    this.router.navigate(['/profile'], { fragment: 'mycourse' });
+    
+  }
   currentUser = this.auth.currentUser;
 
   logOut(){
