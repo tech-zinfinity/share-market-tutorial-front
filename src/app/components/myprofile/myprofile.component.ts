@@ -27,6 +27,10 @@ export class MyprofileComponent implements OnInit {
   currentUser = this.auth.currentUser;
   ngOnInit(): void {
     this.currentUser.subscribe(data =>{
+      console.log(data.tempProfilePic);
+      console.log(data.profilePic);
+      
+      
       if(data.profilePic != undefined || data.profilePic != null){
         this.storage.getDocument(data.profilePic).subscribe(tata =>{
           data.tempProfilePic = tata;          
