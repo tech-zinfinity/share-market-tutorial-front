@@ -216,13 +216,13 @@
          
     }
 }
-::ng-deep.container1{
+.container1{
     display: grid;
     grid-gap:20px;
     grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
 }
-::ng-deep.layout-box1{
-    background: #3f51b5;
+.layout-box1{
+    background: whitesmoke;
     padding: 2rem 3rem;
     box-shadow: 0 0 3em rgba(0,0,0,0.15);
     border-radius: 5px;
@@ -230,3 +230,4 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
+
