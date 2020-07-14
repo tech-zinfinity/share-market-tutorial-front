@@ -24,7 +24,7 @@
   
 }
 .mat_2{
-    width: 280px;
+    width: 400px;
      margin-right: 5px;
       display: flex; 
       flex-direction: column;
@@ -35,24 +35,22 @@
 .heading{
     color: black;
     font-size: 35px;
-    font-family: 'Yeseva One', cursive;
-    margin-bottom: 20px !important;
+    font-family: 'Bebas Neue', cursive;
+    margin-bottom: 5px !important;
      
 }
 // button{
     
 // }
 .mat_btn{
-    width: 100%;
     padding: 0;
     background-color: transparent !important;
    
 }
 
 .dscp{
-    font-size: 18px;
+    font-size: medium;
      width: 100% !important; 
-    
      display: block;
     white-space: pre-line;
 }
@@ -78,19 +76,25 @@
 }
 
 .card_1{
-    background-color: aliceblue;
+    background-color: rgb(195, 174, 243);
+    box-shadow: 0 0 3em rgba(0,0,0,0.15);
+    border-radius: 5px;
      width: 50%; 
      font-family: 'Poppins', sans-serif !important;
      margin: 10px;
 }
 
 .card_2{
-    background-color:aliceblue;
+    background-color:#e05915;
+    color: white;
      width: 50%;
       font-family: 'Poppins', sans-serif !important;
       margin: 10px;
 }
-
+.tags{
+    width: 100%;
+    margin-top: -50px;
+}
 
 @media (min-width: 300px) and (max-width: 900px) {
     .main_div{
@@ -104,12 +108,16 @@
         text-align: center;
     }
     .mat_2 {
-        width: 280px;
+        width: 290px;
          margin-right:5px;
       display: flex; 
      flex-direction: column;
       justify-content: center;
      align-self: center;
+    }
+    .tags{
+        width: 100%;
+        margin-top: 0px;
     }
 
    
@@ -126,7 +134,7 @@
              
         }
         .dscp{
-            font-size: 15px;
+            font-size: medium;
            
         }
         .btn_main_div{
@@ -135,7 +143,7 @@
             justify-content: center;
         }
         .btn_admn{
-            justify-content: center;
+           
             margin: 5px;
         }
         .slt_pht ,.add_vid{
@@ -157,9 +165,7 @@
             text-align: center;
             padding: 5px;
         }
-        .div_card{
-            margin: 0 auto;
-        }
+       
 
     
 }
@@ -198,16 +204,29 @@
     }
     
     .card_1{
-        background-color: aliceblue;
-         width: 100%; 
+        background-color: rgb(195, 174, 243);
+         width: 95%; 
          font-family: 'Poppins', sans-serif !important;
     }
     
     .card_2{
-        background-color:aliceblue;
-         width: 100%;
+        background-color:#e05915;
+         width: 95%;
           font-family: 'Poppins', sans-serif !important;
          
     }
 }
-
+::ng-deep.container1{
+    display: grid;
+    grid-gap:20px;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+}
+::ng-deep.layout-box1{
+    background: #3f51b5;
+    padding: 2rem 3rem;
+    box-shadow: 0 0 3em rgba(0,0,0,0.15);
+    border-radius: 5px;
+    padding: 10px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
