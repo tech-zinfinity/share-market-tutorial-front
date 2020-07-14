@@ -43,6 +43,7 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
   mycourse: MyCourse;
   isFavorite: boolean = false;
 
+
   constructor(private route: ActivatedRoute,
     private _location: Location,
     private db: AngularFirestore,
@@ -68,6 +69,7 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
             kata.topics.forEach(nata =>{
               nata.videolink.forEach(rata =>{
                 rata.video = this.sanitized.bypassSecurityTrustHtml(rata.embedLink);
+                
               })
             });
             if(kata.tutor != null || kata.tutor != undefined){

@@ -47,8 +47,7 @@ export class ViewAllSubscriptionResuestComponent implements OnInit {
       this.fire.updateDocument(data, 'requestsubscriptions').subscribe(tata => {
         this.snackbar.open('Rrquest Updated Sussessfully', 'close', {duration: 2000});
         this.ngOnInit();
-        let sub = this.currentUser.subscribe(usr_data => {
-         this.fire.getSingleDocumentById<User>(usr_data.id, 'users').subscribe(usr_data =>{
+         this.fire.getSingleDocumentById<User>(data.userId, 'users').subscribe(usr_data =>{
           usr_data.myCourses.forEach(cours => {
             if(cours.courseId === data.courseId){
               switch (status) {
@@ -79,15 +78,11 @@ export class ViewAllSubscriptionResuestComponent implements OnInit {
 
               this.fire.updateDocument(usr_data, 'users').subscribe(usrr =>{
                 this.snackbar.open('User Updated Sussessfully', 'close', {duration: 2000});
-                sub.unsubscribe();
-                this.auth.publishUser(usrr);
               })
 
             }
           })
          })
-        })
-
       });
     });
   }

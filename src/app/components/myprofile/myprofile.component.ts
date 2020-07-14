@@ -1,3 +1,4 @@
+import { UserService } from './../../service/user.service';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { Route } from '@angular/compiler/src/core';
@@ -22,7 +23,8 @@ export class MyprofileComponent implements OnInit {
     private storage: FireStorageService,
     private sanitized: DomSanitizer,
     private fire: FireService,
-    private snackbar: MatSnackBar) { }
+    private snackbar: MatSnackBar,
+    private userservice: UserService) { }
 
   currentUser = this.auth.currentUser;
   ngOnInit(): void {
@@ -32,7 +34,7 @@ export class MyprofileComponent implements OnInit {
           data.tempProfilePic = tata;          
         });
       }
-    })
+    });
   }
 
   navigateToCourse(id: string){

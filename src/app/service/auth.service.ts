@@ -50,23 +50,28 @@ export class AuthService {
   }
 
   callbackend(){
-    let body: {
-      "cust_name": "Test Cust Name 5",
-      "cust_email": "redkar.darshan11@gmail.com",
-      "cust_phone": "9773637141",
-      "payable_entity": "EF",
-      "amount": 400,
-      "order_id_by_entity": "lumsum",
-      "currency": "INR",
-      "r_order": null
-    }
-    this.http.post('https://68.183.89.92:8088/pay/generateOrder',body).subscribe(data =>{
-      console.log(data);
-      
-    }, err =>{
-      console.log(err);
-      
+    return new Observable(observer =>{
+      let body = {
+        "cust_name": "Test Cust Name 5",
+        "cust_email": "redkar.darshan11@gmail.com",
+        "cust_phone": "9773637141",
+        "payable_entity": "EF",
+        "amount": 400,
+        "order_id_by_entity": "lumsum",
+        "currency": "INR",
+        "r_order": null
+      }
+      this.http.post('https://tech-zinfi.herokuapp.com/pay/generateOrder',body).subscribe(data =>{
+        console.log(data);
+        observer.next(data);
+        observer.complete();
+      }, err =>{
+        console.log(err);
+        observer.error(err);
+        observer.complete();
+      });
     });
+
   }
 
   publishAllCourses(){
