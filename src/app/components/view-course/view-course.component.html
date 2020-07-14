@@ -161,7 +161,7 @@
                 <div *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')" style="width: 100%;"
                     style="background-color: transparent;">
                     <div class="">
-                        
+
                         <button mat-raised-button color="primary" class="btn_admn" style="margin: 5px;"
                             (click)="openAddTopic()"> Add
                             Topic</button>
@@ -212,7 +212,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
     <div *ngIf="(this.auth.currentUser | async) == undefined">
@@ -256,7 +256,7 @@
     <!-- <span style="font-size: 30px;">Topics</span> -->
     <div *ngFor="let topic of (currentCourse | async).topics">
         <div style="display: flex; flex-direction: column; margin-bottom: 25px;">
-            <h1 style=" font-family: 'Poppins', sans-serif !important;">{{topic.title}}</h1>
+            <h1 style="font-family: 'Bebas Neue', cursive; color: #2e151b;">{{topic.title}}</h1>
             <div *ngIf="(this.auth.currentUser | async) != null">
                 <mat-toolbar class="mat_topic_btn" *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
                     <div class="btn_main_div">
@@ -282,11 +282,12 @@
             </div>
 
             <h3
-                style="background-color: rgb(195, 174, 243); width: 100%; height: auto;  font-family: 'Poppins', sans-serif !important; padding: 5px;">
+                style="background-color: rgb(242, 241, 246); width: 100%; height: auto;  
+                font-family: 'Poppins', sans-serif !important; padding: 5px; border-radius: 5px;">
                 {{topic.dscp}}</h3>
-            <div *ngFor="let vid of topic.videolink" class="container1">
-                <div *ngIf="(this.auth.currentUser | async) != null">
-                    <div [class.mat-elevation-z8]="true"
+            <div *ngFor="let vid of topic.videolink">
+                <div *ngIf="(this.auth.currentUser | async) != null" class="container1">
+                    <div [class.mat-elevation-z8]="true" class="layout-box1"
                         style="margin-bottom: 20px; width: fit-content; padding: 0px ;" class="div_card"
                         *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')">
                         <mat-toolbar style=" background-color: white; padding: 5px; justify-content: center;"
@@ -319,8 +320,7 @@
                     </div>
                 </div>
                 <div class="container1">
-                    <div class="layout-box1" 
-                        *ngIf="(this.auth.currentUser | async) === null" [hidden]="!vid.active">
+                    <div class="layout-box1" *ngIf="(this.auth.currentUser | async) === null" [hidden]="!vid.active">
                         <div [class.disabled-contenct]="vid.paid" [innerHTML]="vid.video">
 
                         </div>
@@ -332,3 +332,4 @@
         </div>
     </div>
 </div>
+
