@@ -96,6 +96,8 @@
     margin-top: -50px;
 }
 
+
+
 @media (min-width: 300px) and (max-width: 900px) {
     .main_div{
         display: flex; 
@@ -127,7 +129,7 @@
     
         .heading{
             color: black;
-             font-size: 17px;
+             font-size: 20px;
              margin-top: 2px !important;
             //  margin-bottom: 10px !important;
              margin: 0px;
@@ -164,6 +166,9 @@
             width: auto;
             text-align: center;
             padding: 5px;
+        }
+        .card_heading{
+            font-size: 17px;
         }
        
 

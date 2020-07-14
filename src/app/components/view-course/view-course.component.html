@@ -6,14 +6,15 @@
             <div style=" font-family: 'Poppins', sans-serif !important; font-size: medium;">
                 <span> <strong style="font-style: oblique;">
                         {{(currentCourse | async).finalDuration }}</strong>
-                    minutes of on demand video tutorials,&nbsp; </span>
+                    minutes of on demand video tutorials,&nbsp; </span> <br> <br>
                 <span> <strong>Published On :</strong>
                     {{(currentCourse | async).publishDate | date: 'medium'}}</span><br><br>
                 <span style="color:#3f51b5;" *ngIf="(currentCourse | async).temntutor != undefined">
                     <strong> Tutor :</strong>
                     {{(currentCourse | async).temntutor.name}}</span>
             </div>
-            <br>
+            <br> <br> <br> 
+
 
             <div class="tags">
                 <mat-chip-list>
@@ -160,7 +161,7 @@
             <div *ngIf="(this.auth.currentUser | async) != null" style="margin-top: 20px;">
                 <div *ngIf="(this.auth.currentUser | async).roles.includes('ADMIN')" style="width: 100%;"
                     style="background-color: transparent;">
-                    <div class="">
+                    <div>
 
                         <button mat-raised-button color="primary" class="btn_admn" style="margin: 5px;"
                             (click)="openAddTopic()"> Add
@@ -228,13 +229,13 @@
     <div class="content">
         <mat-card class="card_1">
             <span class="dscp">
-                <h2 style=" font-family: 'Poppins', sans-serif !important;">
+                <h2 class="card_heading" style=" font-family: 'Poppins', sans-serif !important;">
                     <strong>About Course</strong></h2>
                 {{(currentCourse | async).dscp}}
             </span>
         </mat-card>
         <mat-card class="card_2">
-            <h2 style=" font-family: 'Poppins', sans-serif !important;">
+            <h2 class="card_heading" style=" font-family: 'Poppins', sans-serif !important;">
                 <strong>What you will learn</strong></h2>
             <div *ngFor="let l of (currentCourse | async).learnings" style="
                 display: flex; flex-direction: column;">
