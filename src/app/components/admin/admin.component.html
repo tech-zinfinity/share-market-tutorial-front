@@ -14,30 +14,31 @@
       <div *ngFor="let element of usersObs | async" class="card" > 
         <mat-card style=" border-left: 1px groove #3f51b5" 
         [class.mat-elevation-z8]="true" class="ccrd">
-        <button mat-icon-button style="color: rgb(247, 11, 11);"
-        *ngIf="!element.loggedIn"><mat-icon>circle</mat-icon></button>
-        <button mat-icon-button style="color: rgb(11, 247, 27);"
-        *ngIf="element.loggedIn"><mat-icon>circle</mat-icon></button>
             <div style="display: flex; justify-content: start; background-color: white;
             border-radius: 15px; padding: 10px; color: black; flex-direction: column;">
-              <h2>Name : {{element.name}}</h2>
+              <div style="display: flex; justify-content: start; flex-direction: row;">
+                <button mat-icon-button style="color: rgb(247, 11, 11);"
+                *ngIf="!element.loggedIn"><mat-icon>circle</mat-icon></button>
+                <button mat-icon-button style="color: rgb(11, 247, 27);"
+                *ngIf="element.loggedIn"><mat-icon>circle</mat-icon></button>
+                <h2>Name : {{element.name}}</h2>
+              </div>
               <h3>Email : {{element.email}}</h3>
               <h3>LoggedIn : {{element.loggedIn}}</h3>
               <h3>Roles : {{element.roles}}</h3>
               <h3>Permission :</h3> 
-              <mat-list role="list" *ngFor="let per of element.permissions" style="width: 90%;">
-                <mat-list-item role="listitem"
-                style="display: flex; width: 100%; flex-direction: row; justify-content: space-between;">
+              <div *ngFor="let per of element.permissions" style="width: 90%;">
+                <div
+                style="display: flex; width: 100%; flex-direction: row; justify-content: space-between;
+                border-bottom: #3f51b5 solid; border-radius: 15px; margin-top: 5px; padding: 0;">
                   <div >{{per}}</div>
                   <button mat-icon-button style="margin-left: 20px;"(click)="deletePermission(element.id, per)">
                     <mat-icon style="font-size: 18px; color: red;"
                     >delete</mat-icon>
                   </button> 
 
-                </mat-list-item>
-                <mat-divider style="width: 60%;"></mat-divider>
-
-              </mat-list>
+                </div>
+              </div>
 
             </div>
             <mat-card-actions class="btn-main">

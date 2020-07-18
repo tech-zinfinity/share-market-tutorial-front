@@ -15,6 +15,7 @@ export interface Course extends Document{
     img?:string,
     publishDate?: any | Date;
     tags?:string[],
+    tempTags?:string,
     trending?:true,
     tutor?:any,
     learnings?:string[],

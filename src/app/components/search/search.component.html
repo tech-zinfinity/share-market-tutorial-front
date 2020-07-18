@@ -18,24 +18,25 @@
 
   <div style="width: 100%; display: flex;">
     <div class="cardplacement">
-      <div *ngFor="let element of courses">
-      <div style="margin: 30px;">
+      <div *ngFor="let element of (courseObs | async)">
+      <div style="margin: 30px;" (click)="goToCourseDetail(element.id)">
         <img [src]="element.img" alt="courseImg" class="post__image"
           style="width: 100%; height: 330px;">
         <div class="course_details">
-          <h4 style="font-size: 17px;font-family: 'Bebas Neue', cursive; margin-bottom: 3px;">begineer's guid to day
-            trading online</h4>
+          <h4 style="font-size: 17px;font-family: 'Bebas Neue', cursive; margin-bottom: 3px;">
+            {{element.title}}
+          </h4>
           <div>
             <button (click)="goToCourseDetail(element.id)" mat-mini-fab  aria-label="Example icon button with a info icon" 
              class="info" style="color: #3f51b5; background-color: aliceblue; outline: none;">
               <mat-icon>info</mat-icon>
             </button> &nbsp;
   
-            <button mat-mini-fab  aria-label="Example icon button with a favorite icon" class="fav" style="color: red; background-color: aliceblue; outline: none;">
+            <!-- <button mat-mini-fab  aria-label="Example icon button with a favorite icon" class="fav" style="color: red; background-color: aliceblue; outline: none;">
               <mat-icon>favorite</mat-icon>
-            </button>
+            </button> -->
             <div class="main_subscribe">
-            <button mat-stroked-button class="subscribe" >Subscribe</button>
+            <!-- <button mat-stroked-button class="subscribe" >Subscribe</button> -->
           </div>
           </div>
         </div>

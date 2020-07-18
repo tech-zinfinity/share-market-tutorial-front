@@ -27,12 +27,15 @@ export class HomeComponent implements OnInit {
     private fire: FireService,
     private couserservice: CourseService,
     private auth: AuthService,
-    private snackbar: MatSnackBar) { }
+    private snackbar: MatSnackBar,
+    private courseservice: CourseService) { }
 
   ngOnInit(): void {
-    this.db.collection('courses', ref=>ref.where('active', '==', true)
-    .limit(5))
-    .valueChanges().pipe(take(5)).subscribe((data: Course[]) =>{
+    // this.db.collection('courses', ref=>ref.where('active', '==', true)
+    // .limit(5))
+    // .valueChanges().pipe(take(5))
+    this.courseservice.getActiveCourse()
+    .subscribe((data: Course[]) =>{
       data.forEach(courses =>{
         if(courses.coverPhotoImg != undefined || courses.coverPhotoImg != null){
           this.storage.getDocument(courses.coverPhotoImg).subscribe(tata =>{

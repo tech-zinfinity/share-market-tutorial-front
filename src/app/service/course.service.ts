@@ -17,10 +17,11 @@ export class CourseService {
         let arr = data.filter(ref => ref.id === id);
         arr.forEach(tata =>{
           obs.next(tata);
-          sub.unsubscribe();
-        })
+          obs.complete()
+        });
       }, err =>{
         obs.error(err);
+        obs.complete()
         sub.unsubscribe();
       })
     });
@@ -34,14 +35,15 @@ export class CourseService {
     });
   }
 
-  getActiveCourse(){
+  getActiveCourse(): Observable<Course[]>{
     return new Observable(obs =>{
       this.auth.courseObs.subscribe((data: Course[]) =>{
         let arr = data.filter(ref => ref.active === true);
         obs.next(arr);
-
+        // obs.complete();
       }, err =>{
         obs.error(err);
+        obs.complete();
       })
     })
   }

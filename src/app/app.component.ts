@@ -22,6 +22,7 @@ export class AppComponent implements OnDestroy{
  ngOnInit() {
   this.auth.publishAllCourses();
   this.share.publishRequestSubscriptions();
+  //this.auth.userChanges();
 }
 
   constructor(private bottomSheet: MatBottomSheet, 
@@ -32,7 +33,13 @@ export class AppComponent implements OnDestroy{
     private fire: FireService,
     private share: ShareObjectService){
       if(localStorage.getItem('shareuser') != null){
-        auth.publishUser(JSON.parse(localStorage.getItem('shareuser')));
+        let u : User = JSON.parse(localStorage.getItem('shareuser'));
+        let sub = this.fire.getSingleDocumentById(u.id,'users').subscribe(d =>{
+          console.log('refreshed');
+          
+          auth.publishUser(d);
+          sub.unsubscribe();
+        });
       }else{
         this.auth.logout();
       }

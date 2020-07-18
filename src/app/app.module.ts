@@ -58,6 +58,7 @@ import { EditTopicComponent } from './components/add/edit-topic/edit-topic.compo
 import { AddTagComponent } from './components/add/add-tag/add-tag.component'
 import {MatChipsModule} from '@angular/material/chips';
 import { SearchComponent } from './components/search/search.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 import { AddLearningComponent } from './components/add/add-learning/add-learning.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -127,7 +128,7 @@ import { MyprofileComponent } from './components/myprofile/myprofile.component';
     QuillModule.forRoot(),
     MatChipsModule,
     HttpClientModule,
-    
+    MatBadgeModule
   ],
   entryComponents:[
     LoginComponent,

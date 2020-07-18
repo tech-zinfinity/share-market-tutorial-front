@@ -21,7 +21,7 @@ button{
 }
 .logo-img{
     height: 70px; 
-    width: 180px;
+    width: 170px;
     margin-left: 7%;
 }
 .div-btn{
@@ -71,11 +71,16 @@ button{
 @media (max-width: 350px){
     .logo-img{
         height: auto; 
-        width: 120px;
-        margin-left: 2%;
+        width: 70px;
+        margin-left: 0;
     }
    
-   
+    .name-btn{
+        font-size: 5px;
+        border: 1px solid #3f51b5;
+        border-radius: 22px;
+        outline: none;
+    }
 
     
 }

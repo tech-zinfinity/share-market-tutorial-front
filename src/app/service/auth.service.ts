@@ -31,6 +31,21 @@ export class AuthService {
     localStorage.setItem('shareuser', JSON.stringify(user));    
   }
 
+  userChanges(){
+    this.db.collection('users').valueChanges().subscribe((d:User[]) =>{
+      console.log('called');
+
+      this.currentUser.subscribe(e =>{
+        if(e!== null){
+          let f = d.filter(ref =>ref.id === e.id);
+          f.forEach(g=>{
+            
+            this.publishUser(g);
+          });
+        }
+      });
+    });
+  }
   logout(){
     this.userSource.next(null);
     localStorage.clear();
@@ -50,7 +65,7 @@ export class AuthService {
   }
 
   callbackend(){
-    return new Observable(observer =>{
+      console.log('working')
       let body = {
         "cust_name": "Test Cust Name 5",
         "cust_email": "redkar.darshan11@gmail.com",
@@ -61,16 +76,18 @@ export class AuthService {
         "currency": "INR",
         "r_order": null
       }
-      this.http.post('https://tech-zinfi.herokuapp.com/pay/generateOrder',body).subscribe(data =>{
+      //68.183.89.92:8088
+      console.log('coming here');
+      
+      this.http.post('http://68.183.89.92:8088/pay/generateOrder',body).subscribe(data =>{
         console.log(data);
-        observer.next(data);
-        observer.complete();
+        // observer.next(data);
+        // observer.complete();
       }, err =>{
         console.log(err);
-        observer.error(err);
-        observer.complete();
+        // observer.error(err);
+        // observer.complete();
       });
-    });
 
   }
 

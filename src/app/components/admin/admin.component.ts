@@ -1,6 +1,6 @@
 import { FireStorageService } from './../../service/fire-storage.service';
 import { Course } from './../../model/course';
-import { Router } from '@angular/router';
+import { Router, UrlHandlingStrategy } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject } from 'rxjs';
 import { User } from './../../model/user';
@@ -121,9 +121,44 @@ export class AdminComponent implements OnInit {
   }
 
   deleteCourse(document: Course){
-    this.fire.deleteDocument(document, 'courses').subscribe(data =>{
+    let sub2 = this.fire.deleteDocument(document, 'courses').subscribe(data =>{
+      console.log('triggered on delete');
+      
+      let sub = this.fire.getCollection('users').subscribe((users: User[]) =>{
+        console.log(users);
+        
+        sub.unsubscribe();
+        users.forEach(usr =>{
+          // sub2.unsubscribe();
+          console.log(usr);
+          let count = false;
+
+          if(usr.myCourses != null || usr.myCourses != undefined){
+            usr.myCourses.forEach(d =>{
+              if(d.courseId === document.id){
+                usr.myCourses.splice(usr.myCourses.indexOf(d), 1);
+                count = true;
+              }
+            });
+          }
+          if(usr.favorites != null || usr.favorites != undefined){
+            usr.favorites.forEach(c =>{
+              if(c.courseId === document.id){
+                usr.favorites.splice(usr.favorites.indexOf(c), 1);
+                count = true;
+              }
+            });
+          }
+          if(count){
+            this.fire.updateDocument(usr,'users').subscribe(e =>{
+              sub.unsubscribe();
+              console.log('coming in true');  
+            });
+          }
+        });
+      });
       this.snackbar.open('course '+document.id+' deleted Successfully', 'close', {duration: 2000});
       this.ngOnInit();
-    })
+    });
   }
 }

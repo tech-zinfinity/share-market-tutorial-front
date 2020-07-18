@@ -61,7 +61,7 @@ export class AddLearningComponent implements OnInit {
   }
 
   updateCourse(){
-    let sub  = this.courseservice.getSingleDocumentById<Course>(this.courseId, 'courses').subscribe(data =>{
+    let sub = this.courseservice.getSingleDocumentById<Course>(this.courseId, 'courses').subscribe(data =>{
       if(data.learnings === undefined || data.learnings ===null){
         data.learnings = []
       }
@@ -69,7 +69,8 @@ export class AddLearningComponent implements OnInit {
         data.learnings.push(tata);
       });
     
-      this.fire.updateDocument(data, 'courses').subscribe(mata =>{
+      let sub2 =this.fire.updateDocument(data, 'courses').subscribe(mata =>{
+        sub2.unsubscribe();
         this.snackbar.open('learnings added successfully', 'close', {duration:2000});
         sub.unsubscribe();
         this.dialogRef.close();

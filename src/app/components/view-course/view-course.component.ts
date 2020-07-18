@@ -1,3 +1,4 @@
+import { PaymentRequestStatus, SubscriptionStatus } from './../../constants/constants';
 import { CourseService } from './../../service/course.service';
 import { AddLearningComponent } from './../add/add-learning/add-learning.component';
 import { EditTopicComponent } from './../add/edit-topic/edit-topic.component';
@@ -15,7 +16,7 @@ import { AuthService } from './../../service/auth.service';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { Course } from './../../model/course';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Component, OnInit, OnDestroy, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import {Location} from '@angular/common';
 import { FireService } from 'src/app/service/fire.service';
@@ -42,7 +43,7 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
   currentUserSubscription : Subscription;
   mycourse: MyCourse;
   isFavorite: boolean = false;
-
+  isSubscribed: boolean = false;
 
   constructor(private route: ActivatedRoute,
     private _location: Location,
@@ -75,6 +76,11 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
             if(kata.tutor != null || kata.tutor != undefined){
               this.db.doc(kata.tutor).valueChanges().subscribe(cata =>{
                 kata.temntutor = cata;
+                if(kata.temntutor.profilePic != undefined || kata.temntutor.profilePic != null){
+                  this.storage.getDocument(kata.temntutor.profilePic).subscribe(tata =>{
+                    kata.temntutor.tempProfilePic = tata;          
+                  });
+                }
               }, err =>{
                 console.log(err);
               })
@@ -90,7 +96,10 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
                     this.courseSubscrible = true;
                     this.mycourse = co;  
                     console.log(co);
-                                      
+                    if(co.status === SubscriptionStatus.APPROVED.toString()){
+                      this.isSubscribed = true;
+                    } 
+
                     //sub.unsubscribe();
                   }
                 })
@@ -469,7 +478,9 @@ export class ViewCourseComponent implements OnInit, OnDestroy {
 
   removeLearning(learning: string){
     let sub = this.currentCourse.subscribe(data =>{
-      data.learnings.splice(data.tags.indexOf(learning), 1);
+      console.log(data);
+      
+      data.learnings.splice(data.learnings.indexOf(learning), 1);
       this.fire.updateDocument(data, 'courses').subscribe(tata =>{
         sub.unsubscribe();
         this.courseSubject.next(tata);

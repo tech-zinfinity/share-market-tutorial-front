@@ -63,7 +63,7 @@ export class AddTagComponent implements OnInit {
 
   updateCourse(){
     let sub  = this.courseservice.getSingleDocumentById<Course>(this.courseId, 'courses').subscribe(data =>{
-      if(data.tags === undefined || data.tags ===null){
+      if(data.tags === undefined || data.tags ===null || data.tags.length <=0){
         data.tags = []
       }
       this.tags.forEach(tata =>{
