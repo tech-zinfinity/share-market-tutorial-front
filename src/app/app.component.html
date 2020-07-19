@@ -5,11 +5,11 @@
         <img src="../assets/Logo.JPG" class="logo-img">
       </div>
      
-      <div class="div-btn" *ngIf="(auth.currentUser | async) === null">
+      <div class="div-btn" *ngIf="(this.auth.currentUser | async) === undefined || (this.auth.currentUser | async) === null">
         <button class="btn" mat-raised-button color="primary" (click) = "openLoginDialog()">Login</button>&nbsp;&nbsp;
         <button class="btn" mat-stroked-button color="warn" (click) = "openSignupDialog()">Sign Up</button>
       </div>
-      <div *ngIf="(auth.currentUser | async) != null" class="div-name" >
+      <div *ngIf="(this.auth.currentUser | async) != undefined || (this.auth.currentUser | async) != null" class="div-name" >
         <button mat-button routerLink="/" color="primary" class="name-btn mobileHide" style="margin-right: 5px;">
           <mat-icon>home</mat-icon>
         </button>
@@ -18,14 +18,15 @@
         </button>
         
         <mat-menu #menu="matMenu" class="mat-menu-btn">
-          <button mat-menu-item [routerLink]="['admin']" *ngIf="(auth.currentUser | async)?.roles.includes('ADMIN')">
-            <mat-icon style="color: black;">https</mat-icon>Admin</button>
+          <div>
+            <button mat-menu-item [routerLink]="['admin']" *ngIf="isAdmin">
+              <mat-icon style="color: black;">https</mat-icon>Admin</button>
+            <button mat-menu-item [routerLink]="['admin/editblog/0']" *ngIf="isAdmin">
+              <mat-icon style="color: brown;">history_edu</mat-icon>Write Blog</button>  
+          </div>
         
           <button mat-menu-item   (click)="navigateToCourse()">
             <mat-icon style="color: brown;">article</mat-icon>My Courses</button>
-
-           <button mat-menu-item [routerLink]="['admin/editblog/0']" *ngIf="(auth.currentUser | async)?.roles.includes('ADMIN')">
-              <mat-icon style="color: brown;">history_edu</mat-icon>Write Blog</button>
 
           <button mat-menu-item  [routerLink]="['profile']">
             <mat-icon style="color: blue;">face</mat-icon>Profile</button>

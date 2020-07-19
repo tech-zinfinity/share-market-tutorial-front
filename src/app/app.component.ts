@@ -19,7 +19,36 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnDestroy{
 
+  user: User;
+  isAdmin: boolean = false;
+
  ngOnInit() {
+  if(localStorage.getItem('shareuser') != null){
+    let u : User = JSON.parse(localStorage.getItem('shareuser'));
+    this.auth.publishUser(u);
+    let sub = this.fire.getSingleDocumentById(u.id,'users').subscribe((d:User) =>{  
+      this.user = d;  
+      if(d.roles != null || d.roles != undefined){
+  
+      if(d.roles.includes('ADMIN')){
+        this.isAdmin = true;
+      }    
+    }
+      this.auth.publishUser(d);
+      sub.unsubscribe();
+    });
+  }else{
+    this.auth.logout();
+  }
+  this.currentUser.subscribe(usr =>{
+    if(usr!=null || usr!= undefined){
+      if(usr.roles != null || usr.roles != undefined){
+        if(usr.roles.includes('ADMIN')){
+          this.isAdmin = true;
+        } 
+      }
+    }
+  })
   this.auth.publishAllCourses();
   this.share.publishRequestSubscriptions();
   //this.auth.userChanges();
@@ -32,17 +61,6 @@ export class AppComponent implements OnDestroy{
     private db: AngularFirestore,
     private fire: FireService,
     private share: ShareObjectService){
-      if(localStorage.getItem('shareuser') != null){
-        let u : User = JSON.parse(localStorage.getItem('shareuser'));
-        let sub = this.fire.getSingleDocumentById(u.id,'users').subscribe(d =>{
-          console.log('refreshed');
-          
-          auth.publishUser(d);
-          sub.unsubscribe();
-        });
-      }else{
-        this.auth.logout();
-      }
   }
   openLoginDialog(){
     this.dialog.open(LoginComponent,{
@@ -73,7 +91,7 @@ export class AppComponent implements OnDestroy{
       if(user != null ){
         if(user.loggedIn == false){
           this.fire.getSingleDocumentById(user.id,'users').subscribe((data:User) =>{
-            
+            this.isAdmin = false;
             data.loggedIn = false;
             let sub = this.fire.updateDocument(data,'users').subscribe(tata=>{
               
