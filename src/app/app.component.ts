@@ -9,6 +9,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 
 
@@ -60,7 +61,12 @@ export class AppComponent implements OnDestroy{
     private router: Router,
     private db: AngularFirestore,
     private fire: FireService,
-    private share: ShareObjectService){
+    private share: ShareObjectService,
+    private titleServices: Title,
+    private meta: Meta){
+      this.titleServices.setTitle('ShareMarketTutorial');
+      this.meta.addTag({ name: 'description', content:'Meta tags for Share-Market'});
+      this.meta.addTag({name:'keywords', content:' BSE, NSE, Share market basics, indian share market, share market learning, share market in marathi, marathi classes, marathi tutorial, share market basics, Intraday trading, stoploss, order types, equity market,sensex, nifty, nifty future, future and option, option Greeks, technical analysis, candlestick basics, candlestick chart,option trading, currency market, call option, put option, CE, PE, banknifty weekly option, nifty weekly option, option chain, strike rate, stock market, MACD indicator, stochastic indicator, RSI indicator, cross currency trading, swing trading, stock market marathi, indistox'})
   }
   openLoginDialog(){
     this.dialog.open(LoginComponent,{
@@ -73,8 +79,9 @@ export class AppComponent implements OnDestroy{
       disableClose:true
     });
   }
-  title = 'share-market-tutorial';
+
   arrayc = ['Course 1', 'Course 2', 'Course 3', 'Course 4'];
+  
 
   navigateToHome(){
     this.router.navigate(['']);
